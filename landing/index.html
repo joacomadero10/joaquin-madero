@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comandy — Sistema de gestión para restaurantes</title>
+<meta name="description" content="Comandy es el sistema de gestión para restaurantes: pedidos por QR desde la mesa, cocina en tiempo real, mozos y reportes. Preparado para delivery.">
+
+<!-- ============================================================
+     PERSONALIZACIÓN RÁPIDA:
+     1. Reemplazá CONTACTO_EMAIL y CONTACTO_WHATSAPP más abajo (Ctrl+F).
+     2. Cambiá el texto entre <!-- EDITAR --> si querés otra bajada.
+     3. El logo es solo texto "COMANDY" — si tenés un logo en imagen,
+        reemplazá el <span class="logo-text"> por un <img>.
+     ============================================================ -->
+
+<style>
+  :root {
+    --verde-oscuro: #0f2d24;
+    --verde: #16473a;
+    --verde-claro: #1f6f57;
+    --acento: #ff7a45;
+    --acento-hover: #ff5e22;
+    --crema: #faf7f2;
+    --texto: #1c1c1c;
+    --texto-suave: #5a6a63;
+    --borde: #e5e0d8;
+    --blanco: #ffffff;
+    --radio: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--texto);
+    background: var(--crema);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo-text {
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--verde-oscuro);
+  }
+  .logo-text span { color: var(--acento); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--verde-oscuro);
+  }
+
+  .nav-links a:hover { color: var(--acento); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--acento);
+    color: var(--blanco);
+    box-shadow: 0 8px 20px -8px rgba(255, 122, 69, 0.6);
+  }
+  .btn-primary:hover { background: var(--acento-hover); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--verde-oscuro);
+    border: 1.5px solid var(--verde-oscuro);
+  }
+  .btn-outline:hover { background: var(--verde-oscuro); color: var(--blanco); }
+
+  .nav-cta { display: flex; align-items: center; gap: 12px; }
+
+  .menu-toggle { display: none; background: none; border: none; font-size: 26px; cursor: pointer; color: var(--verde-oscuro); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 96px 0 80px;
+    background: radial-gradient(circle at 85% 20%, rgba(255, 122, 69, 0.12), transparent 55%),
+                radial-gradient(circle at 10% 90%, rgba(31, 111, 87, 0.12), transparent 50%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(31, 111, 87, 0.1);
+    color: var(--verde-claro);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--verde-oscuro);
+    margin-bottom: 20px;
+  }
+  h1 em { color: var(--acento); font-style: normal; }
+
+  .hero p.lead {
+    font-size: 19px;
+    color: var(--texto-suave);
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+  .hero-stats { display: flex; gap: 36px; }
+  .hero-stats div strong { display: block; font-size: 26px; font-weight: 800; color: var(--verde-oscuro); }
+  .hero-stats div span { font-size: 13px; color: var(--texto-suave); }
+
+  /* Mockup visual armado solo con CSS/SVG, sin imagenes externas */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone {
+    width: 260px;
+    background: var(--verde-oscuro);
+    border-radius: 34px;
+    padding: 14px;
+    box-shadow: 0 40px 60px -25px rgba(15, 45, 36, 0.45);
+    transform: rotate(-3deg);
+  }
+  .phone-screen {
+    background: var(--blanco);
+    border-radius: 22px;
+    overflow: hidden;
+    padding-bottom: 18px;
+  }
+  .phone-header {
+    background: var(--verde);
+    color: var(--blanco);
+    padding: 18px 16px 14px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .phone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--borde);
+    font-size: 13px;
+  }
+  .phone-item .qty {
+    background: var(--acento);
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px 0;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--verde-oscuro);
+  }
+
+  .badge-float {
+    position: absolute;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    padding: 12px 16px;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .badge-float .dot {
+    width: 9px; height: 9px; border-radius: 50%; background: #2fbf71;
+    box-shadow: 0 0 0 4px rgba(47, 191, 113, 0.2);
+  }
+  .badge-top { top: 10%; left: -8%; }
+  .badge-bottom { bottom: 8%; right: -10%; }
+
+  /* ---------- LOGOS / TRUST ---------- */
+  .trust {
+    padding: 32px 0;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .section { padding: 88px 0; }
+  .section-head { max-width: 620px; margin: 0 auto 56px; text-align: center; }
+  .section-head .eyebrow { margin: 0 auto 16px; }
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--verde-oscuro);
+    margin-bottom: 14px;
+  }
+  .section-head p { color: var(--texto-suave); font-size: 17px; }
+
+  /* ---------- ROLES ---------- */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .role-card {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 28px 22px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .role-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(15,45,36,0.25); }
+  .role-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+  .role-card:nth-child(1) .role-icon { background: rgba(255,122,69,0.14); }
+  .role-card:nth-child(2) .role-icon { background: rgba(31,111,87,0.14); }
+  .role-card:nth-child(3) .role-icon { background: rgba(15,45,36,0.1); }
+  .role-card:nth-child(4) .role-icon { background: rgba(255,122,69,0.14); }
+  .role-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--verde-oscuro); }
+  .role-card p { font-size: 14px; color: var(--texto-suave); }
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    counter-reset: step;
+  }
+  .step { position: relative; padding-top: 8px; }
+  .step-number {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--verde-oscuro); }
+  .step p { font-size: 14px; color: var(--texto-suave); }
+
+  /* ---------- FEATURES ---------- */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--verde-oscuro);
+    color: var(--crema);
+    border-radius: var(--radio);
+    padding: 26px;
+  }
+  .feature-card.acento { background: var(--acento); }
+  .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; opacity: 0.85; }
+
+  /* ---------- DELIVERY BANNER ---------- */
+  .delivery {
+    background: var(--verde);
+    border-radius: 24px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    color: var(--crema);
+  }
+  .delivery h2 { font-size: 28px; font-weight: 800; margin-bottom: 14px; }
+  .delivery p { opacity: 0.85; margin-bottom: 24px; font-size: 15px; }
+  .delivery-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .delivery-visual {
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed rgba(255,255,255,0.3);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contact-box {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 24px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .contact-info h2 { font-size: 26px; font-weight: 800; color: var(--verde-oscuro); margin-bottom: 12px; }
+  .contact-info p { color: var(--texto-suave); margin-bottom: 24px; font-size: 15px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid var(--borde);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+  }
+  .contact-item:first-of-type { border-top: none; }
+  .contact-item .ico {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255,122,69,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  form.contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--borde);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    background: var(--crema);
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { outline: none; border-color: var(--verde-claro); }
+  .contact-form textarea { min-height: 110px; resize: vertical; }
+  .contact-form button { margin-top: 4px; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--verde-oscuro);
+    color: rgba(250,247,242,0.7);
+    padding: 48px 0 28px;
+    font-size: 14px;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(250,247,242,0.12);
+    margin-bottom: 20px;
+  }
+  footer .logo-text { color: var(--crema); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; opacity: 0.7; font-size: 13px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; margin-bottom: 20px; }
+    .badge-top, .badge-bottom { display: none; }
+    .roles-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .delivery { grid-template-columns: 1fr; padding: 36px 24px; }
+    .contact-box { grid-template-columns: 1fr; padding: 32px 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .hero { padding: 56px 0 48px; }
+    .hero-actions .btn { width: 100%; }
+    .roles-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#top" class="logo-text">COMANDY<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#producto">Producto</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-primary">Solicitar demo</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">🍽️ Gestión de restaurantes</span>
+        <!-- EDITAR: titular principal -->
+        <h1>Tu restaurante, <em>ordenado</em> de mesa a cocina.</h1>
+        <p class="lead">
+          Comandy conecta al cliente, el mozo, la cocina y el dueño en un solo sistema:
+          pedidos por QR desde la mesa, cocina en tiempo real y reportes al instante.
+          Sin papel, sin gritos, sin errores.
+        </p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn btn-primary">Quiero una demo →</a>
+          <a href="#como-funciona" class="btn btn-outline">Ver cómo funciona</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong><span>roles conectados</span></div>
+          <div><strong>0</strong><span>apps para el cliente</span></div>
+          <div><strong>&lt;1s</strong><span>pedido a cocina</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="badge-float badge-top">
+          <span class="dot"></span> Pedido en cocina
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-header">
+              <span>Mesa 7 · Comandy</span>
+              <span>🧾</span>
+            </div>
+            <div class="phone-item"><span class="qty">2</span><span>Milanesa con papas</span><span>$17.000</span></div>
+            <div class="phone-item"><span class="qty">1</span><span>Ensalada César</span><span>$6.200</span></div>
+            <div class="phone-item"><span class="qty">3</span><span>Limonada</span><span>$5.400</span></div>
+            <div class="phone-total"><span>Total</span><span>$28.600</span></div>
+          </div>
+        </div>
+        <div class="badge-float badge-bottom">
+          📊 +18% mesas/hora
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust container">
+    Pensado para bares · restaurantes · cervecerías · food courts
+  </div>
+
+  <!-- ================= ROLES ================= -->
+  <section class="section" id="producto">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Un sistema, cuatro roles</span>
+        <h2>Cada persona de tu equipo, con su propia pantalla</h2>
+        <p>Comandy no es una app más: es el flujo completo de tu restaurante, de la mesa a la caja.</p>
+      </div>
+
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-icon">📱</div>
+          <h3>Cliente</h3>
+          <p>Escanea el QR de la mesa, ve el menú actualizado y pide desde su propio celular. Sin descargar nada.</p>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🧑‍🍳</div>
+          <h3>Cocina</h3>
+          <p>Ve cada pedido apenas entra, en tiempo real, y marca cada plato como listo para que el mozo lo retire.</p>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🧾</div>
+          <h3>Mozo</h3>
+          <p>Gestiona el estado de las mesas y cierra la cuenta en segundos, sin anotar nada a mano.</p>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">📊</div>
+          <h3>Admin / Dueño</h3>
+          <p>Carga el menú, genera los QR de cada mesa y ve reportes de ventas del día en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMO FUNCIONA ================= -->
+  <section class="section" id="como-funciona" style="background:var(--blanco); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>De la mesa al pedido en cocina, en 4 pasos</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Escanea el QR</h3>
+          <p>El cliente escanea el código de su mesa y accede al menú del restaurante al instante.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Arma su pedido</h3>
+          <p>Elige los platos, agrega notas ("sin sal", "sin cebolla") y confirma desde su celular.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Cocina lo recibe al instante</h3>
+          <p>El pedido aparece en la pantalla de cocina en tiempo real, sin pasar por el mozo.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>El mozo cierra la cuenta</h3>
+          <p>Cuando la mesa pide la cuenta, el mozo la cierra en segundos desde su propia pantalla.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Por qué Comandy</span>
+        <h2>Todo lo que un restaurante necesita, en un solo lugar</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>⚡ Tiempo real</h3>
+          <p>Cada pedido y cada cambio de estado se actualiza al instante en todas las pantallas, sin recargar nada.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📵 Sin apps para el cliente</h3>
+          <p>El cliente pide desde el navegador de su celular. Nada para instalar ni descargar.</p>
+        </div>
+        <div class="feature-card acento">
+          <h3>📈 Reportes al instante</h3>
+          <p>Ventas del día, platos más vendidos y estado de las mesas, siempre a mano del dueño.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🔳 QR por mesa</h3>
+          <p>Generá y descargá el código QR de cada mesa desde el panel de administración.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🏢 Multi-restaurante</h3>
+          <p>Pensado desde el día uno para escalar a más de un local, cada uno con sus propios datos.</p>
+        </div>
+        <div class="feature-card acento">
+          <h3>🔒 Datos seguros</h3>
+          <p>Cada restaurante ve únicamente su propia información: menús, pedidos y reportes aislados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DELIVERY ================= -->
+  <section class="section" id="delivery">
+    <div class="container">
+      <div class="delivery">
+        <div>
+          <span class="delivery-tag">Próximamente</span>
+          <h2>El mismo pedido, ahora también a domicilio</h2>
+          <p>
+            Comandy está preparado para que el cliente pida desde la misma app, ya sea sentado en la mesa
+            o desde su casa. Un solo sistema para pedidos en el local y delivery, sin duplicar procesos.
+          </p>
+          <a href="#contacto" class="btn btn-primary">Quiero ser de los primeros</a>
+        </div>
+        <div class="delivery-visual">
+          🛵 Delivery integrado a la app del cliente — en desarrollo
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-info">
+          <h2>Hablemos de tu restaurante</h2>
+          <p>Contanos cómo trabajás hoy y te mostramos cómo Comandy se adapta a tu local.</p>
+
+          <!-- EDITAR: reemplazar con tus datos reales de contacto -->
+          <div class="contact-item">
+            <span class="ico">✉️</span> contacto@comandy.com.ar
+          </div>
+          <div class="contact-item">
+            <span class="ico">📱</span> +54 9 11 0000-0000 (WhatsApp)
+          </div>
+          <div class="contact-item">
+            <span class="ico">📍</span> Argentina
+          </div>
+        </div>
+
+        <!-- Formulario simple via mailto: funciona sin backend, ideal para hosting estatico.
+             Si mas adelante conectan el backend de Comandy, se puede cambiar el action
+             por el endpoint de la API. -->
+        <form class="contact-form" action="mailto:contacto@comandy.com.ar" method="post" enctype="text/plain">
+          <input type="text" name="nombre" placeholder="Nombre y apellido" required>
+          <input type="text" name="restaurante" placeholder="Nombre del restaurante" required>
+          <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp">
+          <textarea name="mensaje" placeholder="Contanos un poco sobre tu restaurante..."></textarea>
+          <button type="submit" class="btn btn-primary">Enviar consulta</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <a href="#top" class="logo-text">COMANDY<span>.</span></a>
+      <div class="footer-links">
+        <a href="#producto">Producto</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="anio"></span> Comandy. Todos los derechos reservados.</span>
+      <span>comandy.com.ar</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
