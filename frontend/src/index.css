@@ -52,3 +52,15 @@
   stroke-dashoffset: 48;
   animation: check-mark-draw 0.35s ease-out 0.35s forwards;
 }
+
+/* Pantalla de cocina: cada tarjeta hace este "entrar" cuando aparece en una
+   columna, sea porque es un pedido nuevo o porque se movio de otra columna
+   (al cambiar de estado, React la desmonta de una columna y la monta en la
+   otra, asi que esta animacion se dispara sola cada vez). */
+@keyframes kitchen-card-enter {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.kitchen-card-enter {
+  animation: kitchen-card-enter 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

@@ -3,7 +3,9 @@
 React + Tailwind. Un solo proyecto que sirve las 4 experiencias de Comandy:
 
 - **Cliente** (`/mesa/:table_id`) — sin login, escanea el QR y pide desde el celular.
-- **Cocina** (`/cocina`) — pantalla en tiempo real de pedidos activos.
+- **Cocina** (`/cocina`) — panel tipo TV/tablet a pantalla completa (sin nav):
+  3 columnas fijas (Pendientes/En preparación/Listos) con cronómetro en vivo
+  por pedido y sonido de alerta en pedidos nuevos.
 - **Mozo** (`/mozo`) — gestión de mesas y cierre de cuentas.
 - **Admin** (`/admin`, `/admin/menu`, `/admin/mesas`) — reportes, menú y QRs.
 

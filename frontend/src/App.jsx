@@ -35,8 +35,17 @@ export default function App() {
         }
       />
 
+      {/* Cocina: pantalla completa tipo TV/tablet, sin el layout de staff (sin nav) */}
+      <Route
+        path="/cocina"
+        element={
+          <ProtectedRoute roles={['cocina']}>
+            <CocinaDashboard />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Staff */}
-      <Route path="/cocina" element={withStaffLayout(<CocinaDashboard />, ['cocina'])} />
       <Route path="/mozo" element={withStaffLayout(<MozoTables />, ['mozo'])} />
       <Route path="/admin" element={withStaffLayout(<AdminReports />, ['admin'])} />
       <Route path="/admin/menu" element={withStaffLayout(<MenuAdmin />, ['admin'])} />

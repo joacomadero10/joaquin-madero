@@ -8,7 +8,8 @@ const NAV_BY_ROLE = {
     { to: '/admin/mesas', label: 'Mesas y QR' },
   ],
   mozo: [{ to: '/mozo', label: 'Mesas' }],
-  cocina: [{ to: '/cocina', label: 'Pedidos' }],
+  // "cocina" no usa este layout: su pantalla (/cocina) es pantalla completa,
+  // sin nav (ver App.jsx). Se deja afuera para no sugerir un menu que no existe.
 };
 
 export default function StaffLayout({ children }) {
