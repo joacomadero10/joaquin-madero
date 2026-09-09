@@ -5,4 +5,8 @@ const createTableSchema = z.object({
   name: z.string().min(1, 'El nombre/numero de mesa es requerido').max(50),
 });
 
-module.exports = { createTableSchema };
+const updateTableStatusSchema = z.object({
+  estado: z.enum(['libre', 'ocupada', 'cuenta_pedida']),
+});
+
+module.exports = { createTableSchema, updateTableStatusSchema };

@@ -76,9 +76,11 @@ POST   /api/orders                              (publico, lo hace el cliente)
 GET    /api/orders/:restaurant_id                (auth)
 PATCH  /api/orders/:id/estado                    (auth)
 
+GET    /api/tables/resolve/:qr_token             (publico) -> { id, restaurant_id, name, status }
 GET    /api/tables/:restaurant_id                (auth)
 POST   /api/tables                               (auth, solo admin)
 GET    /api/tables/:id/qr                        (auth) -> imagen PNG
+PATCH  /api/tables/:id/estado                    (auth) -> libre/ocupada/cuenta_pedida
 
 GET    /api/menu-items/:restaurant_id            (auth, solo admin)
 POST   /api/menu-items                           (auth, solo admin)
@@ -86,6 +88,10 @@ PATCH  /api/menu-items/:id                       (auth, solo admin)
 DELETE /api/menu-items/:id                       (auth, solo admin)
 
 GET    /api/reports/daily/:restaurant_id         (auth, solo admin)
+
+GET    /api/categories/:restaurant_id            (auth, solo admin)
+POST   /api/categories                           (auth, solo admin)
+DELETE /api/categories/:id                        (auth, solo admin)
 
 GET    /api/health                               (publico, chequeo de vida)
 ```
