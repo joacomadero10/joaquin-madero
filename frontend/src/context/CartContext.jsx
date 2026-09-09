@@ -3,7 +3,7 @@ import { createContext, useContext, useMemo, useState, useCallback } from 'react
 const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
-  // lines: [{ menuItem, quantity, notes }]
+  // lines: [{ menuItem, quantity }]
   const [lines, setLines] = useState([]);
 
   const addItem = useCallback((menuItem) => {
@@ -14,12 +14,8 @@ export function CartProvider({ children }) {
           line.menuItem.id === menuItem.id ? { ...line, quantity: line.quantity + 1 } : line
         );
       }
-      return [...prev, { menuItem, quantity: 1, notes: '' }];
+      return [...prev, { menuItem, quantity: 1 }];
     });
-  }, []);
-
-  const removeItem = useCallback((menuItemId) => {
-    setLines((prev) => prev.filter((line) => line.menuItem.id !== menuItemId));
   }, []);
 
   const setQuantity = useCallback((menuItemId, quantity) => {
@@ -32,11 +28,12 @@ export function CartProvider({ children }) {
     );
   }, []);
 
-  const setNotes = useCallback((menuItemId, notes) => {
-    setLines((prev) => prev.map((line) => (line.menuItem.id === menuItemId ? { ...line, notes } : line)));
-  }, []);
-
   const clear = useCallback(() => setLines([]), []);
+
+  const quantityOf = useCallback(
+    (menuItemId) => lines.find((line) => line.menuItem.id === menuItemId)?.quantity || 0,
+    [lines]
+  );
 
   const total = useMemo(
     () => lines.reduce((sum, line) => sum + Number(line.menuItem.price) * line.quantity, 0),
@@ -46,7 +43,7 @@ export function CartProvider({ children }) {
   const itemCount = useMemo(() => lines.reduce((sum, line) => sum + line.quantity, 0), [lines]);
 
   return (
-    <CartContext.Provider value={{ lines, addItem, removeItem, setQuantity, setNotes, clear, total, itemCount }}>
+    <CartContext.Provider value={{ lines, addItem, setQuantity, clear, total, itemCount, quantityOf }}>
       {children}
     </CartContext.Provider>
   );

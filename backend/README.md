@@ -70,9 +70,9 @@ Ver el codigo en `src/routes/` — un archivo por recurso. Resumen:
 POST   /api/auth/login
 POST   /api/auth/logout
 
-GET    /api/menu/:restaurant_id                 (publico)
+GET    /api/menu/:restaurant_id                 (publico) -> { restaurant: {id, name}, categories, uncategorized }
 
-POST   /api/orders                              (publico, lo hace el cliente)
+POST   /api/orders                              (publico, lo hace el cliente) -> body admite "notes" (notas generales del pedido)
 GET    /api/orders/:restaurant_id                (auth)
 PATCH  /api/orders/:id/estado                    (auth)
 

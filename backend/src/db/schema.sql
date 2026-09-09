@@ -88,9 +88,15 @@ CREATE TABLE IF NOT EXISTS orders (
   status         VARCHAR(20) NOT NULL DEFAULT 'pendiente'
                  CHECK (status IN ('pendiente', 'en_preparacion', 'listo', 'entregado', 'cancelado')),
   total          NUMERIC(10, 2) NOT NULL DEFAULT 0,
+  notes          TEXT,
   created_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at     TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Defensivo: si esta migracion ya corrio antes de que "notes" existiera,
+-- CREATE TABLE IF NOT EXISTS no la agrega sola. Este ALTER si lo hace,
+-- y no rompe nada si la columna ya esta.
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS notes TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_orders_restaurant ON orders(restaurant_id);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(restaurant_id, status);

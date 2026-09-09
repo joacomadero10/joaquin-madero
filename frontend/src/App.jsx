@@ -5,7 +5,6 @@ import StaffLayout from './components/common/StaffLayout';
 
 import Login from './pages/staff/Login';
 import ClienteMenu from './pages/cliente/Menu';
-import OrderStatus from './pages/cliente/OrderStatus';
 import CocinaDashboard from './pages/cocina/Dashboard';
 import MozoTables from './pages/mozo/Tables';
 import AdminReports from './pages/admin/Reports';
@@ -28,14 +27,13 @@ export default function App() {
 
       {/* Cliente: sin auth, entra escaneando el QR de su mesa */}
       <Route
-        path="/mesa/:qrToken"
+        path="/mesa/:table_id"
         element={
           <CartProvider>
             <ClienteMenu />
           </CartProvider>
         }
       />
-      <Route path="/pedido/:orderId" element={<OrderStatus />} />
 
       {/* Staff */}
       <Route path="/cocina" element={withStaffLayout(<CocinaDashboard />, ['cocina'])} />

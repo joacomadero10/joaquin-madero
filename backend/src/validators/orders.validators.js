@@ -10,6 +10,9 @@ const createOrderSchema = z.object({
   restaurant_id: z.string().uuid('restaurant_id invalido'),
   table_id: z.string().uuid('table_id invalido').optional(),
   items: z.array(orderItemSchema).min(1, 'El pedido necesita al menos un item'),
+  // Notas generales del pedido completo (ej: "traer todo junto", "alergia a frutos secos"),
+  // distintas de las notas por item que ya tiene cada order_item.
+  notes: z.string().max(500).optional(),
 });
 
 const updateOrderStatusSchema = z.object({

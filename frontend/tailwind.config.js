@@ -15,14 +15,17 @@ export default {
           900: '#0a1f19',
         },
         accent: {
-          400: '#ff9466',
-          500: '#ff7a45',
-          600: '#ff5e22',
+          // #FF6B35 pedido para la pantalla del cliente. El resto del sitio
+          // (landing, admin) ya usaba un naranja muy cercano, asi que queda
+          // consistente en toda la marca.
+          400: '#ff9166',
+          500: '#FF6B35',
+          600: '#e8551f',
         },
         cream: '#faf7f2',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
       },
     },
   },

@@ -2,7 +2,7 @@
 
 React + Tailwind. Un solo proyecto que sirve las 4 experiencias de Comandy:
 
-- **Cliente** (`/mesa/:qrToken`) — sin login, escanea el QR y pide desde el celular.
+- **Cliente** (`/mesa/:table_id`) — sin login, escanea el QR y pide desde el celular.
 - **Cocina** (`/cocina`) — pantalla en tiempo real de pedidos activos.
 - **Mozo** (`/mozo`) — gestión de mesas y cierre de cuentas.
 - **Admin** (`/admin`, `/admin/menu`, `/admin/mesas`) — reportes, menú y QRs.
@@ -37,17 +37,22 @@ estáticos con fallback a `index.html` para que el routing de React funcione).
   vivir en dominios distintos, completar `VITE_API_URL` / `VITE_SOCKET_URL`
   en `.env` antes de `npm run build`.
 
-## Flujo del cliente (QR → pedido → seguimiento)
+## Flujo del cliente (QR → menú → carrito → confirmación)
 
-1. El QR de cada mesa (generado en `/admin/mesas`) apunta a `/mesa/:qrToken`.
-2. Esa pantalla resuelve el token contra `GET /api/tables/resolve/:qr_token`
-   (público) para obtener `restaurant_id` + `table_id`, y con eso carga el
-   menú público (`GET /api/menu/:restaurant_id`).
-3. El cliente arma el carrito (estado local, `CartContext`) y confirma —
-   `POST /api/orders` — sin necesitar cuenta ni login.
-4. Lo mandamos a `/pedido/:orderId`, que se conecta a Socket.io y escucha
-   `pedido_actualizado` para mostrar el estado en vivo (pendiente → en
-   preparación → listo → entregado), sin recargar la página.
+1. El QR de cada mesa (generado en `/admin/mesas`) apunta a `/mesa/:table_id`
+   (el segmento de la URL es, en la práctica, el token opaco por mesa que ya
+   generaba el backend — `GET /api/tables/resolve/:qr_token` lo resuelve a
+   `restaurant_id` + `table_id`, sin exponer el UUID real de la mesa).
+2. Con eso carga el menú público (`GET /api/menu/:restaurant_id`, que ahora
+   además devuelve `restaurant: { id, name }` para el header) y muestra las
+   categorías como tabs horizontales.
+3. El cliente toca "+" en cada plato (`CartContext`, sin login) y ve el
+   carrito flotante en la esquina inferior derecha con la cantidad de items.
+4. Abre el modal del carrito, edita cantidades, escribe notas generales
+   (opcional) y confirma — `POST /api/orders` (acepta `notes` a nivel
+   pedido) — sin necesitar cuenta.
+5. Ve la pantalla de confirmación (check animado + número de pedido) y
+   puede volver al menú de la misma mesa con "Pedir algo más".
 
 ## Autenticación de staff
 

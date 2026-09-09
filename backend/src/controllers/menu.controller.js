@@ -9,6 +9,13 @@ async function getPublicMenu(req, res, next) {
   try {
     const { restaurant_id } = req.params;
 
+    const restaurantResult = await query('SELECT id, name FROM restaurants WHERE id = $1 AND active = TRUE', [
+      restaurant_id,
+    ]);
+    if (!restaurantResult.rows[0]) {
+      return res.status(404).json({ error: 'Restaurante no encontrado.' });
+    }
+
     const categoriesResult = await query(
       `SELECT id, name, position
        FROM categories
@@ -36,7 +43,7 @@ async function getPublicMenu(req, res, next) {
       (item) => !categories.some((c) => c.id === item.category_id)
     );
 
-    return res.json({ categories, uncategorized });
+    return res.json({ restaurant: restaurantResult.rows[0], categories, uncategorized });
   } catch (err) {
     return next(err);
   }

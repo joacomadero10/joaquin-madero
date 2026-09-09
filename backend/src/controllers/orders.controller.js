@@ -6,7 +6,7 @@ const { emitNuevoPedido, emitPedidoActualizado } = require('../config/socket');
  */
 async function fetchOrderWithItems(orderId) {
   const orderResult = await query(
-    `SELECT id, restaurant_id, table_id, status, total, created_at, updated_at
+    `SELECT id, restaurant_id, table_id, status, total, notes, created_at, updated_at
      FROM orders WHERE id = $1`,
     [orderId]
   );
@@ -36,7 +36,7 @@ async function fetchOrderWithItems(orderId) {
 async function createOrder(req, res, next) {
   const client = await getClient();
   try {
-    const { restaurant_id, table_id, items } = req.body;
+    const { restaurant_id, table_id, items, notes } = req.body;
 
     await client.query('BEGIN');
 
@@ -69,10 +69,10 @@ async function createOrder(req, res, next) {
     }, 0);
 
     const orderResult = await client.query(
-      `INSERT INTO orders (restaurant_id, table_id, status, total)
-       VALUES ($1, $2, 'pendiente', $3)
+      `INSERT INTO orders (restaurant_id, table_id, status, total, notes)
+       VALUES ($1, $2, 'pendiente', $3, $4)
        RETURNING id`,
-      [restaurant_id, table_id || null, total]
+      [restaurant_id, table_id || null, total, notes || null]
     );
     const orderId = orderResult.rows[0].id;
 
@@ -117,7 +117,7 @@ async function getActiveOrders(req, res, next) {
     const { restaurant_id } = req.params;
 
     const ordersResult = await query(
-      `SELECT id, restaurant_id, table_id, status, total, created_at, updated_at
+      `SELECT id, restaurant_id, table_id, status, total, notes, created_at, updated_at
        FROM orders
        WHERE restaurant_id = $1 AND status NOT IN ('entregado', 'cancelado')
        ORDER BY created_at ASC`,
