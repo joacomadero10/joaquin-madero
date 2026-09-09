@@ -7,8 +7,8 @@
     name: "Comandy",
     domain: "comandy.com.ar",
     tagline: "El sistema operativo de tu restaurante",
-    email: "hola@comandy.com.ar",
-    whatsapp: "https://wa.me/5490000000000",
+    email: "joacomadero10@gmail.com",
+    whatsapp: "https://wa.me/541144367063",
 
     nav: [
       { label: "Producto", href: "producto.html" },
