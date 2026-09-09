@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comandy — El sistema operativo de tu restaurante</title>
+<meta name="description" content="Comandy conecta al cliente, la cocina, el mozo y el dueño en un solo sistema: pedidos por QR, cocina en tiempo real, mesas al día y reportes sin planillas.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="preload" as="image" href="assets/img/screen-cliente.webp" fetchpriority="high">
+<link rel="stylesheet" href="styles.css?v=20260909">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<div class="splash" data-splash aria-hidden="true">
+  <div>
+    <div class="splash-mark"><span class="brand-mark">C</span> COMANDY<span style="color:var(--accent)">.</span></div>
+    <div class="splash-line"></div>
+  </div>
+</div>
+
+<div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">C</span>COMANDY<span class="dot">.</span></a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="nav-link is-active" href="index.html">Inicio</a>
+      <a class="nav-link" href="producto.html">Producto</a>
+      <a class="nav-link" href="precios.html">Precios</a>
+      <a class="nav-link" href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="contacto.html" class="btn btn-primary">Solicitar demo</a>
+      <button class="hamburger" data-nav-toggle aria-expanded="false" aria-label="Abrir menú"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-mobile" data-nav-mobile aria-label="Menú móvil">
+  <button class="nav-mobile-close" aria-label="Cerrar menú">✕</button>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="producto.html">Producto</a></li>
+    <li><a href="precios.html">Precios</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">Comandy · Cocina, mesas y pedidos</span>
+        <h1 class="hero-title">Pedí desde la mesa. <em>Cociná</em> sin papeles. Cerrá la cuenta al toque.</h1>
+        <p class="hero-sub">Comandy conecta al cliente, la cocina, el mozo y el dueño en un solo sistema. Cada pedido llega solo, cada mesa se actualiza en vivo, y el día se cierra con números reales, sin pedirle la planilla a nadie.</p>
+        <div class="hero-actions">
+          <a href="contacto.html" class="btn btn-primary btn-lg">Solicitar demo</a>
+          <a href="producto.html" class="btn btn-outline btn-lg">Ver el producto</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong data-count-to="4">0</strong><span>roles conectados</span></div>
+          <div><strong data-count-to="0">0</strong><span>apps para el cliente</span></div>
+          <div><strong>&lt;1s</strong><span>pedido a cocina</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-badge top" aria-hidden="true"><span class="dot"></span> Pedido en cocina</div>
+        <div class="hero-frame">
+          <img
+            src="assets/img/screen-cliente.webp"
+            alt="Pantalla del cliente de Comandy: menú del restaurante abierto desde el celular, con el carrito y el botón para pedir la cuenta"
+            fetchpriority="high" loading="eager" decoding="sync">
+        </div>
+        <div class="hero-badge bottom" aria-hidden="true">📈 Reportes en vivo</div>
+      </div>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <p style="text-align:center;color:var(--cream-3);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding-block:1.4rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    Pensado para bares · restaurantes · cervecerías · fondas
+  </p>
+
+  <section class="section" id="producto-teaser">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">Un sistema, cuatro roles</span>
+        <h2 data-reveal>Cada persona de tu equipo, con su propia pantalla</h2>
+        <p data-reveal>Nada de anotar en un papel ni de cruzar gritos entre la mesa y la cocina.</p>
+      </div>
+
+      <div class="roles-grid">
+        <article class="card role-card" data-reveal>
+          <span class="role-num">01 · Cliente</span>
+          <h3>Pide desde la mesa, sin instalar nada</h3>
+          <p>Escanea el QR, ve el menú actualizado y arma su pedido desde el navegador de su propio celular.</p>
+          <a class="role-link" href="producto.html#cliente">Ver en detalle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+        <article class="card role-card" data-reveal>
+          <span class="role-num">02 · Cocina</span>
+          <h3>Cada pedido, visible al instante</h3>
+          <p>Un tablero para ver desde lejos: pendientes, en preparación y listos, con aviso sonoro y cronómetro.</p>
+          <a class="role-link" href="producto.html#cocina">Ver en detalle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+        <article class="card role-card" data-reveal>
+          <span class="role-num">03 · Mozo</span>
+          <h3>Todas las mesas, de un vistazo</h3>
+          <p>Libre, ocupada o con la cuenta pedida — y el detalle completo del pedido a un toque de distancia.</p>
+          <a class="role-link" href="producto.html#mozo">Ver en detalle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+        <article class="card role-card" data-reveal>
+          <span class="role-num">04 · Admin</span>
+          <h3>El negocio, en números reales</h3>
+          <p>Carga el menú, genera los QR de cada mesa y mira cuánto se vendió hoy sin pedirle nada a nadie.</p>
+          <a class="role-link" href="producto.html#admin">Ver en detalle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">Cómo funciona</span>
+        <h2 data-reveal>De la mesa al pedido en cocina, en 4 pasos</h2>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal><div class="step-n">01</div><h3>Escanea el QR</h3><p>El cliente escanea el código de su mesa y entra al menú al instante, sin descargar nada.</p></div>
+        <div class="step" data-reveal><div class="step-n">02</div><h3>Arma su pedido</h3><p>Elige los platos, agrega notas y confirma desde su propio celular.</p></div>
+        <div class="step" data-reveal><div class="step-n">03</div><h3>Cocina lo recibe al instante</h3><p>El pedido aparece en la pantalla de cocina en tiempo real, sin pasar por el mozo.</p></div>
+        <div class="step" data-reveal><div class="step-n">04</div><h3>El mozo cierra la cuenta</h3><p>Cuando la mesa pide la cuenta, el mozo la cierra en segundos desde su propia pantalla.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">Pensado con dueños reales</span>
+        <h2 data-reveal>Lo que escuchamos antes de construir esto</h2>
+        <p data-reveal>Adelantos de lo que nos cuentan los primeros dueños que probaron Comandy.</p>
+      </div>
+      <div class="testimonials-track">
+        <article class="card testimonial-card" data-reveal>
+          <span class="quote-mark">“</span>
+          <p class="quote">Antes el mozo corría con la libreta de un lado a otro. Ahora el pedido ya está en cocina cuando el mozo ni se enteró.</p>
+          <span class="role">Dueño de un bodegón de barrio</span>
+        </article>
+        <article class="card testimonial-card" data-reveal>
+          <span class="quote-mark">“</span>
+          <p class="quote">Lo que más nos preocupaba era la carta: la imprimíamos cada vez que subía un precio. Ahora la cambiamos desde el celular.</p>
+          <span class="role">Encargada de una parrilla familiar</span>
+        </article>
+        <article class="card testimonial-card" data-reveal>
+          <span class="quote-mark">“</span>
+          <p class="quote">Saber qué se vendió en el día sin pedirle la planilla a nadie cambia la cabeza con la que cerrás el turno.</p>
+          <span class="role">Dueño de una cervecería</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="final-cta" data-reveal>
+        <h2>¿Le damos una vuelta a tu restaurante?</h2>
+        <p>Te mostramos Comandy funcionando con tu propio menú, en una demo de 20 minutos.</p>
+        <div class="hero-actions"><a href="contacto.html" class="btn btn-primary btn-lg">Solicitar demo</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="brand"><span class="brand-mark">C</span>COMANDY<span class="dot">.</span></a>
+        <p style="color:var(--cream-3);margin-top:.8rem;max-width:30ch;font-size:.9rem;">El sistema operativo de tu restaurante.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <a href="producto.html">Cómo funciona</a>
+          <a href="precios.html">Precios</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="contacto.html">Solicitar demo</a>
+          <a href="mailto:hola@comandy.com.ar">hola@comandy.com.ar</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Comandy. Todos los derechos reservados.</span>
+      <span>comandy.com.ar</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260909"></script>
+</body>
+</html>
