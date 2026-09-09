@@ -3,7 +3,16 @@ import { formatCurrency } from '../../utils/currency';
 import { formatClockTime } from '../../utils/time';
 import { ITEM_STATUS_ICON } from '../../utils/orderStatus';
 
-export default function TableDetailPanel({ table, orders, onClose, onAddItem, onConfirmClose, closing }) {
+export default function TableDetailPanel({
+  table,
+  orders,
+  onClose,
+  onAddItem,
+  onRequestBill,
+  requestingBill,
+  onConfirmClose,
+  closing,
+}) {
   const [confirmingClose, setConfirmingClose] = useState(false);
 
   // Aplanamos los items de todos los pedidos activos de la mesa en una sola
@@ -28,6 +37,12 @@ export default function TableDetailPanel({ table, orders, onClose, onAddItem, on
             ×
           </button>
         </header>
+
+        {!confirmingClose && table.status === 'cuenta_pedida' && (
+          <div className="flex items-center gap-2 bg-accent-500/10 px-5 py-2.5 text-sm font-semibold text-accent-600">
+            🛎️ El cliente pidió la cuenta
+          </div>
+        )}
 
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {confirmingClose ? (
@@ -78,6 +93,11 @@ export default function TableDetailPanel({ table, orders, onClose, onAddItem, on
             <button onClick={onAddItem} className="btn-outline w-full">
               + Agregar ítem
             </button>
+            {table.status !== 'cuenta_pedida' && (
+              <button onClick={onRequestBill} disabled={requestingBill} className="btn-outline w-full">
+                {requestingBill ? 'Marcando...' : '🛎️ Marcar cuenta pedida'}
+              </button>
+            )}
             <button onClick={() => setConfirmingClose(true)} className="btn-primary w-full">
               Cerrar cuenta
             </button>

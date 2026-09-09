@@ -1,5 +1,6 @@
 const { query } = require('../db/pool');
 const { generateQrToken, generateQrImageBuffer } = require('../utils/qr');
+const { emitMesaActualizada } = require('../config/socket');
 
 /**
  * GET /api/tables/:restaurant_id
@@ -141,10 +142,57 @@ async function updateTableStatus(req, res, next) {
       [estado, id]
     );
 
+    emitMesaActualizada(existing.rows[0].restaurant_id, result.rows[0]);
+
     return res.json(result.rows[0]);
   } catch (err) {
     return next(err);
   }
 }
 
-module.exports = { listTables, createTable, getTableQr, resolveTableByQrToken, updateTableStatus };
+/**
+ * PATCH /api/tables/:id/solicitar-cuenta
+ * Publico, sin auth: lo toca el CLIENTE desde su celular para avisar que
+ * quiere pagar. Es una accion angosta a proposito (a diferencia de
+ * /estado, que es de staff): solo permite el paso ocupada -> cuenta_pedida,
+ * nada mas. Si la mesa ya esta libre o ya pidio la cuenta, no rompe nada:
+ * simplemente devuelve el estado actual sin tocar nada.
+ */
+async function requestBill(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    const existing = await query('SELECT id, name, restaurant_id, status, opened_at, created_at FROM tables WHERE id = $1', [
+      id,
+    ]);
+    const table = existing.rows[0];
+    if (!table) {
+      return res.status(404).json({ error: 'Mesa no encontrada.' });
+    }
+
+    if (table.status !== 'ocupada') {
+      return res.json(table);
+    }
+
+    const result = await query(
+      `UPDATE tables SET status = 'cuenta_pedida' WHERE id = $1
+       RETURNING id, name, status, opened_at, created_at`,
+      [id]
+    );
+
+    emitMesaActualizada(table.restaurant_id, result.rows[0]);
+
+    return res.json(result.rows[0]);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+module.exports = {
+  listTables,
+  createTable,
+  getTableQr,
+  resolveTableByQrToken,
+  updateTableStatus,
+  requestBill,
+};

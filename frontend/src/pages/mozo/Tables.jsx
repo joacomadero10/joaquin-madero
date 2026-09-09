@@ -11,12 +11,13 @@ import Loader from '../../components/common/Loader';
 
 export default function MozoTables() {
   const { user } = useAuth();
-  const { tables, reload: reloadTables } = useTables(user.restaurant_id);
+  const { tables, reload: reloadTables, patchTable } = useTables(user.restaurant_id);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTableId, setSelectedTableId] = useState(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [requestingBill, setRequestingBill] = useState(false);
 
   useEffect(() => {
     ordersApi
@@ -41,6 +42,9 @@ export default function MozoTables() {
       reloadTables();
     },
     onPedidoActualizado: upsertOrder,
+    // Cubre tanto el "pidio la cuenta" del cliente (desde su celular) como
+    // cualquier cambio de mesa que haga OTRO mozo desde su propia tablet.
+    onMesaActualizada: patchTable,
   });
 
   const selectedTable = tables.find((t) => t.id === selectedTableId) || null;
@@ -49,6 +53,16 @@ export default function MozoTables() {
   function closePanel() {
     setSelectedTableId(null);
     setAddItemOpen(false);
+  }
+
+  async function handleRequestBill() {
+    setRequestingBill(true);
+    try {
+      const updated = await tablesApi.updateTableStatus(selectedTableId, 'cuenta_pedida');
+      patchTable(updated);
+    } finally {
+      setRequestingBill(false);
+    }
   }
 
   async function handleConfirmClose() {
@@ -96,6 +110,8 @@ export default function MozoTables() {
           orders={ordersForSelectedTable}
           onClose={closePanel}
           onAddItem={() => setAddItemOpen(true)}
+          onRequestBill={handleRequestBill}
+          requestingBill={requestingBill}
           onConfirmClose={handleConfirmClose}
           closing={closing}
         />

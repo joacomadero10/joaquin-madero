@@ -22,11 +22,17 @@ export function useTables(restaurantId) {
     reload();
   }, [reload]);
 
+  // Actualiza UNA mesa en el estado local (ej: al llegar "mesa_actualizada"
+  // por socket), sin pegarle de nuevo al backend.
+  const patchTable = useCallback((updatedTable) => {
+    setTables((prev) => prev.map((t) => (t.id === updatedTable.id ? updatedTable : t)));
+  }, []);
+
   const tablesById = useMemo(() => {
     const map = new Map();
     tables.forEach((table) => map.set(table.id, table));
     return map;
   }, [tables]);
 
-  return { tables, tablesById, loading, reload };
+  return { tables, tablesById, loading, reload, patchTable };
 }

@@ -9,6 +9,7 @@ import CategoryTabs from '../../components/cliente/CategoryTabs';
 import FloatingCartButton from '../../components/cliente/FloatingCartButton';
 import CartModal from '../../components/cliente/CartModal';
 import OrderConfirmation from '../../components/cliente/OrderConfirmation';
+import RequestBillButton from '../../components/cliente/RequestBillButton';
 import EmptyState from '../../components/common/EmptyState';
 
 export default function ClienteMenu() {
@@ -70,6 +71,9 @@ export default function ClienteMenu() {
       setOrderNotes('');
       setCartOpen(false);
       setView('confirmed');
+      // El backend ya marco la mesa "ocupada" al crear el pedido; reflejamos
+      // eso localmente para que aparezca el boton de "pedir la cuenta".
+      setTable((prev) => (prev.status === 'libre' ? { ...prev, status: 'ocupada' } : prev));
     } catch (err) {
       alert(err.response?.data?.error || 'No pudimos enviar el pedido. Probá de nuevo.');
     } finally {
@@ -80,6 +84,11 @@ export default function ClienteMenu() {
   function handleOrderMore() {
     setConfirmedOrder(null);
     setView('browsing');
+  }
+
+  async function handleRequestBill() {
+    const updated = await tablesApi.requestBill(table.id);
+    setTable((prev) => ({ ...prev, status: updated.status }));
   }
 
   // ---------- 1. Carga inicial ----------
@@ -110,14 +119,23 @@ export default function ClienteMenu() {
     <div className="min-h-screen bg-white pb-6">
       <div className="sticky top-0 z-20 bg-white shadow-sm">
         <header className="flex items-center gap-3 px-4 py-4">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-lg font-extrabold text-white">
+          <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-brand-600 text-lg font-extrabold text-white">
             C
           </div>
-          <div>
+          <div className="min-w-0 flex-1">
             <p className="text-xs font-bold uppercase tracking-wide text-accent-500">{table.name}</p>
-            <h1 className="text-lg font-extrabold leading-tight text-gray-900">{menu.restaurant.name}</h1>
+            <h1 className="truncate text-lg font-extrabold leading-tight text-gray-900">{menu.restaurant.name}</h1>
           </div>
         </header>
+
+        {/* Fila propia para que "pedir la cuenta" nunca compita por espacio
+            con el nombre del restaurante (puede ser largo). Solo tiene
+            sentido si ya se pidio algo en la mesa. */}
+        {table.status !== 'libre' && (
+          <div className="flex justify-end border-t border-gray-100 px-4 py-2">
+            <RequestBillButton status={table.status} onRequest={handleRequestBill} />
+          </div>
+        )}
 
         {tabs.length > 0 && (
           <CategoryTabs categories={tabs} activeId={activeCategoryId} onChange={setActiveCategoryId} />

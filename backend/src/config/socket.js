@@ -66,9 +66,20 @@ function emitPedidoActualizado(restaurantId, order) {
   getIO().to(restaurantRoom(restaurantId)).emit('pedido_actualizado', order);
 }
 
+/**
+ * Emite "mesa_actualizada" al room del restaurante correspondiente.
+ * Se usa para cambios de estado de UNA mesa (ej: pidio la cuenta) que no
+ * vienen acompañados de un pedido nuevo, para que la grilla del mozo
+ * reaccione en vivo sin tener que recargar.
+ */
+function emitMesaActualizada(restaurantId, table) {
+  getIO().to(restaurantRoom(restaurantId)).emit('mesa_actualizada', table);
+}
+
 module.exports = {
   initSocket,
   getIO,
   emitNuevoPedido,
   emitPedidoActualizado,
+  emitMesaActualizada,
 };

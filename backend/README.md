@@ -81,6 +81,7 @@ GET    /api/tables/:restaurant_id                (auth) -> incluye opened_at (ho
 POST   /api/tables                               (auth, solo admin)
 GET    /api/tables/:id/qr                        (auth) -> imagen PNG
 PATCH  /api/tables/:id/estado                    (auth) -> libre/ocupada/cuenta_pedida
+PATCH  /api/tables/:id/solicitar-cuenta          (publico) -> el cliente pide la cuenta (ocupada -> cuenta_pedida, nada mas)
 
 GET    /api/menu-items/:restaurant_id            (auth, solo admin)
 POST   /api/menu-items                           (auth, solo admin)
@@ -103,6 +104,7 @@ para unirse al room de su restaurante. Eventos que el backend emite a ese room:
 
 - `nuevo_pedido` — al crear un pedido (`POST /api/orders`)
 - `pedido_actualizado` — al cambiar el estado de un pedido (`PATCH /api/orders/:id/estado`)
+- `mesa_actualizada` — al cambiar el estado de una mesa (`PATCH /api/tables/:id/estado` o `/solicitar-cuenta`)
 
 ## Seguridad / multi-tenant
 

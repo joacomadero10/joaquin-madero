@@ -5,6 +5,7 @@ const {
   getTableQr,
   resolveTableByQrToken,
   updateTableStatus,
+  requestBill,
 } = require('../controllers/tables.controller');
 const { requireAuth, requireSameRestaurant } = require('../middlewares/auth');
 const { requireRole } = require('../middlewares/roleCheck');
@@ -15,6 +16,9 @@ const router = Router();
 
 // Publico, sin auth: es lo primero que pega el celular del cliente al escanear el QR.
 router.get('/resolve/:qr_token', resolveTableByQrToken);
+// Publico, sin auth: el cliente pide la cuenta desde su celular. A diferencia
+// de /estado (staff, cualquier estado), esta solo puede pasar ocupada -> cuenta_pedida.
+router.patch('/:id/solicitar-cuenta', requestBill);
 
 router.get('/:restaurant_id', requireAuth, requireSameRestaurant, listTables);
 router.post('/', requireAuth, requireRole('admin'), validateBody(createTableSchema), createTable);

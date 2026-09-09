@@ -16,6 +16,11 @@ export function updateTableStatus(tableId, estado) {
   return apiClient.patch(`/tables/${tableId}/estado`, { estado }).then((res) => res.data);
 }
 
+// Publico (sin auth): lo llama el cliente desde /mesa/:table_id para pedir la cuenta.
+export function requestBill(tableId) {
+  return apiClient.patch(`/tables/${tableId}/solicitar-cuenta`).then((res) => res.data);
+}
+
 // La ruta de QR requiere Authorization header, y un <img src> comun no puede
 // mandar headers custom. Por eso lo pedimos con axios como blob y armamos un
 // object URL para usar como src (y como href de descarga).
