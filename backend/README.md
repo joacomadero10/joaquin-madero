@@ -77,7 +77,7 @@ GET    /api/orders/:restaurant_id                (auth)
 PATCH  /api/orders/:id/estado                    (auth)
 
 GET    /api/tables/resolve/:qr_token             (publico) -> { id, restaurant_id, name, status }
-GET    /api/tables/:restaurant_id                (auth)
+GET    /api/tables/:restaurant_id                (auth) -> incluye opened_at (hora de apertura, NULL si esta libre)
 POST   /api/tables                               (auth, solo admin)
 GET    /api/tables/:id/qr                        (auth) -> imagen PNG
 PATCH  /api/tables/:id/estado                    (auth) -> libre/ocupada/cuenta_pedida

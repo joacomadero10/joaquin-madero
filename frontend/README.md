@@ -6,7 +6,9 @@ React + Tailwind. Un solo proyecto que sirve las 4 experiencias de Comandy:
 - **Cocina** (`/cocina`) — panel tipo TV/tablet a pantalla completa (sin nav):
   3 columnas fijas (Pendientes/En preparación/Listos) con cronómetro en vivo
   por pedido y sonido de alerta en pedidos nuevos.
-- **Mozo** (`/mozo`) — gestión de mesas y cierre de cuentas.
+- **Mozo** (`/mozo`) — grilla de mesas (libre/ocupada/cuenta pedida) pensada
+  para tablet vertical; tocar una mesa ocupada abre un panel lateral con el
+  detalle del pedido, "Agregar ítem" y "Cerrar cuenta".
 - **Admin** (`/admin`, `/admin/menu`, `/admin/mesas`) — reportes, menú y QRs.
 
 ## Setup

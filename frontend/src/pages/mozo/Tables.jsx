@@ -4,7 +4,9 @@ import { useTables } from '../../hooks/useTables';
 import { useOrderEvents } from '../../hooks/useOrderEvents';
 import * as ordersApi from '../../api/orders';
 import * as tablesApi from '../../api/tables';
-import TableCard from '../../components/mozo/TableCard';
+import TableGridCard from '../../components/mozo/TableGridCard';
+import TableDetailPanel from '../../components/mozo/TableDetailPanel';
+import AddItemModal from '../../components/mozo/AddItemModal';
 import Loader from '../../components/common/Loader';
 
 export default function MozoTables() {
@@ -12,7 +14,9 @@ export default function MozoTables() {
   const { tables, reload: reloadTables } = useTables(user.restaurant_id);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [busyId, setBusyId] = useState(null);
+  const [selectedTableId, setSelectedTableId] = useState(null);
+  const [addItemOpen, setAddItemOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
     ordersApi
@@ -30,8 +34,8 @@ export default function MozoTables() {
   }, []);
 
   useOrderEvents(user.restaurant_id, {
-    // Un pedido nuevo pone la mesa en "ocupada" del lado del backend; recargamos
-    // las mesas para que el mozo vea ese cambio de estado sin recargar la pagina.
+    // Un pedido nuevo abre/ocupa la mesa del lado del backend: recargamos las
+    // mesas para que la grilla cambie de color sola, sin recargar la pagina.
     onNuevoPedido: (order) => {
       upsertOrder(order);
       reloadTables();
@@ -39,23 +43,29 @@ export default function MozoTables() {
     onPedidoActualizado: upsertOrder,
   });
 
-  async function handleMarkDelivered(order) {
-    setBusyId(order.id);
-    try {
-      const updated = await ordersApi.updateOrderStatus(order.id, 'entregado');
-      upsertOrder(updated);
-    } finally {
-      setBusyId(null);
-    }
+  const selectedTable = tables.find((t) => t.id === selectedTableId) || null;
+  const ordersForSelectedTable = orders.filter((o) => o.table_id === selectedTableId);
+
+  function closePanel() {
+    setSelectedTableId(null);
+    setAddItemOpen(false);
   }
 
-  async function handleChangeTableStatus(table, estado) {
-    setBusyId(table.id);
+  async function handleConfirmClose() {
+    setClosing(true);
     try {
-      await tablesApi.updateTableStatus(table.id, estado);
+      // Cerrar la cuenta da por entregado todo lo que quedaba activo de esta
+      // mesa (evita dejar pedidos "activos" colgados de una mesa ya libre).
+      await Promise.all(
+        ordersForSelectedTable
+          .filter((order) => order.status !== 'entregado')
+          .map((order) => ordersApi.updateOrderStatus(order.id, 'entregado'))
+      );
+      await tablesApi.updateTableStatus(selectedTableId, 'libre');
       await reloadTables();
+      closePanel();
     } finally {
-      setBusyId(null);
+      setClosing(false);
     }
   }
 
@@ -64,18 +74,41 @@ export default function MozoTables() {
   return (
     <div>
       <h1 className="mb-6 text-2xl font-extrabold text-brand-600">Mesas</h1>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tables.map((table) => (
-          <TableCard
-            key={table.id}
-            table={table}
-            orders={orders.filter((order) => order.table_id === table.id)}
-            onMarkDelivered={handleMarkDelivered}
-            onChangeTableStatus={handleChangeTableStatus}
-            busy={busyId === table.id}
-          />
-        ))}
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        {tables.map((table) => {
+          const tableOrders = orders.filter((o) => o.table_id === table.id);
+          const itemCount = tableOrders.flatMap((o) => o.items).reduce((sum, item) => sum + item.quantity, 0);
+          return (
+            <TableGridCard
+              key={table.id}
+              table={table}
+              itemCount={itemCount}
+              onTap={() => setSelectedTableId(table.id)}
+            />
+          );
+        })}
       </div>
+
+      {selectedTable && (
+        <TableDetailPanel
+          table={selectedTable}
+          orders={ordersForSelectedTable}
+          onClose={closePanel}
+          onAddItem={() => setAddItemOpen(true)}
+          onConfirmClose={handleConfirmClose}
+          closing={closing}
+        />
+      )}
+
+      {addItemOpen && selectedTable && (
+        <AddItemModal
+          restaurantId={user.restaurant_id}
+          tableId={selectedTable.id}
+          onClose={() => setAddItemOpen(false)}
+          onAdded={() => setAddItemOpen(false)}
+        />
+      )}
     </div>
   );
 }

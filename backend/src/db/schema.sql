@@ -40,8 +40,13 @@ CREATE TABLE IF NOT EXISTS tables (
   name           VARCHAR(50) NOT NULL,
   qr_token       VARCHAR(64) UNIQUE NOT NULL,
   status         VARCHAR(20) NOT NULL DEFAULT 'libre' CHECK (status IN ('libre', 'ocupada', 'cuenta_pedida')),
+  -- Cuando se abrio la mesa (primer pedido de la sesion actual). NULL si esta libre.
+  -- El panel del mozo la muestra ("Abierta a las..."); se limpia al cerrar la cuenta.
+  opened_at      TIMESTAMPTZ,
   created_at     TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+ALTER TABLE tables ADD COLUMN IF NOT EXISTS opened_at TIMESTAMPTZ;
 
 CREATE INDEX IF NOT EXISTS idx_tables_restaurant ON tables(restaurant_id);
 

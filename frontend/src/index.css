@@ -64,3 +64,13 @@
 .kitchen-card-enter {
   animation: kitchen-card-enter 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Panel del mozo: borde parpadeante en las mesas con la cuenta pedida,
+   para que salten a la vista en la grilla sin tener que leer nada. */
+@keyframes table-alert-blink {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.9); }
+  50% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0); }
+}
+.table-alert-blink {
+  animation: table-alert-blink 1s ease-in-out infinite;
+}

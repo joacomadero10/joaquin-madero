@@ -23,3 +23,14 @@ export function nextWaiterStatus(current) {
   if (current === 'listo') return 'entregado';
   return null;
 }
+
+// El estado se guarda a nivel PEDIDO, no por item individual (cocina mueve el
+// pedido entero). El panel del mozo muestra este icono en cada item, heredado
+// del estado del pedido al que pertenece.
+export const ITEM_STATUS_ICON = {
+  pendiente: '⏳',
+  en_preparacion: '🔄',
+  listo: '✅',
+  entregado: '✅',
+  cancelado: '❌',
+};

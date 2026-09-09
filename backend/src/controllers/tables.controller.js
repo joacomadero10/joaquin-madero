@@ -10,7 +10,7 @@ async function listTables(req, res, next) {
     const { restaurant_id } = req.params;
 
     const result = await query(
-      `SELECT id, name, status, created_at
+      `SELECT id, name, status, opened_at, created_at
        FROM tables
        WHERE restaurant_id = $1
        ORDER BY name ASC`,
@@ -121,9 +121,23 @@ async function updateTableStatus(req, res, next) {
       return res.status(403).json({ error: 'No tenes acceso a esta mesa.' });
     }
 
+    // opened_at se limpia al liberar la mesa, y se fija (si no tenia ya un
+    // valor) al ocuparla manualmente. El camino normal para ocupar una mesa
+    // es a traves de un pedido nuevo (ver orders.controller.js), pero esto
+    // cubre tambien el caso de que se cambie el estado a mano.
+    // $1 se usa dos veces (asignacion directa y comparacion dentro del CASE);
+    // sin el cast explicito, Postgres no puede unificar el tipo deducido para
+    // el parametro entre ambos usos y tira "inconsistent types deduced".
     const result = await query(
-      `UPDATE tables SET status = $1 WHERE id = $2
-       RETURNING id, name, status, created_at`,
+      `UPDATE tables SET
+         status = $1,
+         opened_at = CASE
+           WHEN $1::varchar = 'libre' THEN NULL
+           WHEN opened_at IS NULL THEN now()
+           ELSE opened_at
+         END
+       WHERE id = $2
+       RETURNING id, name, status, opened_at, created_at`,
       [estado, id]
     );
 

@@ -85,12 +85,16 @@ async function createOrder(req, res, next) {
       );
     }
 
-    // Si el pedido vino con mesa, la marcamos ocupada.
+    // Si el pedido vino con mesa, la marcamos ocupada. opened_at queda con la
+    // hora de ESTE pedido solo si la mesa estaba libre (sesion nueva); si ya
+    // habia opened_at (otro pedido de la misma mesa/sesion) no se toca.
     if (table_id) {
-      await client.query(`UPDATE tables SET status = 'ocupada' WHERE id = $1 AND restaurant_id = $2`, [
-        table_id,
-        restaurant_id,
-      ]);
+      await client.query(
+        `UPDATE tables
+         SET status = 'ocupada', opened_at = COALESCE(opened_at, now())
+         WHERE id = $1 AND restaurant_id = $2`,
+        [table_id, restaurant_id]
+      );
     }
 
     await client.query('COMMIT');
