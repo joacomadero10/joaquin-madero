@@ -38,10 +38,10 @@ un testimonio, tenés que cambiarlo en el `.html` de la página correspondiente
 
 ## Antes de subir a producción
 
-1. Contacto ya actualizado: WhatsApp `011 4436-7063` y mail `joacomadero10@gmail.com`
-   en `contacto.html` y `lib/manifest.js`. Si ese número es una línea fija (no
-   tiene el prefijo móvil `15`), el link de WhatsApp en `manifest.js` no va a
-   conectar — avisá si es el caso para ajustarlo.
+1. Contacto ya actualizado: WhatsApp `011 4436-7063` (celular, confirmado) y
+   mail `joacomadero10@gmail.com`, en `contacto.html` y `lib/manifest.js`. El
+   link `wa.me/5491144367063` ya incluye el `9` que exige WhatsApp para
+   números móviles argentinos.
 2. Los testimonios en `index.html` son **ilustrativos** (pensados a partir de
    conversaciones con dueños de restaurante, no citas textuales de clientes
    reales de Comandy todavía). Reemplazalos por testimonios reales en cuanto
