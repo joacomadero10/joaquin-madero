@@ -27,7 +27,8 @@ def extraer_mensajes(payload: dict) -> list[dict]:
 
 class WhatsApp:
     def __init__(self, token: str, phone_number_id: str, graph_version: str) -> None:
-        self._url = f"https://graph.facebook.com/{graph_version}/{phone_number_id}/messages"
+        self._base = f"https://graph.facebook.com/{graph_version}"
+        self._url = f"{self._base}/{phone_number_id}/messages"
         self._headers = {"Authorization": f"Bearer {token}"}
 
     def enviar_texto(self, destino: str, texto: str) -> None:
@@ -72,6 +73,15 @@ class WhatsApp:
             "type": "document",
             "document": {"id": r.json()["id"], "filename": nombre},
         })
+
+    def descargar_media(self, media_id: str) -> tuple[bytes, str]:
+        """Baja un archivo que te mandaron por WhatsApp. Devuelve (contenido, tipo)."""
+        r = httpx.get(f"{self._base}/{media_id}", headers=self._headers, timeout=30)
+        self._revisar(r)
+        info = r.json()
+        archivo = httpx.get(info["url"], headers=self._headers, timeout=120, follow_redirects=True)
+        self._revisar(archivo)
+        return archivo.content, info.get("mime_type", "application/octet-stream")
 
     def _enviar(self, cuerpo: dict) -> None:
         self._revisar(httpx.post(self._url, headers=self._headers, json=cuerpo, timeout=30))

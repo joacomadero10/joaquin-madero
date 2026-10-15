@@ -102,14 +102,15 @@ def test_sin_google_avisa(entorno, monkeypatch):
     assert entorno["textos"] == [main.FALTA_GOOGLE]
 
 
-def test_archivo_entrante_todavia_no_soportado(entorno):
-    main.atender(AUTORIZADO, {"type": "document", "id": "y"})
+def test_audio_no_soportado(entorno):
+    main.atender(AUTORIZADO, {"type": "audio", "id": "y"})
     assert entorno["textos"] == [main.SOLO_TEXTO]
 
 
 def _datos(**cambios):
     datos = {"accion": "responder", "documentos": [], "fecha": "", "no_vence": False, "filtro": "todos",
-             "desde": "", "hasta": "", "titular": "", "nombre_piloto": "", "respuesta": "ok"}
+             "desde": "", "hasta": "", "titular": "", "nombre_documento": "", "reemplaza": "",
+             "nombre_piloto": "", "respuesta": "ok"}
     datos.update(cambios)
     return datos
 

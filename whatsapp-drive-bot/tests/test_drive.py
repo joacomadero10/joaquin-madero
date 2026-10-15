@@ -23,8 +23,19 @@ class FilesFalso:
         self.archivos[fid] = {"id": fid, "name": nombre, "mimeType": mime, "parents": [padre]}
         return fid
 
-    def create(self, body, fields):
-        return _Ejecutable({"id": self.nuevo(body["name"], body["mimeType"], body["parents"][0])})
+    def create(self, body, fields, media_body=None):
+        mime = body.get("mimeType") or media_body.mimetype()
+        return _Ejecutable({"id": self.nuevo(body["name"], mime, body["parents"][0])})
+
+    def get(self, fileId, fields):
+        return _Ejecutable({"parents": self.archivos[fileId]["parents"]})
+
+    def update(self, fileId, addParents, removeParents, body, fields):
+        f = self.archivos[fileId]
+        assert f["parents"] == removeParents.split(",")
+        f["parents"] = [addParents]
+        f["name"] = body["name"]
+        return _Ejecutable({"id": fileId})
 
     def list(self, q, fields, pageSize, pageToken=None):
         nombre = re.search(r"name = '((?:[^'\\]|\\.)*)'", q)
@@ -81,3 +92,24 @@ def test_pilotos_y_documentos():
         ("Avión", "LVCCO", "LVCCO - Seguro.pdf"),
         ("Piloto", "Juan Pérez", "CMA.jpg"),
     ]
+
+
+def test_guardar_y_archivar():
+    d, files = _drive()
+    ids = d.asegurar_estructura()
+    d.crear_piloto("Juan Pérez")
+    assert d.carpeta_de("lv-cco")[1:] == ("LVCCO", "Avión")
+    assert d.carpeta_de("juan pérez")[1:] == ("Juan Pérez", "Piloto")
+    assert d.carpeta_de("LVZZZ") is None
+
+    viejo = files.nuevo("LVCCO - Seguro.pdf", "application/pdf", ids["LVCCO"])
+    assert d.buscar_en_carpeta("LVCCO - Seguro.pdf", ids["LVCCO"]) == [viejo]
+    nuevo = d.subir(b"pdf", "LVCCO - Seguro.pdf", "application/pdf", ids["LVCCO"])
+    d.archivar(viejo, "LVCCO", "LVCCO - Seguro (venció 20-10-2026).pdf")
+
+    assert [x.id for x in d.listar_documentos()] == [nuevo]
+    archivado = files.archivos[viejo]
+    carpeta_hist = files.archivos[archivado["parents"][0]]
+    assert carpeta_hist["name"] == "LVCCO"
+    assert carpeta_hist["parents"] == [ids["Históricos"]]
+    assert archivado["name"] == "LVCCO - Seguro (venció 20-10-2026).pdf"

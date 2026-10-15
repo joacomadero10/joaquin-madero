@@ -90,8 +90,8 @@ MATRÍCULA - Documento.pdf        →  LVCCO - Certificado de aeronavegabilidad.
 Piloto - Documento.pdf           →  Juan Perez - CMA.pdf
 ```
 
-Por ahora los archivos los subís vos a la carpeta correcta de Drive. En la etapa 4 se los vas
-a poder mandar al bot por WhatsApp y él los va a nombrar y guardar solo.
+Si se los mandás al bot por WhatsApp, él los nombra y guarda así solo. Si los subís
+directo a Drive, usá este formato.
 
 ## Problemas comunes
 | Síntoma | Qué hacer |

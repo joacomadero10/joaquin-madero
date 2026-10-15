@@ -191,7 +191,7 @@ def test_whatsapp_fijar_vencimiento(entorno, monkeypatch):
 def test_whatsapp_consulta_y_claude_ve_los_vencimientos(entorno, monkeypatch):
     vistos = {}
 
-    def interpretar(texto, documentos, pilotos, dia):
+    def interpretar(texto, documentos, pilotos, dia, archivo=""):
         vistos["docs"] = {d.id: (d.vencimiento, d.estado) for d in documentos}
         return Decision("consultar_vencimientos", "", filtro="falta_fecha")
     monkeypatch.setattr(main.interprete, "interpretar", interpretar)

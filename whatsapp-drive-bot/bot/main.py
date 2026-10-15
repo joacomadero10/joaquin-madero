@@ -2,9 +2,12 @@
 import hmac
 import json
 import logging
+import mimetypes
 import threading
+import time
 from collections import deque
 from contextlib import asynccontextmanager
+from dataclasses import dataclass
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Request, Response
 
@@ -14,7 +17,7 @@ from .google_auth import crear_router
 from .google_drive import Documento, Drive, credenciales
 from .interprete import Decision, Interprete
 from .planilla import Planilla
-from .vencimientos import consultar, fijar_vencimiento, hoy
+from .vencimientos import consultar, escribir_fecha, fijar_vencimiento, hoy, leer_fecha
 from .whatsapp import WhatsApp, extraer_mensajes, firma_valida
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -40,10 +43,29 @@ FALTA_GOOGLE = (
     "Todavía no estoy conectado a Google Drive 🔌. "
     "Seguí la guía docs/3-google.md para conectarme."
 )
-SOLO_TEXTO = (
-    "Por ahora solo entiendo mensajes de texto ✍️. "
-    "Guardar archivos que me mandes llega en una próxima etapa."
+SOLO_TEXTO = "Solo entiendo mensajes de texto y archivos (PDF o fotos) ✍️📎"
+PEDIR_DATOS_ARCHIVO = (
+    "Recibí el archivo 📎 ¿Qué documento es, de qué avión o piloto, y cuándo vence?\n"
+    "Ej: \"es el nuevo seguro del CCO, vence el 15/10/2027\""
 )
+TIPOS_ARCHIVO = {"document", "image"}
+VIDA_PENDIENTE = 60 * 60  # un archivo sin datos se olvida después de 1 hora
+
+
+@dataclass
+class ArchivoPendiente:
+    media_id: str
+    mime: str
+    nombre_original: str
+    recibido: float
+
+    def describir(self) -> str:
+        return f"Nombre original: {self.nombre_original or '(sin nombre, es una foto)'}. Tipo: {self.mime}."
+
+
+# Archivo recibido por remitente, esperando que digas qué es.
+_pendientes: dict[str, ArchivoPendiente] = {}
+NO_ENTENDI = "No te entendí bien 🤔 ¿Me lo decís de otra forma?"
 ERROR = "Uy, algo falló de mi lado 😕. Probá de nuevo en un ratito."
 
 
@@ -136,22 +158,45 @@ def atender(remitente: str, mensaje: dict) -> None:
 
 
 def _atender(remitente: str, mensaje: dict) -> None:
-    if mensaje.get("type") != "text":
+    tipo = mensaje.get("type")
+    if tipo != "text" and tipo not in TIPOS_ARCHIVO:
         whatsapp.enviar_texto(remitente, SOLO_TEXTO)
         return
     if drive is None:
         whatsapp.enviar_texto(remitente, FALTA_GOOGLE)
         return
 
-    texto = mensaje["text"]["body"]
+    if tipo in TIPOS_ARCHIVO:
+        datos = mensaje[tipo]
+        _pendientes[remitente] = ArchivoPendiente(
+            datos["id"], datos.get("mime_type", ""), datos.get("filename", ""), time.time())
+        texto = datos.get("caption", "").strip()
+        if not texto:
+            whatsapp.enviar_texto(remitente, PEDIR_DATOS_ARCHIVO)
+            return
+    else:
+        texto = mensaje["text"]["body"]
+
+    pendiente = _pendientes.get(remitente)
+    if pendiente and time.time() - pendiente.recibido > VIDA_PENDIENTE:
+        _pendientes.pop(remitente, None)
+        pendiente = None
+
     documentos = drive.listar_documentos()
     filas = planilla.actualizar(documentos)
     _completar_vencimientos(documentos, filas)
-    decision = interprete.interpretar(texto, documentos, drive.pilotos(), hoy())
+    decision = interprete.interpretar(texto, documentos, drive.pilotos(), hoy(),
+                                      pendiente.describir() if pendiente else "")
     log.info("Acción decidida: %s (%d documentos)", decision.accion, len(decision.documentos))
 
+    if decision.accion == "guardar_documento" and pendiente:
+        whatsapp.enviar_texto(remitente, _guardar(pendiente, decision, documentos))
+        _pendientes.pop(remitente, None)
+        return
+
     if decision.accion == "enviar_documentos" and decision.documentos:
-        whatsapp.enviar_texto(remitente, decision.respuesta)
+        if decision.respuesta:
+            whatsapp.enviar_texto(remitente, decision.respuesta)
         for doc in decision.documentos:
             contenido, nombre, mime = drive.descargar(doc)
             whatsapp.enviar_documento(remitente, contenido, nombre, mime)
@@ -168,8 +213,10 @@ def _atender(remitente: str, mensaje: dict) -> None:
         whatsapp.enviar_texto(remitente, respuesta)
     elif decision.accion == "pedir_planilla":
         whatsapp.enviar_texto(remitente, f"📊 Planilla de vencimientos:\n{planilla.link}")
+    elif decision.accion == "guardar_documento":
+        whatsapp.enviar_texto(remitente, "Mandame primero el archivo (PDF o foto) y después te pregunto los datos 📎")
     else:
-        whatsapp.enviar_texto(remitente, decision.respuesta)
+        whatsapp.enviar_texto(remitente, decision.respuesta or NO_ENTENDI)
 
 
 def _completar_vencimientos(documentos: list[Documento], filas) -> None:
@@ -193,3 +240,66 @@ def _fijar_vencimiento(documentos: list[Documento], decision: Decision) -> str:
     lineas = [f"• {f.titular} – {f.documento}: {f.vencimiento} ({f.estado(dia).lower()})"
               for f in filas if f.archivo_id in ids]
     return "Anotado ✅\n" + "\n".join(lineas)
+
+
+def _extension(pendiente: ArchivoPendiente) -> str:
+    if "." in pendiente.nombre_original:
+        return "." + pendiente.nombre_original.rsplit(".", 1)[1].lower()
+    ext = mimetypes.guess_extension(pendiente.mime.split(";")[0].strip()) or ""
+    return ".jpg" if ext in (".jpe", ".jpeg") else ext
+
+
+def _nombre_archivado(doc: Documento) -> str:
+    """'LVCCO - Seguro.pdf' → 'LVCCO - Seguro (venció 15-10-2026).pdf'"""
+    base, punto, ext = doc.nombre.rpartition(".")
+    if not punto:
+        base, ext = doc.nombre, ""
+    fecha = leer_fecha(doc.vencimiento)
+    sufijo = f"venció {fecha.strftime('%d-%m-%Y')}" if fecha else f"archivado {hoy().strftime('%d-%m-%Y')}"
+    return f"{base} ({sufijo})" + (f".{ext}" if ext else "")
+
+
+def _guardar(pendiente: ArchivoPendiente, decision: Decision, documentos: list[Documento]) -> str:
+    """Sube el archivo nuevo, archiva el anterior en Históricos y actualiza la planilla."""
+    destino = drive.carpeta_de(decision.titular)
+    if destino is None:
+        return (f"No encontré la carpeta de \"{decision.titular}\" 🤔. "
+                "Decime la matrícula o el piloto (si es un piloto nuevo, primero pedime que lo dé de alta).")
+    carpeta_id, titular, _tipo = destino
+    nombre_doc = decision.nombre_documento or "Documento"
+    nombre_archivo = f"{titular} - {nombre_doc}{_extension(pendiente)}"
+
+    # Qué archivos reemplaza: el que eligió Claude y cualquiera con el mismo nombre en la carpeta.
+    por_id = {d.id: d for d in documentos}
+    ids = []
+    if decision.reemplaza and decision.reemplaza.titular == titular:
+        ids.append(decision.reemplaza.id)
+    ids += drive.buscar_en_carpeta(nombre_archivo, carpeta_id)
+    reemplazados = [por_id[i] for i in dict.fromkeys(ids) if i in por_id]
+
+    # Primero subimos el nuevo; recién después movemos el viejo (así nunca se pierde nada).
+    contenido, mime = whatsapp.descargar_media(pendiente.media_id)
+    nuevo_id = drive.subir(contenido, nombre_archivo, mime or pendiente.mime, carpeta_id)
+    for viejo in reemplazados:
+        drive.archivar(viejo.id, titular, _nombre_archivado(viejo))
+
+    fecha = None if decision.no_vence else decision.fecha
+
+    def cambio(filas):
+        if not (decision.fecha or decision.no_vence):
+            return filas
+        return [fijar_vencimiento(f, fecha) if f.archivo_id == nuevo_id else f for f in filas]
+
+    planilla.actualizar(drive.listar_documentos(), cambio)
+
+    lineas = [f"Listo ✅ Guardé *{nombre_archivo}* en la carpeta {titular}."]
+    if decision.no_vence:
+        lineas.append("Quedó anotado que no vence.")
+    elif decision.fecha:
+        lineas.append(f"Vence el {escribir_fecha(decision.fecha)}.")
+    else:
+        lineas.append("⚠️ No me dijiste cuándo vence. Decime la fecha (ej. \"vence el 15/10/2027\") "
+                      "o \"no vence\".")
+    if reemplazados:
+        lineas.append(f"La versión anterior quedó en Históricos/{titular} 🗂️")
+    return "\n".join(lineas)

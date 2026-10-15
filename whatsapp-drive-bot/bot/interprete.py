@@ -10,7 +10,7 @@ from .google_drive import Documento
 
 log = logging.getLogger(__name__)
 
-ACCIONES = ["enviar_documentos", "crear_piloto", "fijar_vencimiento",
+ACCIONES = ["enviar_documentos", "crear_piloto", "fijar_vencimiento", "guardar_documento",
             "consultar_vencimientos", "pedir_planilla", "responder"]
 FILTROS = ["vencidos", "por_vencer", "rango", "falta_fecha", "todos"]
 
@@ -49,7 +49,19 @@ ESQUEMA = {
         "titular": {
             "type": "string",
             "description": "Para consultar_vencimientos: matrícula (ej. LVCCO) o piloto si la "
-                           "consulta es sobre uno solo. Vacío = todos.",
+                           "consulta es sobre uno solo (vacío = todos). Para guardar_documento: "
+                           "matrícula o piloto dueño del documento, escrito igual que en las listas.",
+        },
+        "nombre_documento": {
+            "type": "string",
+            "description": "Para guardar_documento: nombre corto y claro del tipo de documento, "
+                           "sin la matrícula ni el piloto (ej. 'Seguro', 'CMA', 'Licencia'). Si "
+                           "reemplaza a uno existente, usá el mismo nombre que ese. Si no, vacío.",
+        },
+        "reemplaza": {
+            "type": "string",
+            "description": "Para guardar_documento: id del documento existente que este archivo "
+                           "renueva o reemplaza. Vacío si es un documento nuevo.",
         },
         "nombre_piloto": {
             "type": "string",
@@ -61,7 +73,7 @@ ESQUEMA = {
         },
     },
     "required": ["accion", "documentos", "fecha", "no_vence", "filtro", "desde", "hasta",
-                 "titular", "nombre_piloto", "respuesta"],
+                 "titular", "nombre_documento", "reemplaza", "nombre_piloto", "respuesta"],
     "additionalProperties": False,
 }
 
@@ -93,6 +105,7 @@ el nombre completo en "nombre_piloto".
   * "falta_fecha": ¿a qué documentos les falta la fecha?
   * "todos": todos los vencimientos.
   Si pregunta por un solo avión o piloto, ponelo en "titular". El listado lo arma el bot: en "respuesta" dejá vacío.
+- "guardar_documento": solo si hay un <archivo_adjunto> y el usuario dice qué es (ej. "este es el nuevo seguro del CCO, vence el 15/10/2027"). Completá "titular", "nombre_documento", la fecha ("fecha" o "no_vence"; si no la dijo, dejala vacía) y "reemplaza" si en la lista ya hay un documento del mismo tipo para ese titular (es una renovación). El titular tiene que ser una matrícula de la flota o un piloto cargado: si es un piloto que no existe, usá "responder" y sugerí darlo de alta primero. Si no queda claro qué documento es o de quién, usá "responder" y preguntá. En "respuesta" dejá vacío.
 - "pedir_planilla": quiere ver la planilla de vencimientos o su link.
 - "responder": cualquier otra cosa. Escribí la respuesta en "respuesta". Por ejemplo:
   * Si pide un documento que no está en la lista, o el pedido es ambiguo (ej. "el \
@@ -100,7 +113,7 @@ seguro" sin decir de qué avión, y hay varios), no adivines: decile qué encont
 preguntale cuál quiere.
   * Si pregunta qué documentos hay de un avión o piloto, listalos a partir de la lista.
   * Si saluda o pide ayuda, explicá brevemente qué podés hacer: mandar documentos de \
-los aviones y pilotos, dar de alta pilotos nuevos, anotar fechas de vencimiento, responder qué está vencido o por vencer, y avisar automáticamente 30 días antes y el día que vence cada documento.
+los aviones y pilotos, dar de alta pilotos nuevos, anotar fechas de vencimiento, responder qué está vencido o por vencer, avisar automáticamente 30 días antes y el día que vence cada documento, y guardar documentos nuevos o renovados que le manden por acá (el archivo con un mensaje tipo "este es el nuevo seguro del CCO, vence el 15/10/2027").
 
 Las matrículas de la flota son: {matriculas}.
 Los pilotos cargados son: {pilotos}.
@@ -119,6 +132,8 @@ class Decision:
     desde: date | None = None
     hasta: date | None = None
     titular: str = ""
+    nombre_documento: str = ""
+    reemplaza: Documento | None = None
 
 
 def _fecha_iso(texto: str) -> date | None:
@@ -144,7 +159,8 @@ class Interprete:
         self._matriculas = matriculas
 
     def interpretar(self, mensaje: str, documentos: list[Documento], pilotos: list[str],
-                    hoy: date) -> Decision:
+                    hoy: date, archivo: str = "") -> Decision:
+        """archivo: descripción del archivo adjunto pendiente de guardar, si hay uno."""
         sistema = SISTEMA.format(
             matriculas=", ".join(self._matriculas),
             pilotos=", ".join(pilotos) or "(ninguno todavía)",
@@ -152,7 +168,8 @@ class Interprete:
         contenido = (
             f"Hoy es {DIAS_SEMANA[hoy.weekday()]} {hoy.strftime('%d/%m/%Y')} ({hoy.isoformat()}).\n\n"
             f"<documentos_disponibles>\n{tabla_documentos(documentos)}\n</documentos_disponibles>\n\n"
-            f"<mensaje_del_usuario>\n{mensaje}\n</mensaje_del_usuario>"
+            + (f"<archivo_adjunto>\n{archivo}\n</archivo_adjunto>\n\n" if archivo else "")
+            + f"<mensaje_del_usuario>\n{mensaje}\n</mensaje_del_usuario>"
         )
         r = self._cliente.beta.messages.create(
             model=self._modelo,
@@ -187,4 +204,6 @@ class Interprete:
             desde=_fecha_iso(datos["desde"]),
             hasta=_fecha_iso(datos["hasta"]),
             titular=datos["titular"].strip(),
+            nombre_documento=" ".join(datos["nombre_documento"].split()),
+            reemplaza=por_id.get(datos["reemplaza"]),
         )

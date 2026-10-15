@@ -15,7 +15,7 @@ from dataclasses import dataclass
 
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseDownload
+from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
 
 log = logging.getLogger(__name__)
 
@@ -177,3 +177,46 @@ class Drive:
             while not terminado:
                 _, terminado = descarga.next_chunk()
             return buffer.getvalue(), nombre, mime
+
+    # ---------- guardar y archivar ----------
+
+    def carpeta_de(self, titular: str) -> tuple[str, str, str] | None:
+        """Devuelve (id de carpeta, nombre exacto del titular, tipo) o None si no existe."""
+        clave = titular.strip().replace("-", "").replace(" ", "").upper()
+        with self._lock:
+            ids = self.asegurar_estructura()
+            for m in self._matriculas:
+                if m.replace("-", "").upper() == clave:
+                    return ids[m], m, "Avión"
+            for nombre, carpeta_id in self._subcarpetas(ids[PILOTOS]).items():
+                if nombre.replace(" ", "").upper() == clave:
+                    return carpeta_id, nombre, "Piloto"
+        return None
+
+    def buscar_en_carpeta(self, nombre: str, carpeta_id: str) -> list[str]:
+        with self._lock:
+            q = (f"name = '{_escapar(nombre)}' and '{carpeta_id}' in parents "
+                 f"and mimeType != '{CARPETA}' and trashed = false")
+            r = self._api.files().list(q=q, fields="files(id)", pageSize=10).execute()
+            return [f["id"] for f in r.get("files", [])]
+
+    def subir(self, contenido: bytes, nombre: str, mime: str, carpeta_id: str) -> str:
+        with self._lock:
+            media = MediaIoBaseUpload(io.BytesIO(contenido), mimetype=mime, resumable=False)
+            return self._api.files().create(
+                body={"name": nombre, "parents": [carpeta_id]}, media_body=media, fields="id",
+            ).execute()["id"]
+
+    def archivar(self, archivo_id: str, titular: str, nuevo_nombre: str) -> None:
+        """Mueve un archivo a Históricos/<titular>/ y le cambia el nombre."""
+        with self._lock:
+            ids = self.asegurar_estructura()
+            destino = self._carpeta(titular, ids[HISTORICOS])
+            actual = self._api.files().get(fileId=archivo_id, fields="parents").execute()
+            self._api.files().update(
+                fileId=archivo_id,
+                addParents=destino,
+                removeParents=",".join(actual.get("parents", [])),
+                body={"name": nuevo_nombre},
+                fields="id",
+            ).execute()
