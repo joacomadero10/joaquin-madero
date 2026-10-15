@@ -38,6 +38,24 @@ class WhatsApp:
             "text": {"body": texto},
         })
 
+    def enviar_plantilla(self, destino: str, nombre: str, idioma: str, parametros: list[str]) -> None:
+        """Mensaje con plantilla aprobada por Meta: es lo único que WhatsApp deja mandar
+        si no le escribiste al bot en las últimas 24 horas."""
+        self._enviar({
+            "messaging_product": "whatsapp",
+            "to": destino,
+            "type": "template",
+            "template": {
+                "name": nombre,
+                "language": {"code": idioma},
+                "components": [{
+                    "type": "body",
+                    # WhatsApp no acepta saltos de línea dentro de los parámetros.
+                    "parameters": [{"type": "text", "text": " ".join(p.split())} for p in parametros],
+                }],
+            },
+        })
+
     def enviar_documento(self, destino: str, contenido: bytes, nombre: str, mime: str) -> None:
         """Sube el archivo a WhatsApp y lo manda como documento (conserva el nombre)."""
         r = httpx.post(

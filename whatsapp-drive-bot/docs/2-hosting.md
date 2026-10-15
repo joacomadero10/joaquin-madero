@@ -82,7 +82,7 @@ usamos **cron-job.org** (también gratis), que lo "toca" cada 10 minutos.
    - **Execution schedule**: **Every 10 minutes**
 3. **Create**.
 
-> En la etapa 3 vamos a agregar acá un segundo cronjob para los avisos de las 10 AM.
+> En la [Guía 5](5-avisos.md) se agrega un segundo cronjob para los avisos de las 10 AM.
 
 Después seguí con la [Guía 1, paso 8](1-whatsapp-meta.md#paso-8--conectar-el-webhook-después-de-subir-el-bot-al-hosting).
 

@@ -35,6 +35,19 @@ class Documento:
     mime: str
     titular: str      # matrícula (ej. LVCCO) o nombre del piloto
     tipo: str         # "Avión" o "Piloto"
+    vencimiento: str = ""   # lo completa la planilla: "15/10/2027", "No vence" o ""
+    estado: str = ""        # lo completa la planilla
+
+
+def credenciales(client_id: str, client_secret: str, refresh_token: str) -> Credentials:
+    return Credentials(
+        token=None,
+        refresh_token=refresh_token,
+        client_id=client_id,
+        client_secret=client_secret,
+        token_uri="https://oauth2.googleapis.com/token",
+        scopes=SCOPES,
+    )
 
 
 def _escapar(texto: str) -> str:
@@ -42,16 +55,7 @@ def _escapar(texto: str) -> str:
 
 
 class Drive:
-    def __init__(self, client_id: str, client_secret: str, refresh_token: str,
-                 carpeta_raiz: str, matriculas: list[str]) -> None:
-        cred = Credentials(
-            token=None,
-            refresh_token=refresh_token,
-            client_id=client_id,
-            client_secret=client_secret,
-            token_uri="https://oauth2.googleapis.com/token",
-            scopes=SCOPES,
-        )
+    def __init__(self, cred: Credentials, carpeta_raiz: str, matriculas: list[str]) -> None:
         self._api = build("drive", "v3", credentials=cred, cache_discovery=False)
         self._nombre_raiz = carpeta_raiz
         self._matriculas = matriculas
@@ -93,6 +97,19 @@ class Drive:
             ids[PILOTOS] = self._carpeta(PILOTOS, raiz)
             ids[HISTORICOS] = self._carpeta(HISTORICOS, raiz)
             return ids
+
+    def buscar_o_crear_archivo(self, nombre: str, mime: str, padre: str) -> tuple[str, bool]:
+        """Devuelve (id, creado) de un archivo dentro de la carpeta padre."""
+        with self._lock:
+            q = (f"name = '{_escapar(nombre)}' and mimeType = '{mime}' "
+                 f"and '{padre}' in parents and trashed = false")
+            r = self._api.files().list(q=q, fields="files(id)", pageSize=1).execute()
+            if r.get("files"):
+                return r["files"][0]["id"], False
+            nuevo = self._api.files().create(
+                body={"name": nombre, "mimeType": mime, "parents": [padre]}, fields="id"
+            ).execute()
+            return nuevo["id"], True
 
     def _subcarpetas(self, padre: str) -> dict[str, str]:
         q = f"mimeType = '{CARPETA}' and '{padre}' in parents and trashed = false"

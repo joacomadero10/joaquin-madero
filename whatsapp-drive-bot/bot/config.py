@@ -62,6 +62,14 @@ class Config:
             if m.strip()
         ]
 
+        self.nombre_planilla = os.environ.get("NOMBRE_PLANILLA", f"{self.carpeta_raiz} - Vencimientos")
+
+        # --- Avisos ---
+        self.hora_avisos = int(os.environ.get("HORA_AVISOS", "10"))
+        # Plantilla aprobada por Meta (docs/5-avisos.md). Vacía = mensaje común.
+        self.plantilla_aviso = os.environ.get("PLANTILLA_AVISO", "").strip()
+        self.plantilla_idioma = os.environ.get("PLANTILLA_IDIOMA", "es_AR").strip()
+
         # --- Claude ---
         # La clave ANTHROPIC_API_KEY la lee directamente la librería de Anthropic.
         self.claude_modelo = os.environ.get("CLAUDE_MODELO", "claude-opus-5-5")

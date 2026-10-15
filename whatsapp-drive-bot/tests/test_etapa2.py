@@ -1,4 +1,5 @@
 import json
+from datetime import date
 from types import SimpleNamespace
 
 import pytest
@@ -11,6 +12,21 @@ from bot.interprete import Decision, Interprete, tabla_documentos
 AUTORIZADO = "5491144367063"
 SEGURO = Documento("id-seguro", "LVCCO - Seguro.pdf", "application/pdf", "LVCCO", "Avión")
 CMA = Documento("id-cma", "Juan Perez - CMA.jpg", "image/jpeg", "Juan Perez", "Piloto")
+
+
+class PlanillaFalsa:
+    """Planilla en memoria que usa la misma lógica de sincronización que la real."""
+    link = "https://docs.google.com/spreadsheets/d/falsa"
+
+    def __init__(self):
+        self.filas = []
+
+    def actualizar(self, documentos, cambio=None):
+        from bot.vencimientos import sincronizar
+        self.filas = sincronizar(self.filas, documentos)
+        if cambio:
+            self.filas = cambio(self.filas)
+        return self.filas
 
 
 class DriveFalso:
@@ -39,7 +55,10 @@ def entorno(monkeypatch):
                         lambda d, c, n, m: salida["archivos"].append(n))
     drive = DriveFalso()
     monkeypatch.setattr(main, "drive", drive)
+    planilla = PlanillaFalsa()
+    monkeypatch.setattr(main, "planilla", planilla)
     salida["drive"] = drive
+    salida["planilla"] = planilla
     return salida
 
 
@@ -88,6 +107,13 @@ def test_archivo_entrante_todavia_no_soportado(entorno):
     assert entorno["textos"] == [main.SOLO_TEXTO]
 
 
+def _datos(**cambios):
+    datos = {"accion": "responder", "documentos": [], "fecha": "", "no_vence": False, "filtro": "todos",
+             "desde": "", "hasta": "", "titular": "", "nombre_piloto": "", "respuesta": "ok"}
+    datos.update(cambios)
+    return datos
+
+
 def _respuesta_claude(datos: dict, stop="end_turn"):
     return SimpleNamespace(stop_reason=stop, stop_details=None,
                            content=[SimpleNamespace(type="text", text=json.dumps(datos))])
@@ -99,10 +125,9 @@ def test_interprete_descarta_ids_inventados(monkeypatch):
 
     def falso_create(**kw):
         pedido.update(kw)
-        return _respuesta_claude({"accion": "enviar_documentos", "documentos": ["id-seguro", "inventado"],
-                                  "nombre_piloto": "", "respuesta": "ok"})
+        return _respuesta_claude(_datos(accion="enviar_documentos", documentos=["id-seguro", "inventado"]))
     monkeypatch.setattr(it._cliente.beta.messages, "create", falso_create)
-    d = it.interpretar("el seguro del cco", [SEGURO, CMA], ["Juan Perez"])
+    d = it.interpretar("el seguro del cco", [SEGURO, CMA], ["Juan Perez"], date(2026, 10, 15))
     assert [x.id for x in d.documentos] == ["id-seguro"]
     assert "LVCCO - Seguro.pdf" in pedido["messages"][0]["content"]
     assert pedido["output_config"]["format"]["type"] == "json_schema"
@@ -112,7 +137,7 @@ def test_interprete_maneja_rechazo(monkeypatch):
     it = Interprete("claude-opus-5-5", ["LVCCO"])
     monkeypatch.setattr(it._cliente.beta.messages, "create",
                         lambda **kw: _respuesta_claude({}, stop="refusal"))
-    assert it.interpretar("x", [], []).accion == "responder"
+    assert it.interpretar("x", [], [], date(2026, 10, 15)).accion == "responder"
 
 
 def test_tabla_documentos():

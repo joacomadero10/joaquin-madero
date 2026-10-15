@@ -1,4 +1,5 @@
 """Servidor del bot: recibe los mensajes de WhatsApp y responde."""
+import hmac
 import json
 import logging
 import threading
@@ -7,10 +8,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Request, Response
 
+from .avisos import Avisador
 from .config import Config
 from .google_auth import crear_router
-from .google_drive import Drive
-from .interprete import Interprete
+from .google_drive import Documento, Drive, credenciales
+from .interprete import Decision, Interprete
+from .planilla import Planilla
+from .vencimientos import consultar, fijar_vencimiento, hoy
 from .whatsapp import WhatsApp, extraer_mensajes, firma_valida
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -19,9 +23,14 @@ log = logging.getLogger("bot")
 config = Config()
 whatsapp = WhatsApp(config.whatsapp_token, config.phone_number_id, config.graph_version)
 drive: Drive | None = None
+planilla: Planilla | None = None
+avisador: Avisador | None = None
 if config.google_listo:
-    drive = Drive(config.google_client_id, config.google_client_secret,
-                  config.google_refresh_token, config.carpeta_raiz, config.matriculas)
+    _cred = credenciales(config.google_client_id, config.google_client_secret, config.google_refresh_token)
+    drive = Drive(_cred, config.carpeta_raiz, config.matriculas)
+    planilla = Planilla(_cred, drive, config.nombre_planilla)
+    avisador = Avisador(planilla, drive, whatsapp, sorted(config.numeros_autorizados),
+                        config.plantilla_aviso, config.plantilla_idioma, config.hora_avisos)
 interprete = Interprete(config.claude_modelo, config.matriculas)
 
 # Meta a veces manda el mismo mensaje dos veces: recordamos los últimos IDs para no responder doble.
@@ -38,18 +47,20 @@ SOLO_TEXTO = (
 ERROR = "Uy, algo falló de mi lado 😕. Probá de nuevo en un ratito."
 
 
-def _crear_carpetas() -> None:
+def _preparar_drive() -> None:
     try:
         drive.asegurar_estructura()
-        log.info("Estructura de carpetas en Drive lista")
+        planilla.actualizar(drive.listar_documentos())
+        log.info("Carpetas y planilla de vencimientos listas: %s", planilla.link)
     except Exception:
-        log.exception("No pude crear las carpetas en Drive")
+        log.exception("No pude preparar las carpetas o la planilla en Drive")
 
 
 @asynccontextmanager
 async def ciclo_de_vida(_app: FastAPI):
     if drive:
-        threading.Thread(target=_crear_carpetas, daemon=True).start()
+        threading.Thread(target=_preparar_drive, daemon=True).start()
+        avisador.iniciar_reloj()
     else:
         log.warning("Google Drive no está configurado todavía (falta GOOGLE_REFRESH_TOKEN)")
     yield
@@ -66,6 +77,18 @@ def _ocultar(numero: str) -> str:
 @app.get("/")
 def salud() -> dict:
     return {"estado": "ok", "google_conectado": drive is not None}
+
+
+@app.get("/tareas/avisos")
+def tarea_avisos(tareas: BackgroundTasks, clave: str = "") -> dict:
+    """Para dispararlo desde afuera (ej. cron-job.org). Es seguro llamarlo de más:
+    cada aviso se manda una sola vez."""
+    if not config.clave_admin or not hmac.compare_digest(clave, config.clave_admin):
+        raise HTTPException(status_code=403, detail="Clave incorrecta")
+    if avisador is None:
+        raise HTTPException(status_code=503, detail="Google no está conectado")
+    tareas.add_task(avisador.ejecutar)
+    return {"ok": True}
 
 
 @app.get("/webhook")
@@ -121,7 +144,10 @@ def _atender(remitente: str, mensaje: dict) -> None:
         return
 
     texto = mensaje["text"]["body"]
-    decision = interprete.interpretar(texto, drive.listar_documentos(), drive.pilotos())
+    documentos = drive.listar_documentos()
+    filas = planilla.actualizar(documentos)
+    _completar_vencimientos(documentos, filas)
+    decision = interprete.interpretar(texto, documentos, drive.pilotos(), hoy())
     log.info("Acción decidida: %s (%d documentos)", decision.accion, len(decision.documentos))
 
     if decision.accion == "enviar_documentos" and decision.documentos:
@@ -135,5 +161,35 @@ def _atender(remitente: str, mensaje: dict) -> None:
                 remitente, f"Listo ✅ Creé la carpeta del piloto {decision.nombre_piloto.title()} en PILOTOS.")
         else:
             whatsapp.enviar_texto(remitente, f"El piloto {decision.nombre_piloto.title()} ya tenía su carpeta 👍")
+    elif decision.accion == "fijar_vencimiento" and decision.documentos and (decision.fecha or decision.no_vence):
+        whatsapp.enviar_texto(remitente, _fijar_vencimiento(documentos, decision))
+    elif decision.accion == "consultar_vencimientos":
+        respuesta = consultar(filas, hoy(), decision.filtro, decision.desde, decision.hasta, decision.titular)
+        whatsapp.enviar_texto(remitente, respuesta)
+    elif decision.accion == "pedir_planilla":
+        whatsapp.enviar_texto(remitente, f"📊 Planilla de vencimientos:\n{planilla.link}")
     else:
         whatsapp.enviar_texto(remitente, decision.respuesta)
+
+
+def _completar_vencimientos(documentos: list[Documento], filas) -> None:
+    """Le agrega a cada documento su vencimiento y estado, para que Claude los vea."""
+    por_id = {f.archivo_id: f for f in filas}
+    dia = hoy()
+    for d in documentos:
+        if fila := por_id.get(d.id):
+            d.vencimiento, d.estado = fila.vencimiento, fila.estado(dia)
+
+
+def _fijar_vencimiento(documentos: list[Documento], decision: Decision) -> str:
+    ids = {d.id for d in decision.documentos}
+    fecha = None if decision.no_vence else decision.fecha
+
+    def cambio(filas):
+        return [fijar_vencimiento(f, fecha) if f.archivo_id in ids else f for f in filas]
+
+    filas = planilla.actualizar(documentos, cambio)
+    dia = hoy()
+    lineas = [f"• {f.titular} – {f.documento}: {f.vencimiento} ({f.estado(dia).lower()})"
+              for f in filas if f.archivo_id in ids]
+    return "Anotado ✅\n" + "\n".join(lineas)

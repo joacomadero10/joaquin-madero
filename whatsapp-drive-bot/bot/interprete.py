@@ -2,6 +2,7 @@
 import json
 import logging
 from dataclasses import dataclass, field
+from datetime import date
 
 import anthropic
 
@@ -9,7 +10,11 @@ from .google_drive import Documento
 
 log = logging.getLogger(__name__)
 
-ACCIONES = ["enviar_documentos", "crear_piloto", "responder"]
+ACCIONES = ["enviar_documentos", "crear_piloto", "fijar_vencimiento",
+            "consultar_vencimientos", "pedir_planilla", "responder"]
+FILTROS = ["vencidos", "por_vencer", "rango", "falta_fecha", "todos"]
+
+DIAS_SEMANA = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 
 ESQUEMA = {
     "type": "object",
@@ -22,7 +27,29 @@ ESQUEMA = {
         "documentos": {
             "type": "array",
             "items": {"type": "string"},
-            "description": "IDs (columna id) de los documentos a enviar. Vacío si no corresponde.",
+            "description": "IDs (columna id) de los documentos a enviar o a los que se les "
+                           "fija el vencimiento. Vacío si no corresponde.",
+        },
+        "fecha": {
+            "type": "string",
+            "description": "Para fijar_vencimiento: fecha de vencimiento en formato AAAA-MM-DD. "
+                           "Vacío si no vence o si no corresponde.",
+        },
+        "no_vence": {
+            "type": "boolean",
+            "description": "Para fijar_vencimiento: true si el documento no vence nunca.",
+        },
+        "filtro": {
+            "type": "string",
+            "enum": FILTROS,
+            "description": "Para consultar_vencimientos. Si no corresponde, usá 'todos'.",
+        },
+        "desde": {"type": "string", "description": "Para filtro 'rango': AAAA-MM-DD. Si no, vacío."},
+        "hasta": {"type": "string", "description": "Para filtro 'rango': AAAA-MM-DD. Si no, vacío."},
+        "titular": {
+            "type": "string",
+            "description": "Para consultar_vencimientos: matrícula (ej. LVCCO) o piloto si la "
+                           "consulta es sobre uno solo. Vacío = todos.",
         },
         "nombre_piloto": {
             "type": "string",
@@ -33,7 +60,8 @@ ESQUEMA = {
             "description": "Mensaje para el usuario, en español rioplatense, corto y claro.",
         },
     },
-    "required": ["accion", "documentos", "nombre_piloto", "respuesta"],
+    "required": ["accion", "documentos", "fecha", "no_vence", "filtro", "desde", "hasta",
+                 "titular", "nombre_piloto", "respuesta"],
     "additionalProperties": False,
 }
 
@@ -57,13 +85,22 @@ un avión o piloto, mandá todos sus documentos. Elegí solo documentos que est�
 lista: nunca inventes id.
 - "crear_piloto": el usuario pide dar de alta un piloto nuevo (crear su carpeta). Poné \
 el nombre completo en "nombre_piloto".
+- "fijar_vencimiento": el usuario informa la fecha de vencimiento de un documento que ya existe (ej. "el seguro del CCO vence el 15/10/2027", "la licencia de Juan no vence"). Poné el id en "documentos" y la fecha en "fecha" (AAAA-MM-DD), o "no_vence": true. Las fechas que escribe el usuario están en formato argentino día/mes/año. Si no queda claro de qué documento se trata, usá "responder" y preguntá.
+- "consultar_vencimientos": preguntas sobre vencimientos. Elegí "filtro":
+  * "vencidos": ¿qué tengo vencido?
+  * "por_vencer": ¿qué está por vencer? / ¿qué vence pronto?
+  * "rango": un período concreto (ej. "este mes", "en noviembre", "de acá a fin de año"): calculá "desde" y "hasta" usando la fecha de hoy.
+  * "falta_fecha": ¿a qué documentos les falta la fecha?
+  * "todos": todos los vencimientos.
+  Si pregunta por un solo avión o piloto, ponelo en "titular". El listado lo arma el bot: en "respuesta" dejá vacío.
+- "pedir_planilla": quiere ver la planilla de vencimientos o su link.
 - "responder": cualquier otra cosa. Escribí la respuesta en "respuesta". Por ejemplo:
   * Si pide un documento que no está en la lista, o el pedido es ambiguo (ej. "el \
 seguro" sin decir de qué avión, y hay varios), no adivines: decile qué encontraste y \
 preguntale cuál quiere.
   * Si pregunta qué documentos hay de un avión o piloto, listalos a partir de la lista.
   * Si saluda o pide ayuda, explicá brevemente qué podés hacer: mandar documentos de \
-los aviones y pilotos, y dar de alta pilotos nuevos.
+los aviones y pilotos, dar de alta pilotos nuevos, anotar fechas de vencimiento, responder qué está vencido o por vencer, y avisar automáticamente 30 días antes y el día que vence cada documento.
 
 Las matrículas de la flota son: {matriculas}.
 Los pilotos cargados son: {pilotos}.
@@ -76,13 +113,27 @@ class Decision:
     respuesta: str
     documentos: list[Documento] = field(default_factory=list)
     nombre_piloto: str = ""
+    fecha: date | None = None
+    no_vence: bool = False
+    filtro: str = "todos"
+    desde: date | None = None
+    hasta: date | None = None
+    titular: str = ""
+
+
+def _fecha_iso(texto: str) -> date | None:
+    try:
+        return date.fromisoformat(texto.strip())
+    except ValueError:
+        return None
 
 
 def tabla_documentos(documentos: list[Documento]) -> str:
     if not documentos:
         return "(todavía no hay documentos cargados)"
-    filas = ["id | tipo | titular | nombre del archivo"]
-    filas += [f"{d.id} | {d.tipo} | {d.titular} | {d.nombre}" for d in documentos]
+    filas = ["id | tipo | titular | nombre del archivo | vencimiento | estado"]
+    filas += [f"{d.id} | {d.tipo} | {d.titular} | {d.nombre} | {d.vencimiento or '-'} | {d.estado or '-'}"
+              for d in documentos]
     return "\n".join(filas)
 
 
@@ -92,12 +143,14 @@ class Interprete:
         self._modelo = modelo
         self._matriculas = matriculas
 
-    def interpretar(self, mensaje: str, documentos: list[Documento], pilotos: list[str]) -> Decision:
+    def interpretar(self, mensaje: str, documentos: list[Documento], pilotos: list[str],
+                    hoy: date) -> Decision:
         sistema = SISTEMA.format(
             matriculas=", ".join(self._matriculas),
             pilotos=", ".join(pilotos) or "(ninguno todavía)",
         )
         contenido = (
+            f"Hoy es {DIAS_SEMANA[hoy.weekday()]} {hoy.strftime('%d/%m/%Y')} ({hoy.isoformat()}).\n\n"
             f"<documentos_disponibles>\n{tabla_documentos(documentos)}\n</documentos_disponibles>\n\n"
             f"<mensaje_del_usuario>\n{mensaje}\n</mensaje_del_usuario>"
         )
@@ -123,4 +176,15 @@ class Interprete:
         datos = json.loads(texto)
         por_id = {d.id: d for d in documentos}
         elegidos = [por_id[i] for i in datos["documentos"] if i in por_id][:10]
-        return Decision(datos["accion"], datos["respuesta"], elegidos, datos["nombre_piloto"].strip())
+        return Decision(
+            accion=datos["accion"],
+            respuesta=datos["respuesta"],
+            documentos=elegidos,
+            nombre_piloto=datos["nombre_piloto"].strip(),
+            fecha=_fecha_iso(datos["fecha"]),
+            no_vence=datos["no_vence"],
+            filtro=datos["filtro"],
+            desde=_fecha_iso(datos["desde"]),
+            hasta=_fecha_iso(datos["hasta"]),
+            titular=datos["titular"].strip(),
+        )
