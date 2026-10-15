@@ -4,13 +4,15 @@ Bot de WhatsApp que gestiona la documentación de los aviones y pilotos de BAIRE
 
 ## Estado
 - [x] **Etapa 1**: responde mensajes solo al número autorizado
-- [ ] Etapa 2: enviar archivos desde Drive
+- [x] **Etapa 2**: crea las carpetas en Drive, da de alta pilotos y envía archivos pedidos en lenguaje natural
 - [ ] Etapa 3: planilla de vencimientos, avisos a las 10 AM y consultas
 - [ ] Etapa 4: actualizar documentos (archiva la versión anterior en "Históricos")
 
 ## Guías de configuración
 1. [Crear la cuenta de WhatsApp Business API](docs/1-whatsapp-meta.md)
 2. [Subir el bot al hosting](docs/2-hosting.md)
+3. [Conectar Google Drive](docs/3-google.md)
+4. [Clave de la API de Claude](docs/4-claude.md)
 
 Cuando terminemos todas las etapas, este README va a tener el manual de uso completo y la sección "qué hacer si algo falla".
 

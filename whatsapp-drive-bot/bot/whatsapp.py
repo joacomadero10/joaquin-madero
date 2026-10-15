@@ -38,8 +38,28 @@ class WhatsApp:
             "text": {"body": texto},
         })
 
+    def enviar_documento(self, destino: str, contenido: bytes, nombre: str, mime: str) -> None:
+        """Sube el archivo a WhatsApp y lo manda como documento (conserva el nombre)."""
+        r = httpx.post(
+            self._url.removesuffix("/messages") + "/media",
+            headers=self._headers,
+            data={"messaging_product": "whatsapp", "type": mime},
+            files={"file": (nombre, contenido, mime)},
+            timeout=120,
+        )
+        self._revisar(r)
+        self._enviar({
+            "messaging_product": "whatsapp",
+            "to": destino,
+            "type": "document",
+            "document": {"id": r.json()["id"], "filename": nombre},
+        })
+
     def _enviar(self, cuerpo: dict) -> None:
-        r = httpx.post(self._url, headers=self._headers, json=cuerpo, timeout=30)
+        self._revisar(httpx.post(self._url, headers=self._headers, json=cuerpo, timeout=30))
+
+    @staticmethod
+    def _revisar(r: httpx.Response) -> None:
         if r.status_code >= 400:
-            log.error("WhatsApp rechazó el envío (%s): %s", r.status_code, r.text)
+            log.error("WhatsApp rechazó el pedido (%s): %s", r.status_code, r.text)
             r.raise_for_status()

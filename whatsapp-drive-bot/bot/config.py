@@ -28,6 +28,9 @@ def normalizar_numero(numero: str) -> str:
     return digitos
 
 
+MATRICULAS_POR_DEFECTO = "LVCCO,LVCPL,LVIYQ,LVFUF,LVFVZ,LVKMA,LVKAX,LVJQW"
+
+
 class Config:
     def __init__(self) -> None:
         self.whatsapp_token = _obligatoria("WHATSAPP_TOKEN")
@@ -40,6 +43,32 @@ class Config:
             if solo_digitos(n)
         }
         self.graph_version = os.environ.get("GRAPH_API_VERSION", "v23.0")
+
+        # --- Google (Drive) ---
+        self.google_client_id = os.environ.get("GOOGLE_CLIENT_ID", "").strip()
+        self.google_client_secret = os.environ.get("GOOGLE_CLIENT_SECRET", "").strip()
+        # Se obtiene una sola vez entrando a /google/conectar (ver docs/3-google.md)
+        self.google_refresh_token = os.environ.get("GOOGLE_REFRESH_TOKEN", "").strip()
+        # Clave que inventás vos para que nadie más pueda usar /google/conectar
+        self.clave_admin = os.environ.get("CLAVE_ADMIN", "").strip()
+        # Dirección pública del bot, ej: https://bot-bairesfly.up.railway.app
+        self.url_publica = os.environ.get("URL_PUBLICA", "").strip().rstrip("/")
+
+        # --- Estructura de carpetas ---
+        self.carpeta_raiz = os.environ.get("CARPETA_RAIZ", "BAIRES FLY").strip()
+        self.matriculas = [
+            m.strip().upper()
+            for m in os.environ.get("MATRICULAS", MATRICULAS_POR_DEFECTO).split(",")
+            if m.strip()
+        ]
+
+        # --- Claude ---
+        # La clave ANTHROPIC_API_KEY la lee directamente la librería de Anthropic.
+        self.claude_modelo = os.environ.get("CLAUDE_MODELO", "claude-opus-5-5")
+
+    @property
+    def google_listo(self) -> bool:
+        return bool(self.google_client_id and self.google_client_secret and self.google_refresh_token)
 
     def esta_autorizado(self, numero: str) -> bool:
         return normalizar_numero(numero) in self.numeros_autorizados

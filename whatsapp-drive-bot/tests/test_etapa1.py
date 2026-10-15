@@ -28,6 +28,7 @@ def _post(payload: dict, secreto: str = "secreto"):
 def enviados(monkeypatch):
     lista = []
     monkeypatch.setattr(main.whatsapp, "enviar_texto", lambda d, t: lista.append((d, t)))
+    monkeypatch.setattr(main, "drive", None)
     main._procesados.clear()
     return lista
 

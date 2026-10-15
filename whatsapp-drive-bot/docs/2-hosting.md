@@ -18,6 +18,8 @@ Hay dos opciones; elegí **una**.
 > carpeta `whatsapp-drive-bot`. En el hosting elegí esa rama. Más adelante lo podemos pasar a `main`.
 
 Antes de empezar, tené a mano los 4 datos de la [Guía 1](1-whatsapp-meta.md).
+Las variables de Google y de Claude se agregan después, en las guías 3 y 4.
+La lista completa de variables está en el archivo `.env.example`.
 
 ---
 
