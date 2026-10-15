@@ -10,6 +10,8 @@ de que venza algo y guarda las versiones nuevas cuando renovás un documento.
 
 ## 🚀 Puesta en marcha (una sola vez)
 
+📄 **Todo junto en un PDF para imprimir:** [Guía paso a paso](docs/Guia-paso-a-paso-BAIRES-FLY.pdf)
+
 Seguí las guías en este orden:
 
 | # | Guía | Tiempo |
