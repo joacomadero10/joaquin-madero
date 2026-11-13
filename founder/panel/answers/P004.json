@@ -1,0 +1,13 @@
+{
+  "id": "P004",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo un sistema de comandas que mis chicos saben usar, y cambiar todo en un bodegón chico es un lío que no me quiero comer por una app nueva. Además no dice nada de que facture con ARCA, así que tendría que seguir con lo otro igual y pagar dos cosas.",
+  "objection": "Si no se integra con la facturación electrónica de AFIP/ARCA no me sirve, y encima son 49 dólares por mes con la plata que hago, más la comisión de los cobros.",
+  "would_change_my_mind": "Que facture directo con ARCA y reemplace del todo mi sistema actual, con alguien que venga a capacitar al equipo, así no pago dos cosas.",
+  "price_too_cheap": 8,
+  "price_cheap": 20,
+  "price_expensive": 35,
+  "price_too_expensive": 55
+}

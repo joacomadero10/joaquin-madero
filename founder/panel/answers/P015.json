@@ -1,0 +1,13 @@
+{
+  "id": "P015",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "convenience",
+  "reason": "Ya tengo carta QR y lo que me falta es que la comanda llegue sola a cocina y que el cliente pague sin esperar al mozo. Con el primer mes gratis, sin permanencia y la carga de la carta hecha por ellos, lo pruebo en el local; si en un viernes lleno no falla, me quedo.",
+  "objection": "¿Qué pasa si se cae internet o el sistema en pleno servicio un sábado a la noche? Si la cocina deja de recibir comandas me quedo sin servicio y con las mesas llenas. Necesito un plan B claro, que se pueda seguir tomando pedidos aunque sea a mano o sin conexión.",
+  "would_change_my_mind": "Si en la prueba se me cae una sola vez en pleno servicio y no tienen un modo sin conexión ni soporte que atienda en el momento, lo dejo.",
+  "price_too_cheap": 10,
+  "price_cheap": 25,
+  "price_expensive": 70,
+  "price_too_expensive": 110
+}

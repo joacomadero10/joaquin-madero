@@ -1,0 +1,13 @@
+{
+  "id": "P014",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo mi sistema de comandas andando y los chicos lo saben usar; meter otro sistema en un café de 12 mesas es parar todo para reaprender, y el mes gratis no me ahorra ese lío. Además encima de lo que ya pago serían 49 dólares más por mes.",
+  "objection": "Cambiar de sistema con el local abierto: que el equipo se confunda, que se pierdan comandas en hora pico, y terminar pagando dos sistemas a la vez hasta ver si este anda.",
+  "would_change_my_mind": "Que mi sistema actual me falle o me suba el precio, y que ustedes me hagan la migración completa y vengan a capacitar al equipo en el local sin que yo tenga que cerrar.",
+  "price_too_cheap": 10,
+  "price_cheap": 20,
+  "price_expensive": 40,
+  "price_too_expensive": 65
+}

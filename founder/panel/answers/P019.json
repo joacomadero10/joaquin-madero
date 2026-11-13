@@ -1,0 +1,13 @@
+{
+  "id": "P019",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "No conozco a nadie que lo use y no vi una demo en persona; no voy a meter un sistema nuevo en la cocina y en el salón de un local que funciona solo porque el primer mes es gratis. El QR con el PDF me alcanza por ahora.",
+  "objection": "¿Quién me atiende un sábado a las 22 hs con el salón lleno si se cae la pantalla de cocina o no entran los pagos? Ahí pierdo plata y clientes, y no veo nada que diga que tienen soporte en ese horario.",
+  "would_change_my_mind": "Ver funcionando el sistema en un restaurante conocido de mi zona, que el dueño me diga que le responden rápido un fin de semana a la noche, y una demo en persona en mi local.",
+  "price_too_cheap": 15,
+  "price_cheap": 30,
+  "price_expensive": 70,
+  "price_too_expensive": 120
+}

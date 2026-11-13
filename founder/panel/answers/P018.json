@@ -1,0 +1,13 @@
+{
+  "id": "P018",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "need",
+  "reason": "El viernes se me pierden comandas y las mesas esperan la cuenta un cuarto de hora, y eso me cuesta rotación. Si me cargan la carta ellos, el primer mes es gratis y no hay permanencia, lo pruebo en serio. 49 dólares por mes es menos de lo que pierdo en un mal viernes.",
+  "objection": "La comisión de la pasarela sigue estando y no me dicen cuánto es; si todos pagan desde la app me comen el margen. Además, ¿qué pasa si se cae el wifi un sábado a las 22 y la cocina se queda sin comandas?",
+  "would_change_my_mind": "Si en el mes de prueba la cocina o los mozos no lo adoptan y se cae en pleno servicio, lo doy de baja.",
+  "price_too_cheap": 10,
+  "price_cheap": 25,
+  "price_expensive": 70,
+  "price_too_expensive": 110
+}
