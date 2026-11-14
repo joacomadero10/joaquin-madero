@@ -3,11 +3,11 @@
   "buys": true,
   "purchases_first_month": 1,
   "reason_code": "need",
-  "reason": "El viernes se me pierden comandas y las mesas esperan la cuenta un cuarto de hora, y eso me cuesta rotación. Si me cargan la carta ellos, el primer mes es gratis y no hay permanencia, lo pruebo en serio. 49 dólares por mes es menos de lo que pierdo en un mal viernes.",
-  "objection": "La comisión de la pasarela sigue estando y no me dicen cuánto es; si todos pagan desde la app me comen el margen. Además, ¿qué pasa si se cae el wifi un sábado a las 22 y la cocina se queda sin comandas?",
-  "would_change_my_mind": "Si en el mes de prueba la cocina o los mozos no lo adoptan y se cae en pleno servicio, lo doy de baja.",
-  "price_too_cheap": 10,
-  "price_cheap": 25,
-  "price_expensive": 70,
-  "price_too_expensive": 110
+  "reason": "Los viernes se me pierden comandas y las mesas esperan la cuenta; esto ataca justo eso, es abono fijo y no comisión por venta, y con 30 días gratis sin tarjeta lo pruebo sin riesgo. Si en el mes funciona, pago el Profesional o el Premium según las mesas.",
+  "objection": "Que un viernes a full se caiga internet o el navegador y quede peor que con papel; y que con más de 20 mesas me obliguen a saltar al Premium de $92.400, que ya es plata.",
+  "would_change_my_mind": "Si en la prueba se cuelga en pleno servicio o los mozos no lo adoptan, lo largo.",
+  "price_too_cheap": 8000,
+  "price_cheap": 25000,
+  "price_expensive": 60000,
+  "price_too_expensive": 100000
 }

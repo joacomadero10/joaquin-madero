@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Mis mozos son los que hacen funcionar el salón y si el cliente pide y paga solo desde el celular van a sentir que les saco propinas y trabajo; no voy a meter ese quilombo en el equipo por una app. Y 49 dólares por mes, más la comisión de la pasarela aparte, en un mes flojo me pesa.",
-  "objection": "Que los mozos lo tomen como que los estoy reemplazando y se me pudra el clima en el salón, o que se pierda la propina si el cliente paga desde el celular sin pasar por el mozo.",
-  "would_change_my_mind": "Que la app deje sumar la propina para el mozo al pagar desde el celular y que me muestren otro restaurante como el mío donde los mozos la usan y ganan igual o más.",
-  "price_too_cheap": 10,
-  "price_cheap": 20,
-  "price_expensive": 40,
-  "price_too_expensive": 70
+  "reason": "Con 25 mesas me cae el Profesional como mucho, 46 mil por mes más lo que se me va en apps, y mis mozos ya trabajan con la comanda en papel y se arreglan. Capaz pruebo los 30 días gratis si me lo cargan ellos, pero pagar en el primer mes, no.",
+  "objection": "Que los mozos lo sientan como un control encima, que les miro las propinas una por una y que el QR les saca trabajo; si el equipo no lo quiere usar, lo pago y queda tirado.",
+  "would_change_my_mind": "Ver funcionando un local parecido al mío, con los mozos usándolo contentos un sábado lleno, y un precio fijo en pesos congelado por un año sin sorpresas de aumento.",
+  "price_too_cheap": 8000,
+  "price_cheap": 20000,
+  "price_expensive": 40000,
+  "price_too_expensive": 65000
 }

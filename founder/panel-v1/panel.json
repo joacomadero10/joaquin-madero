@@ -1,0 +1,89 @@
+{
+ "n": 20,
+ "seed": 130431,
+ "customer": {
+  "business": "Sistema cerrado para restaurantes: pedido por QR en la mesa, comanda a cocina, cobro en la misma app, con paneles para administrador, cocina y mozos",
+  "target": "Dueños y encargados de restaurantes, bares y cafeterías independientes de 8 a 40 mesas en Argentina",
+  "where": "Argentina, ciudades grandes (CABA, GBA, Córdoba, Rosario)",
+  "age": [
+   28,
+   60
+  ],
+  "segments": [
+   {
+    "name": "Dueño de café o bodegón chico (8-15 mesas)",
+    "share": 0.4,
+    "income": [
+     12000,
+     30000
+    ]
+   },
+   {
+    "name": "Dueño de restaurante o bar mediano (15-40 mesas)",
+    "share": 0.4,
+    "income": [
+     30000,
+     80000
+    ]
+   },
+   {
+    "name": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+    "share": 0.2,
+    "income": [
+     40000,
+     110000
+    ]
+   }
+  ],
+  "behaviours": [
+   {
+    "name": "Ya usa un sistema de gestión",
+    "share": 0.25,
+    "how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar."
+   },
+   {
+    "name": "Todo en papel y cuaderno",
+    "share": 0.2,
+    "how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología."
+   },
+   {
+    "name": "Cuida cada peso",
+    "share": 0.15,
+    "how": "Mira el costo mensual y las comisiones antes que cualquier otra cosa; negocia todo."
+   },
+   {
+    "name": "Busca modernizarse",
+    "share": 0.15,
+    "how": "Prueba herramientas nuevas, ya usa carta QR y quiere menos errores y más rotación de mesas."
+   },
+   {
+    "name": "Le preocupa el personal",
+    "share": 0.15,
+    "how": "Su problema principal es la rotación de mozos y los errores de comanda; teme que los mozos lo rechacen o pierdan propinas."
+   },
+   {
+    "name": "Pide referencias",
+    "share": 0.1,
+    "how": "No compra nada sin ver que otro local conocido lo use y sin una demo en persona."
+   }
+  ],
+  "objections": [
+   "Mis clientes prefieren que los atienda un mozo, no pedir desde el celular",
+   "¿Qué pasa si se cae internet o el sistema en pleno servicio?",
+   "Las comisiones por cobrar en la app me comen el margen",
+   "Ya pagué por otro sistema y cambiar es un lío",
+   "Los mozos van a sentir que les sacamos propinas o trabajo",
+   "Necesito que se integre con facturación electrónica de AFIP/ARCA",
+   "No tengo tiempo de capacitar al equipo",
+   "¿Quién me da soporte un sábado a las 22 hs?"
+  ],
+  "habits": [
+   "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana",
+   "cobrás la mayoría con Mercado Pago y tarjeta",
+   "tenés 4 a 10 empleados entre cocina y salón",
+   "ya tenés la carta en un QR que solo muestra un PDF",
+   "un viernes a la noche se te traspapelan comandas y hay mesas que esperan la cuenta 15 minutos"
+  ]
+ },
+ "pitch": "Un sistema para restaurantes donde todo pasa por una sola app: el cliente escanea el QR de la mesa, ve la carta y pide; la comanda llega directo a la pantalla de cocina; y el cliente paga desde el mismo celular (tarjeta o Mercado Pago), o le pide la cuenta al mozo.\nIncluye panel para el administrador (ventas, mesas, carta, reportes), pantalla de cocina y app para mozos (ver mesas, tomar pedidos, avisos de \"plato listo\" y \"pide la cuenta\").\nPrecio: USD 49 por mes por local, sin límite de mesas ni usuarios. Los cobros en la app tienen la comisión de la pasarela de pago aparte.\nSe usa en tablets y celulares que ya tengas; la configuración inicial y la carga de la carta las hacemos nosotros.\nPrimer mes gratis, sin contrato de permanencia."
+}

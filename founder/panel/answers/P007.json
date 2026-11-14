@@ -2,12 +2,12 @@
   "id": "P007",
   "buys": false,
   "purchases_first_month": 0,
-  "reason_code": "trust",
-  "reason": "Yo con el cuaderno y las comandas a mano me arreglo bien, y ya tengo el QR con la carta. 49 dólares por mes para un bodegón chico como el mío es mucha plata, y no quiero depender de que ande internet o una tablet en pleno servicio.",
-  "objection": "Si se cae el sistema o internet un sábado a la noche me quedo sin comandas y sin saber quién pagó. Ya pagué por otra cosa y cambiar todo de nuevo es un lío; mis mozos y yo no somos de la tecnología.",
-  "would_change_my_mind": "Que un colega de un bodegón parecido me muestre que le funciona hace meses sin problemas, y que vengan a enseñarnos en persona, con un precio más bajo para locales chicos.",
-  "price_too_cheap": 5,
-  "price_cheap": 12,
-  "price_expensive": 25,
-  "price_too_expensive": 40
+  "reason_code": "habit",
+  "reason": "Yo manejo todo con comanda en papel y el cuaderno, y funciona. Ya pagué por el QR de la carta y no tengo ganas de meter otro sistema y pelearme con los mozos y la cocina para que aprendan a usar el celular.",
+  "objection": "Que el día que se cae internet o se traba el celular en pleno servicio me quedo sin comandas, y encima es otra cuota mensual más que se suma a todo lo que ya pago.",
+  "would_change_my_mind": "Ver funcionando en un bodegón como el mío, del barrio, que me cuente el dueño que no se le cayó nunca en un servicio lleno y que le ahorró plata o errores de verdad.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 20000,
+  "price_too_expensive": 30000
 }

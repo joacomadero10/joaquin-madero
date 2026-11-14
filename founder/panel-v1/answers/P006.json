@@ -1,0 +1,13 @@
+{
+  "id": "P006",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Yo con el cuaderno y la comanda a mano me arreglo hace años, y mis clientes de bodegón le piden al mozo, no escanean QR. Cuarenta y nueve dólares por mes para cambiarle la forma de trabajar a toda la gente en plena temporada no me cierra.",
+  "objection": "No tengo tiempo de capacitar al equipo, y si un sábado a la noche se cae internet o se cuelga la tablet, me quedo sin comandas y con la cocina parada.",
+  "would_change_my_mind": "Que vengan al local a enseñarle al equipo en persona y que pueda seguir usando papel en paralelo si algo falla, con un precio en pesos más bajo.",
+  "price_too_cheap": 5,
+  "price_cheap": 15,
+  "price_expensive": 30,
+  "price_too_expensive": 45
+}

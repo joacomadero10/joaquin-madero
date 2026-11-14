@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tenemos un sistema pago andando en los locales y cambiar todo en plena temporada es un lío: capacitar mozos nuevos cada mes, migrar la carta, ver que la cocina no se trabe. Por 49 dólares no me alcanza para justificar el quilombo.",
-  "objection": "Si el cliente pide y paga desde el celular, los mozos sienten que pierden propinas y me lo rechazan o se van, y la rotación ya es mi peor problema.",
-  "would_change_my_mind": "Que la propina se pueda dejar en el pago desde la app y le llegue al mozo, y poder probarlo en un solo local sin tocar el sistema actual de los otros.",
-  "price_too_cheap": 10,
-  "price_cheap": 30,
-  "price_expensive": 80,
-  "price_too_expensive": 130
+  "reason": "Ya tenemos un sistema pago andando en los locales y migrar 2-5 locales en plena temporada, con mozos que rotan cada dos meses, es un quilombo que no me puedo comer esta semana. Capaz pruebo los 30 días gratis en un solo local, pero de ahí a pagar hay un trecho.",
+  "objection": "Que los mozos lo rechacen o se traben tomando pedidos en su propio celular un sábado a la noche, y que se armen más errores de comanda en vez de menos. Además no sé cómo cobran si tengo varios locales.",
+  "would_change_my_mind": "Que me lo instalen gratis en un local, lo usemos un fin de semana completo con lleno y se vea que bajan los errores de comanda sin que los mozos se quejen, con un precio claro por varios locales.",
+  "price_too_cheap": 10000,
+  "price_cheap": 20000,
+  "price_expensive": 50000,
+  "price_too_expensive": 90000
 }

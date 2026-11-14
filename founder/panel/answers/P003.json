@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "trust",
-  "reason": "Ya tengo un sistema andando en los locales y cambiar es frenar cocina y salón para reentrenar a todos. El mes gratis no me alcanza: no conozco a nadie que lo use y nadie vino a mostrármelo en persona.",
-  "objection": "¿Quién más lo usa? Si se cae un viernes a la noche con el salón lleno, ¿quién me atiende? Migrar varios locales a algo que nadie que conozco probó es un riesgo que no corro por ahorrar unos dólares.",
-  "would_change_my_mind": "Ver un local conocido de mi zona usándolo en servicio real, y que vengan a hacerme la demo en persona en uno de mis locales.",
-  "price_too_cheap": 15,
-  "price_cheap": 30,
-  "price_expensive": 70,
-  "price_too_expensive": 110
+  "reason": "Ya tenemos un sistema pago en los locales y migrar todo el equipo es un lío. No conozco ningún local que use Comandy y no veo demo en persona, así que no lo pongo en mi operación aunque la prueba sea gratis.",
+  "objection": "Nadie que yo conozca lo usa todavía. Si se cae un viernes a la noche con el salón lleno, ¿quién me responde? Y cambiar de sistema en 3 locales es capacitar a todos de nuevo.",
+  "would_change_my_mind": "Ver que lo use un grupo gastronómico conocido de mi zona y que vengan al local a hacerme una demo en persona, con ayuda para migrar desde mi sistema actual.",
+  "price_too_cheap": 15000,
+  "price_cheap": 35000,
+  "price_expensive": 80000,
+  "price_too_expensive": 130000
 }

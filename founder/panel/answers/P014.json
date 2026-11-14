@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tengo mi sistema de comandas andando y los chicos lo saben usar; meter otro sistema en un café de 12 mesas es parar todo para reaprender, y el mes gratis no me ahorra ese lío. Además encima de lo que ya pago serían 49 dólares más por mes.",
-  "objection": "Cambiar de sistema con el local abierto: que el equipo se confunda, que se pierdan comandas en hora pico, y terminar pagando dos sistemas a la vez hasta ver si este anda.",
-  "would_change_my_mind": "Que mi sistema actual me falle o me suba el precio, y que ustedes me hagan la migración completa y vengan a capacitar al equipo en el local sin que yo tenga que cerrar.",
-  "price_too_cheap": 10,
-  "price_cheap": 20,
-  "price_expensive": 40,
-  "price_too_expensive": 65
+  "reason": "Ya tengo un sistema de comandas que pagué y que el equipo usa sin pensar. Lo que ofrecen suena bien, pero no veo nada que mi sistema actual no haga como para meterme en el lío de cambiar en plena semana de laburo.",
+  "objection": "Cambiar de sistema es parar todo: reaprender los mozos, cargar el menú de nuevo, y si algo falla un viernes a la noche me quedo sin comandas. Además una app nueva que no conozco, no sé si en seis meses sigue existiendo.",
+  "would_change_my_mind": "Que mi sistema actual me suba mucho el precio o me deje tirado, y ahí sí probaría los 30 días gratis con la configuración hecha por ellos, sabiendo que puedo volver atrás sin perder nada.",
+  "price_too_cheap": 8000,
+  "price_cheap": 18000,
+  "price_expensive": 35000,
+  "price_too_expensive": 50000
 }
