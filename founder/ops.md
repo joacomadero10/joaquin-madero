@@ -51,7 +51,8 @@ Son unas 55–60 horas por semana. **El cuello de botella eres vos los viernes y
 ## 4. Rutinas (cada una entra en una página)
 
 **A. Alta de un restaurante (día 0)**
-1. Pedir la carta (foto o PDF), cantidad de mesas, nombres de mozos y cocina.
+1. Pedir la carta (foto o PDF), cantidad de mesas, nombres de mozos y cocina, y **los datos fiscales del local para dar de alta la facturación con ARCA**.
+   - Hacer una factura de prueba antes del primer servicio.
 2. Cargar categorías, platos y precios; generar los QR por mesa.
 3. Crear usuarios: admin, cada mozo, cocina.
 4. Mandar por WhatsApp la confirmación con fecha de capacitación y del primer servicio.
@@ -106,6 +107,7 @@ Las reglas cambian y dependen del lugar: **confirmá cada punto con el organismo
 - [ ] **Inscripción en ARCA** (monotributo u otro régimen) para poder facturar: arca.gob.ar.
 - [ ] **Ingresos brutos** en tu jurisdicción (AGIP en CABA o ARBA en provincia de Buenos Aires), o el régimen simplificado que corresponda.
 - [ ] **Marca** en el INPI (clases 9, 42 y 35) antes de invertir en publicidad: ver `founder/brand.md`.
+- [ ] **Datos fiscales de tus clientes:** al dar de alta la facturación con ARCA guardás información fiscal y credenciales; guardala cifrada, con el mínimo acceso necesario, y explicalo por escrito.
 - [ ] **Datos personales:** guardás datos de clientes de tus clientes (pedidos, nombres de mozos). Revisar la Ley 25.326 y la inscripción de bases de datos ante la Agencia de Acceso a la Información Pública.
 - [ ] **Términos y condiciones y política de privacidad** en comandy.tech (hoy no aparecen en la web).
 - [ ] **Defensa del consumidor para servicios por internet:** revisar si te aplican el "botón de baja" y el "botón de arrepentimiento" y mostrarlos si corresponde.
@@ -121,7 +123,8 @@ Las reglas cambian y dependen del lugar: **confirmá cada punto con el organismo
 | Corte de internet en un local | alta | alto para ese local | rutina C, plan B ya en la oferta |
 | Vos te enfermás un fin de semana | media | alto | avisar a los locales con anticipación, rutina D escrita, más adelante soporte part-time |
 | Los mozos lo rechazan | media | alto | capacitación de 30 min, primer servicio acompañado, propinas visibles por mozo |
-| Te piden ARCA y no lo tenés | **alta** | medio: pierde a quien ya tiene sistema | decirlo de entrada; evaluar integración con un servicio de facturación |
+| **Falla la facturación con ARCA** en servicio (ARCA caído o error de datos) | media | alto: el local no puede cerrar mesas con factura | factura de prueba en el alta; protocolo para facturar después desde la web de ARCA; revisar los datos fiscales con el dueño |
+| **Desconfianza con los datos fiscales** | alta | medio: frena a quien ya tiene sistema | política escrita de seguridad y de qué pasa con las facturas y los datos si el cliente se va o Comandy cierra; acceso solo con lo mínimo necesario |
 | Un competidor copia lo del mozo | media | medio | el diferencial es el servicio en persona, no la función |
 | Morosidad / inflación sobre el precio congelado | media | medio | débito automático, precio congelado solo 6 meses y solo para 10 |
 | Reclamo público o mala reseña | media | medio | rutina E; responder rápido y en público |

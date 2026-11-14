@@ -1,0 +1,13 @@
+{
+  "id": "P005",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "need",
+  "reason": "Los viernes pierdo comandas y tengo mesas esperando la cuenta, eso me cuesta plata y clientes. Con 30 días gratis sin tarjeta, sin comisión y en paralelo con lo que uso, lo pruebo; si después pago, va a ser el Profesional y negociando.",
+  "objection": "No tengo tiempo de capacitar al equipo, y $46.200 por mes más el Salón a $64.900 si paso de 25 mesas me parece mucho para algo que todavía no sé si mis mozos van a usar en pleno viernes.",
+  "would_change_my_mind": "",
+  "price_too_cheap": 8000,
+  "price_cheap": 20000,
+  "price_expensive": 45000,
+  "price_too_expensive": 70000
+}

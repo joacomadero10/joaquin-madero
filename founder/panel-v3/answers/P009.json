@@ -1,0 +1,13 @@
+{
+  "id": "P009",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo un sistema de comandas que el equipo sabe usar, y este no factura, así que terminaría pagando dos sistemas. Capaz pruebo los 30 días gratis por curiosidad, pero pagar $64.900 por mes además de lo que ya tengo, no lo veo.",
+  "objection": "Cambiarle la forma de trabajar a los mozos y a la cocina en plena temporada es un quilombo, y si no reemplaza mi POS es un gasto encima de otro gasto.",
+  "would_change_my_mind": "Que reemplace del todo lo que uso hoy, facturación incluida, o que en la prueba vea con números que se pierden menos comandas un viernes lleno.",
+  "price_too_cheap": 15000,
+  "price_cheap": 30000,
+  "price_expensive": 50000,
+  "price_too_expensive": 75000
+}

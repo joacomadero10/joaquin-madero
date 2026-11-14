@@ -2,12 +2,12 @@
   "id": "P012",
   "buys": false,
   "purchases_first_month": 0,
-  "reason_code": "price",
-  "reason": "Me gusta que no cobren comisión por pedido, eso sí, pero en un café de 10-12 mesas con dos mozos las comandas las manejamos a los gritos y en papel, y $23.100 por mes todos los meses es plata que hoy no me sobra. Si paso de 12 mesas ya me mandan al de $46.200 y ahí ni loca.",
-  "objection": "Es un costo fijo más cada mes para un problema que en mi local es chico; y con la inflación no sé cuánto me van a cobrar cuando se termine el precio congelado de 6 meses.",
-  "would_change_my_mind": "Que el Básico me cubra hasta 15 mesas a un precio cerca de $12.000-15.000 por mes, y ver en la prueba gratis que realmente me ahorra errores o un sueldo de horas.",
-  "price_too_cheap": 4000,
+  "reason_code": "need",
+  "reason": "Con las mesas que tengo, el mozo canta la comanda y la cocina está a tres metros; no se me pierden tantos pedidos como para pagar otra cuota fija todos los meses. Me gusta que no cobren comisión, pero $23.100 por mes es plata que hoy no me sobra.",
+  "objection": "Es un gasto fijo más todos los meses para un problema que en un local chico casi no tengo, y si tengo más de 12 mesas me mandan al plan de $46.200, que ni loca pago.",
+  "would_change_my_mind": "Que la factura de ARCA desde la app me reemplace de verdad lo que hoy pago para facturar, así la cuota sale casi gratis; ahí probaría los 30 días.",
+  "price_too_cheap": 5000,
   "price_cheap": 10000,
   "price_expensive": 18000,
-  "price_too_expensive": 28000
+  "price_too_expensive": 30000
 }

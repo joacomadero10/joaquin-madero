@@ -54,7 +54,7 @@ Solo pude hacer búsquedas públicas. Esto no es asesoramiento legal, la confirm
 | adjetivo | sí | no |
 | --- | --- | --- |
 | **De cocina** | hablar como se habla en el pase: "comanda", "marchando", "mesa 7 pidió la cuenta" | "optimizá la experiencia omnicanal de tu negocio gastronómico" |
-| **Directo** | decir lo que no hace: "no factura con ARCA, seguís con lo tuyo" | esconder límites en letra chica |
+| **Directo** | decir lo que hace y lo que no: "factura con ARCA; no funciona sin internet, por eso hay plan B" | esconder límites en letra chica |
 | **Presente** | "el viernes estoy en tu cocina" | "contamos con un equipo de soporte de primer nivel" |
 
 **Antes y después** (de `founder/pitch.md`):
@@ -83,7 +83,7 @@ Solo pude hacer búsquedas públicas. Esto no es asesoramiento legal, la confirm
 - No tengo una herramienta de imágenes en esta sesión; si querés conceptos, se pueden generar aparte y se marcan como **conceptos**, no como logo final.
 
 **Los primeros cinco puntos de contacto:**
-1. **Inicio de comandy.tech:** arriba, "Viernes sin comandas perdidas" + "el primer viernes estoy en tu cocina" + botón a WhatsApp. Abajo, plan B y "sin comisión por pedido".
+1. **Inicio de comandy.tech:** arriba, "Viernes sin comandas perdidas" + "el primer viernes estoy en tu cocina" + botón a WhatsApp. Abajo, **factura con ARCA al cerrar la mesa**, plan B y "sin comisión por pedido".
 2. **El "empaque":** el kit que se deja en el local: sticker para la tablet de cocina, talonario del plan B con el logo y una hoja con "qué hacer si se corta internet" pegada al lado de la tablet.
 3. **La confirmación:** el WhatsApp de alta: "Listo, [restaurante]. Mañana cargamos tu carta. El viernes [fecha] estoy con ustedes desde las 20."
 4. **El primer posteo:** video de 15 s de la pantalla de cocina en un servicio real (con permiso del local), con el gancho 1 de marketing.

@@ -1,0 +1,89 @@
+{
+ "n": 20,
+ "seed": 130431,
+ "customer": {
+  "business": "Sistema cerrado para restaurantes: pedido por QR en la mesa, comanda a cocina, cobro en la misma app, con paneles para administrador, cocina y mozos",
+  "target": "Dueños y encargados de restaurantes, bares y cafeterías independientes de 8 a 40 mesas en Argentina",
+  "where": "Argentina, ciudades grandes (CABA, GBA, Córdoba, Rosario)",
+  "age": [
+   28,
+   60
+  ],
+  "segments": [
+   {
+    "name": "Dueño de café o bodegón chico (8-15 mesas)",
+    "share": 0.4,
+    "income": [
+     12000,
+     30000
+    ]
+   },
+   {
+    "name": "Dueño de restaurante o bar mediano (15-40 mesas)",
+    "share": 0.4,
+    "income": [
+     30000,
+     80000
+    ]
+   },
+   {
+    "name": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+    "share": 0.2,
+    "income": [
+     40000,
+     110000
+    ]
+   }
+  ],
+  "behaviours": [
+   {
+    "name": "Ya usa un sistema de gestión",
+    "share": 0.25,
+    "how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar."
+   },
+   {
+    "name": "Todo en papel y cuaderno",
+    "share": 0.2,
+    "how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología."
+   },
+   {
+    "name": "Cuida cada peso",
+    "share": 0.15,
+    "how": "Mira el costo mensual y las comisiones antes que cualquier otra cosa; negocia todo."
+   },
+   {
+    "name": "Busca modernizarse",
+    "share": 0.15,
+    "how": "Prueba herramientas nuevas, ya usa carta QR y quiere menos errores y más rotación de mesas."
+   },
+   {
+    "name": "Le preocupa el personal",
+    "share": 0.15,
+    "how": "Su problema principal es la rotación de mozos y los errores de comanda; teme que los mozos lo rechacen o pierdan propinas."
+   },
+   {
+    "name": "Pide referencias",
+    "share": 0.1,
+    "how": "No compra nada sin ver que otro local conocido lo use y sin una demo en persona."
+   }
+  ],
+  "objections": [
+   "Mis clientes prefieren que los atienda un mozo, no pedir desde el celular",
+   "¿Qué pasa si se cae internet o el sistema en pleno servicio?",
+   "Las comisiones por cobrar en la app me comen el margen",
+   "Ya pagué por otro sistema y cambiar es un lío",
+   "Los mozos van a sentir que les sacamos propinas o trabajo",
+   "Necesito que se integre con facturación electrónica de AFIP/ARCA",
+   "No tengo tiempo de capacitar al equipo",
+   "¿Quién me da soporte un sábado a las 22 hs?"
+  ],
+  "habits": [
+   "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana",
+   "cobrás la mayoría con Mercado Pago y tarjeta",
+   "tenés 4 a 10 empleados entre cocina y salón",
+   "ya tenés la carta en un QR que solo muestra un PDF",
+   "un viernes a la noche se te traspapelan comandas y hay mesas que esperan la cuenta 15 minutos"
+  ]
+ },
+ "pitch": "Comandy, \"Viernes sin comandas perdidas\": sistema para restaurantes y bares que se usa desde el navegador, sin hardware (celulares del equipo y una tablet o TV vieja para cocina). Los mozos toman pedidos desde el celular, la cocina los ve al instante con temporizador y aviso sonoro, y el mozo recibe alerta cuando el plato está listo. El cliente puede pedir por QR, pero el mozo aprueba cada pedido: el mozo sigue atendiendo la mesa y cada mozo ve sus propinas del turno. El dueño ve en vivo mesas, facturación del día y propinas. Sin comisión por pedido.\nPrecios en pesos: Básico $23.100/mes (hasta 12 mesas); Profesional $46.200/mes (hasta 25 mesas, 5 mozos); Salón $64.900/mes (hasta 40 mesas, 10 mozos, soporte por WhatsApp viernes y sábado hasta el cierre); Premium $92.400/mes (ilimitado, 3 pantallas, soporte 24/7). No factura con ARCA: seguís facturando con lo que usás hoy.\nPrograma Primeros 10 restaurantes (cupos reales, hasta completar 10 o el 31/12/2026): 30 días gratis sin tarjeta; cargamos tu menú y capacitamos 1 hora a mozos y cocina en tu local; el fundador se queda con tu equipo tu primer viernes o sábado de servicio (CABA y GBA); precio congelado 6 meses.\nPlan B si se corta internet, incluido: la tablet de cocina y los mozos pasan a datos del celular en un minuto, y si tampoco hay datos, talonario de comandas impreso con número de mesa y protocolo para cargar los pedidos cuando vuelve la conexión. Podés usarlo en paralelo con tu sistema actual durante la prueba, sin cortar el servicio.\nGarantía: si en tu primer mes pago no te sirvió, te devolvemos ese mes completo."
+}

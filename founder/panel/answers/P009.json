@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tengo un sistema de comandas que el equipo sabe usar, y este no factura, así que terminaría pagando dos sistemas. Capaz pruebo los 30 días gratis por curiosidad, pero pagar $64.900 por mes además de lo que ya tengo, no lo veo.",
-  "objection": "Cambiarle la forma de trabajar a los mozos y a la cocina en plena temporada es un quilombo, y si no reemplaza mi POS es un gasto encima de otro gasto.",
-  "would_change_my_mind": "Que reemplace del todo lo que uso hoy, facturación incluida, o que en la prueba vea con números que se pierden menos comandas un viernes lleno.",
-  "price_too_cheap": 15000,
-  "price_cheap": 30000,
+  "reason": "Ya tengo un sistema de comandas que el equipo maneja de memoria y que anda; cambiar a mitad de temporada para pagar otro abono más no me cierra. Capaz pruebo los 30 días gratis por curiosidad, pero pagar, hoy no.",
+  "objection": "Que los mozos lo vivan como un control más o que el QR les saque mesas y propina, y que un viernes a full con un sistema nuevo en el celular de cada uno se arme lío y lo pague el servicio.",
+  "would_change_my_mind": "Que mi sistema actual me falle un viernes o que la prueba en paralelo me demuestre que salen menos comandas perdidas y los mozos mismos me pidan quedarse con Comandy.",
+  "price_too_cheap": 10000,
+  "price_cheap": 25000,
   "price_expensive": 50000,
   "price_too_expensive": 75000
 }

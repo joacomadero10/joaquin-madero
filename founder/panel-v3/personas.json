@@ -1,0 +1,222 @@
+[
+ {
+  "id": "P001",
+  "name": "Ivy",
+  "age": 35,
+  "segment": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+  "income": 58000,
+  "behaviour": "Ya usa un sistema de gestión",
+  "behaviour_how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar.",
+  "objection": "Las comisiones por cobrar en la app me comen el margen",
+  "habit": "cobrás la mayoría con Mercado Pago y tarjeta"
+ },
+ {
+  "id": "P002",
+  "name": "Marcus",
+  "age": 39,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 79000,
+  "behaviour": "Le preocupa el personal",
+  "behaviour_how": "Su problema principal es la rotación de mozos y los errores de comanda; teme que los mozos lo rechacen o pierdan propinas.",
+  "objection": "No tengo tiempo de capacitar al equipo",
+  "habit": "tenés 4 a 10 empleados entre cocina y salón"
+ },
+ {
+  "id": "P003",
+  "name": "Tariq",
+  "age": 32,
+  "segment": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+  "income": 88000,
+  "behaviour": "Pide referencias",
+  "behaviour_how": "No compra nada sin ver que otro local conocido lo use y sin una demo en persona.",
+  "objection": "Ya pagué por otro sistema y cambiar es un lío",
+  "habit": "tenés 4 a 10 empleados entre cocina y salón"
+ },
+ {
+  "id": "P004",
+  "name": "Caleb",
+  "age": 56,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 15000,
+  "behaviour": "Ya usa un sistema de gestión",
+  "behaviour_how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar.",
+  "objection": "Necesito que se integre con facturación electrónica de AFIP/ARCA",
+  "habit": "un viernes a la noche se te traspapelan comandas y hay mesas que esperan la cuenta 15 minutos"
+ },
+ {
+  "id": "P005",
+  "name": "Farah",
+  "age": 30,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 39000,
+  "behaviour": "Cuida cada peso",
+  "behaviour_how": "Mira el costo mensual y las comisiones antes que cualquier otra cosa; negocia todo.",
+  "objection": "No tengo tiempo de capacitar al equipo",
+  "habit": "un viernes a la noche se te traspapelan comandas y hay mesas que esperan la cuenta 15 minutos"
+ },
+ {
+  "id": "P006",
+  "name": "Poppy",
+  "age": 45,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 29000,
+  "behaviour": "Todo en papel y cuaderno",
+  "behaviour_how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología.",
+  "objection": "No tengo tiempo de capacitar al equipo",
+  "habit": "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana"
+ },
+ {
+  "id": "P007",
+  "name": "Ethan",
+  "age": 41,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 16000,
+  "behaviour": "Todo en papel y cuaderno",
+  "behaviour_how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología.",
+  "objection": "Ya pagué por otro sistema y cambiar es un lío",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P008",
+  "name": "Tess",
+  "age": 29,
+  "segment": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+  "income": 100000,
+  "behaviour": "Le preocupa el personal",
+  "behaviour_how": "Su problema principal es la rotación de mozos y los errores de comanda; teme que los mozos lo rechacen o pierdan propinas.",
+  "objection": "Ya pagué por otro sistema y cambiar es un lío",
+  "habit": "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana"
+ },
+ {
+  "id": "P009",
+  "name": "Malik",
+  "age": 45,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 34000,
+  "behaviour": "Ya usa un sistema de gestión",
+  "behaviour_how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar.",
+  "objection": "Los mozos van a sentir que les sacamos propinas o trabajo",
+  "habit": "cobrás la mayoría con Mercado Pago y tarjeta"
+ },
+ {
+  "id": "P010",
+  "name": "Victor",
+  "age": 45,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 22000,
+  "behaviour": "Le preocupa el personal",
+  "behaviour_how": "Su problema principal es la rotación de mozos y los errores de comanda; teme que los mozos lo rechacen o pierdan propinas.",
+  "objection": "¿Qué pasa si se cae internet o el sistema en pleno servicio?",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P011",
+  "name": "Hugo",
+  "age": 59,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 16000,
+  "behaviour": "Todo en papel y cuaderno",
+  "behaviour_how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología.",
+  "objection": "Mis clientes prefieren que los atienda un mozo, no pedir desde el celular",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P012",
+  "name": "Lucia",
+  "age": 47,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 19000,
+  "behaviour": "Cuida cada peso",
+  "behaviour_how": "Mira el costo mensual y las comisiones antes que cualquier otra cosa; negocia todo.",
+  "objection": "Las comisiones por cobrar en la app me comen el margen",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P013",
+  "name": "Hana",
+  "age": 57,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 75000,
+  "behaviour": "Busca modernizarse",
+  "behaviour_how": "Prueba herramientas nuevas, ya usa carta QR y quiere menos errores y más rotación de mesas.",
+  "objection": "Las comisiones por cobrar en la app me comen el margen",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P014",
+  "name": "Mateo",
+  "age": 37,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 25000,
+  "behaviour": "Ya usa un sistema de gestión",
+  "behaviour_how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar.",
+  "objection": "Ya pagué por otro sistema y cambiar es un lío",
+  "habit": "cobrás la mayoría con Mercado Pago y tarjeta"
+ },
+ {
+  "id": "P015",
+  "name": "Finn",
+  "age": 38,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 78000,
+  "behaviour": "Busca modernizarse",
+  "behaviour_how": "Prueba herramientas nuevas, ya usa carta QR y quiere menos errores y más rotación de mesas.",
+  "objection": "¿Qué pasa si se cae internet o el sistema en pleno servicio?",
+  "habit": "tenés 4 a 10 empleados entre cocina y salón"
+ },
+ {
+  "id": "P016",
+  "name": "Amara",
+  "age": 35,
+  "segment": "Dueño de café o bodegón chico (8-15 mesas)",
+  "income": 22000,
+  "behaviour": "Ya usa un sistema de gestión",
+  "behaviour_how": "Tiene un POS o sistema de comandas instalado y le cuesta cambiar porque el equipo ya lo sabe usar.",
+  "objection": "Necesito que se integre con facturación electrónica de AFIP/ARCA",
+  "habit": "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana"
+ },
+ {
+  "id": "P017",
+  "name": "Owen",
+  "age": 52,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 53000,
+  "behaviour": "Cuida cada peso",
+  "behaviour_how": "Mira el costo mensual y las comisiones antes que cualquier otra cosa; negocia todo.",
+  "objection": "Los mozos van a sentir que les sacamos propinas o trabajo",
+  "habit": "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana"
+ },
+ {
+  "id": "P018",
+  "name": "Ezra",
+  "age": 48,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 54000,
+  "behaviour": "Busca modernizarse",
+  "behaviour_how": "Prueba herramientas nuevas, ya usa carta QR y quiere menos errores y más rotación de mesas.",
+  "objection": "Las comisiones por cobrar en la app me comen el margen",
+  "habit": "un viernes a la noche se te traspapelan comandas y hay mesas que esperan la cuenta 15 minutos"
+ },
+ {
+  "id": "P019",
+  "name": "Maya",
+  "age": 43,
+  "segment": "Dueño de restaurante o bar mediano (15-40 mesas)",
+  "income": 60000,
+  "behaviour": "Pide referencias",
+  "behaviour_how": "No compra nada sin ver que otro local conocido lo use y sin una demo en persona.",
+  "objection": "¿Quién me da soporte un sábado a las 22 hs?",
+  "habit": "ya tenés la carta en un QR que solo muestra un PDF"
+ },
+ {
+  "id": "P020",
+  "name": "Rohan",
+  "age": 38,
+  "segment": "Gerente de un grupo gastronómico o franquicia chica (2-5 locales)",
+  "income": 70000,
+  "behaviour": "Todo en papel y cuaderno",
+  "behaviour_how": "Comandas a mano, caja en planilla o cuaderno, desconfía de la tecnología.",
+  "objection": "Mis clientes prefieren que los atienda un mozo, no pedir desde el celular",
+  "habit": "abrís el local a las 11 y cerrás pasada la medianoche los fines de semana"
+ }
+]

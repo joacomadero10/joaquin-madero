@@ -1,0 +1,13 @@
+{
+  "id": "P017",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Con mis 30 mesas me toca el plan Salón, casi 65 lucas por mes todos los meses, y hoy con la comanda de papel me arreglo. La prueba gratis capaz la hago, pero pagar eso fijo cuando cuido cada peso, no lo veo por ahora.",
+  "objection": "Que los mozos lo sientan como control y encima tengan que usar su propio celular y sus datos para trabajar; si ellos no lo quieren, en un sábado lleno se vuelve a la libreta y pagué por nada.",
+  "would_change_my_mind": "Ver un sábado entero en mi local con mis mozos usándolo sin quejarse y que me baje el precio a unos 40 mil para mi tamaño.",
+  "price_too_cheap": 10000,
+  "price_cheap": 25000,
+  "price_expensive": 45000,
+  "price_too_expensive": 70000
+}

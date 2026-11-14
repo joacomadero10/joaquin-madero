@@ -26,6 +26,7 @@ Tipo de negocio: suscripción con servicio en persona. **Prueba: 3 restaurantes 
 | | Elegir zona y armar lista de 40 restaurantes | Joaquín | mar 17/11 |
 | | Actualizar comandy.tech: escalera de planes, plan B, "sin comisión por pedido", Primeros 10, términos y privacidad, tagline | Joaquín | mié 18/11 |
 | **23–29/11** | ⚑ Escribir y probar el plan B en un servicio simulado (datos del celular + talonario) | Joaquín | mar 24/11 |
+| | Política de seguridad de datos fiscales y "qué pasa si te vas", publicada en la web | Joaquín (+ abogado) | mié 25/11 |
 | | Imprimir folletos, talonarios numerados y hoja "qué hacer si se corta internet" | Joaquín | lun 23/11 |
 | | Condiciones escritas de la garantía y del precio congelado | Joaquín (+ abogado si hay dudas) | mié 25/11 |
 | | Visitas: 20 restaurantes | Joaquín | jue 26/11 |
@@ -69,4 +70,4 @@ Equipo: no hay contrataciones; la "capacitación" es tuya sobre las rutinas de `
 
 - **Día 7 (lun 7/12):** ¿cuántas visitas, demos y pruebas? ¿Qué objeción escuchaste más que no estaba en el panel? ¿Cómo salieron los primeros servicios acompañados?
 - **Día 14 (mar 15/12):** ¿se cumple la línea de éxito (≥ 8 demos)? ¿Alguien pidió la garantía o abandonó la prueba? ¿Cuánto costó cada alta en plata y horas (para el CFO)?
-- **Día 30 (jue 31/12):** ¿cuántos de los 10 cupos se llenaron? ¿Cuántos van a pagar en enero? ¿ARCA apareció como motivo de "no" en la vida real como en el panel? Decidir: seguir igual, cambiar la oferta, o priorizar desarrollar facturación en enero (mes flojo en gastronomía).
+- **Día 30 (jue 31/12):** ¿cuántos de los 10 cupos se llenaron? ¿Cuántos van a pagar en enero? ¿La desconfianza con los datos fiscales apareció en la vida real como en el panel? ¿Funcionó la facturación con ARCA en todos los locales piloto? Decidir: seguir igual o cambiar la oferta. Enero (mes flojo en gastronomía) sirve para trabajar la confianza: referencias y casos reales.

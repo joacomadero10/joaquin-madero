@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Con el cuaderno y las comandas en papel me arreglo hace años y en un local de 10 mesas no se me pierden tantas. Meter celulares y una tablet en el medio del servicio me parece más lío que solución, aunque la prueba sea gratis.",
-  "objection": "No tengo tiempo de capacitar al equipo ni de pelearme con la tecnología; si un viernes a la noche se traba algo, me quedo con la cocina parada y nadie a quien llamar en el plan básico.",
-  "would_change_my_mind": "Ver funcionando en un bodegón como el mío, con mozos de mi edad, un viernes lleno, y que me lo recomiende un colega que conozco.",
+  "reason": "Con el cuaderno y las comandas a mano me arreglo hace años, y no voy a meter celulares y una tablet en medio de un viernes lleno. Que sea gratis el primer mes no me cambia que tengo que cambiar cómo trabaja todo el equipo.",
+  "objection": "No tengo tiempo de capacitar al equipo, y si un viernes a las 11 de la noche se cuelga algo o se corta internet, me quedo sin comandas y con el salón lleno. Encima darles mis datos fiscales para que me facturen desde una app no me cierra.",
+  "would_change_my_mind": "Ver funcionando un viernes a la noche en un bodegón como el mío, de alguien que conozco, que trabajaba en papel igual que yo y que me diga que los mozos lo aprendieron en una noche.",
   "price_too_cheap": 5000,
   "price_cheap": 12000,
-  "price_expensive": 20000,
-  "price_too_expensive": 30000
+  "price_expensive": 23100,
+  "price_too_expensive": 40000
 }

@@ -1,0 +1,13 @@
+{
+  "id": "P020",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "En mis locales todo anda con comanda en papel y cuaderno, y los mozos se conocen el sistema de memoria; meter celulares y una tablet en la cocina en pleno servicio me parece más lío que solución. Mis clientes quieren un mozo que los atienda, no un QR.",
+  "objection": "Que un viernes a la noche con el salón lleno se cuelgue algo, se pierda un pedido o los mozos estén mirando el celular en vez de la mesa, y encima tener que pagar por cada local.",
+  "would_change_my_mind": "Ver funcionando en un local parecido al mío un sábado lleno, sin que se pierda ni una comanda, y que mis propios encargados me digan que es más rápido que el papel.",
+  "price_too_cheap": 10000,
+  "price_cheap": 18000,
+  "price_expensive": 35000,
+  "price_too_expensive": 55000
+}

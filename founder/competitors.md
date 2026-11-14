@@ -59,7 +59,7 @@ Para reforzar esto hace falta leer reseñas de Google Maps y grupos de dueños g
 
 ## 5. El hueco
 
-**No hay un hueco grande.** El mercado está lleno de sistemas en la nube a precio parecido, varios con ARCA (Mesanube, YoFacturo) y uno con modo sin internet (Maxirest). "Sin comisión" y "sin hardware" ya los dicen otros (Comandar, HivePOS). Es el resultado más útil de esta skill: Comandy no gana por funciones ni por precio.
+**No hay un hueco grande.** El mercado está lleno de sistemas en la nube a precio parecido, varios con ARCA (Mesanube, YoFacturo; Comandy también factura con ARCA según el fundador, aunque su web no lo dice) y uno con modo sin internet (Maxirest). "Sin comisión" y "sin hardware" ya los dicen otros (Comandar, HivePOS). Es el resultado más útil de esta skill: Comandy no gana por funciones ni por precio.
 
 Lo que sí parece poco cubierto, según la evidencia:
 
@@ -69,8 +69,8 @@ Lo que sí parece poco cubierto, según la evidencia:
 
 ## 6. La amenaza
 
-- **Mesanube y YoFacturo** ya tienen ARCA y precio similar: si un dueño compara, Comandy pierde por esa función.
+- **Mesanube y YoFacturo** tienen ARCA y precio similar. Comandy también factura, pero si la web no lo dice, el dueño que compara cree que no.
 - **Fudo** puede copiar la aprobación del mozo o las propinas por mozo en un trimestre y tiene distribución que Comandy no tiene.
 - **ComandaYa (ARS 16.000)** le gana en precio al Básico.
 
-Respuesta posible: no competir en lista de funciones sino en **servicio local** (instalación en persona, soporte un sábado a la noche) en una zona concreta, y resolver ARCA (integración o convivencia documentada) lo antes posible.
+Respuesta posible: no competir en lista de funciones sino en **servicio local** (instalación en persona, soporte un sábado a la noche) en una zona concreta, y poner la facturación con ARCA en la web, porque hoy no aparece.

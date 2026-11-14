@@ -1,0 +1,13 @@
+{
+  "id": "P013",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "need",
+  "reason": "Ya tengo el QR con un PDF que no sirve para nada y los viernes se pierden comandas; sin comisión por pedido, 30 días gratis sin tarjeta y en paralelo con lo que uso, lo pruebo. Si a fin de mes la cocina y los mozos lo usan de verdad, pago el plan Salón.",
+  "objection": "Que el viernes a las 22 se caiga internet o se trabe el celular de un mozo y la cocina quede a ciegas, y que el equipo vuelva al papel porque le resulta más rápido. Además $64.900 por mes más lo que ya pago para facturar es otro fijo.",
+  "would_change_my_mind": "Si en la prueba los mozos o la cocina lo rechazan, o si se cae en pleno servicio, no lo pago.",
+  "price_too_cheap": 12000,
+  "price_cheap": 35000,
+  "price_expensive": 70000,
+  "price_too_expensive": 110000
+}

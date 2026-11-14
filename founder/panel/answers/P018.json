@@ -3,11 +3,11 @@
   "buys": true,
   "purchases_first_month": 1,
   "reason_code": "need",
-  "reason": "Los viernes pierdo comandas y las mesas esperan la cuenta; si es sin comisión por pedido, sin hardware y con 30 días gratis sin tarjeta, lo pruebo en paralelo y si los mozos lo adoptan paso al Salón.",
-  "objection": "Que no facture con ARCA me obliga a cargar todo dos veces en caja, y no sé si los mozos más grandes lo van a usar en pleno viernes sin trabarse.",
-  "would_change_my_mind": "Si en la prueba los mozos lo abandonan a mitad del servicio o se cae la conexión un viernes y el plan B no funciona, lo dejo.",
-  "price_too_cheap": 15000,
-  "price_cheap": 35000,
-  "price_expensive": 70000,
-  "price_too_expensive": 110000
+  "reason": "Los viernes se me pierden comandas y las mesas esperan la cuenta, y esto apunta justo ahí sin comisión por pedido y sin comprar hardware. Con 30 días gratis, sin tarjeta y el fundador en mi primer viernes, lo pruebo en paralelo, y si funciona pago el Profesional o el Salón.",
+  "objection": "Que sea una empresa chica y nueva: si un viernes a las 22 se cae el sistema o la factura de ARCA sale mal, el problema es mío, y no me gusta darle los datos fiscales del local a alguien que recién arranca.",
+  "would_change_my_mind": "Que en la prueba falle un viernes de servicio fuerte o que la facturación de ARCA me dé un solo error con un cliente.",
+  "price_too_cheap": 12000,
+  "price_cheap": 30000,
+  "price_expensive": 65000,
+  "price_too_expensive": 95000
 }

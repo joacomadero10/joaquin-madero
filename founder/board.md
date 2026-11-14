@@ -20,7 +20,7 @@ Los tres miembros aplican marcos publicados (la lente de Ofertas, de Monopolio y
 
 - [ ] **3 restaurantes reales de 15 a 40 mesas** usándolo en servicio de fin de semana, con el fundador presente, lista escrita de fallas y testimonio con nombre, antes de gastar en publicidad. *(Ofertas, Producto, Monopolio pide 10 pagos)* → `/founder-launch`
 - [ ] **Plan B para caídas de internet** (cola local, impresión de respaldo o protocolo escrito) y respuesta pública a esa pregunta. *(Producto, Ofertas)* → `/founder-ops`, `/founder-offer`
-- [ ] **Respuesta para ARCA y cobro**: integración o flujo documentado que no sume trabajo al cierre. *(los tres)* → `/founder-ops`
+- [x] **Respuesta para ARCA** *(los tres)*: la app factura con ARCA según el fundador. **Falta:** mostrarlo en la web y responder la nueva duda (seguridad de los datos fiscales, qué pasa si Comandy cierra). El cobro desde el celular del cliente sigue sin existir. → `/founder-ops`
 - [ ] **Mapa de competidores con un hueco real.** *(Monopolio)* → `/founder-competitors`
 - [ ] **Una cabeza de playa definida**: tipo de local, zona y cuántos locales hay. *(Monopolio, Ofertas)* → `/founder-competitors`, `/founder-marketing`
 - [ ] **Propuesta de una frase** centrada en el caos del fin de semana; esconder lo que no la sirva. *(Producto)* → `/founder-marketing`, `/founder-brand`

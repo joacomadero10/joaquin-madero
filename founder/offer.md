@@ -43,7 +43,7 @@ Método: la lente de Ofertas (resumen propio de un marco publicado; no son palab
 | 5, 6 | **Escalera nueva**: Básico hasta 12 mesas, Profesional hasta 25, **Salón** 64.900 hasta 40 | 4 | 1 | sí |
 | 18 | **Soporte viernes y sábado hasta el cierre** en el plan Salón | 4 | 2 | sí |
 | 19, 20 | **Garantía**: si tu primer mes pago no te sirvió, te devolvemos ese mes | 4 | 2 | sí |
-| 3 | Integración con ARCA | 5 | 5 | **no por ahora**: se dice con honestidad ("seguís facturando con lo que usás hoy") |
+| 3 | **Factura electrónica de ARCA desde la app** (ya existe según el fundador; se da de alta en el setup con los datos fiscales del local) | 5 | 1 | **sí** |
 | 9 | Exportar tus datos si te vas | 3 | 2 | más adelante |
 | 14 | Recomendación de cargador en el salón | 1 | 0 | en la capacitación |
 
@@ -88,5 +88,17 @@ El mayor salto es la **probabilidad percibida**, que era el riesgo número uno d
 - **Objeciones que bajaron:** desconfianza (4 → 2), capacitación, propinas de los mozos.
 - **Objeción que creció: ARCA.** Al decirlo con honestidad, pasó a ser la razón principal de los que ya tienen otro sistema (P001, P004, P009, P014, P016). **El problema ahí no es la oferta, es el producto**: sin facturación, Comandy es un segundo sistema y no un reemplazo.
 - **Sin cambios:** los grupos de locales y los bodegones en papel no se mueven. No son el cliente de ahora.
+
+### Re-test con ARCA (`panel`, la versión anterior quedó en `panel-v3`)
+
+Al saber que la app factura con ARCA, se cambió una sola línea de la oferta y se volvió a correr el mismo panel:
+
+| | sin ARCA (`panel-v3`) | con ARCA (`panel`) |
+| --- | ---: | ---: |
+| **Compran** | 6 de 20 (30%) | **6 de 20 (30%), los mismos** |
+
+- **Bajó:** "voy a pagar dos sistemas". Ya casi nadie lo dice.
+- **Apareció en su lugar:** *"no le doy los datos fiscales de mi local a una empresa que recién empieza"* y *"si falla la factura un sábado no puedo cerrar mesas"*. Se repite en la mayoría de los "no" y también en las dudas de los que compran.
+- **Lectura:** para el que ya tiene sistema, ARCA era la excusa visible; debajo está **la confianza en una empresa nueva** y el costo de cambiar. ARCA es necesario para competir (Mesanube y YoFacturo lo tienen) pero no alcanza solo. Lo que lo destraba son las respuestas de confianza: quién guarda los datos y cómo, qué pasa con tus facturas si Comandy cierra, y referencias reales.
 
 Recordá: compradores simulados; el 30% es un techo y casi todos los "sí" son "pruebo el mes gratis".

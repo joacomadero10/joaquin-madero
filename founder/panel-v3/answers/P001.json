@@ -1,0 +1,13 @@
+{
+  "id": "P001",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tenemos un sistema de comandas en los locales y el equipo lo maneja de memoria; meter otro que encima no factura con ARCA es tener dos sistemas para lo mismo. Que no cobre comisión está bien, pero mi problema no es ese.",
+  "objection": "Cambiar el sistema en varios locales a la vez es reentrenar a todos los mozos y la cocina, y si en un viernes lleno falla, el que pone la cara soy yo. Además seguiría cargando todo dos veces porque la facturación queda afuera.",
+  "would_change_my_mind": "Que se integre con nuestro POS o facture con ARCA, así no duplicamos carga, y poder probarlo primero en un solo local un mes sin tocar los demás.",
+  "price_too_cheap": 10000,
+  "price_cheap": 25000,
+  "price_expensive": 55000,
+  "price_too_expensive": 85000
+}

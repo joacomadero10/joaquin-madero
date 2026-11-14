@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tengo un POS que mi equipo sabe usar y que me factura con ARCA; sumar Comandy es pagar otro sistema y cargar todo dos veces. En un café de 12-15 mesas no pierdo tantas comandas como para justificarlo.",
-  "objection": "No factura con ARCA: me obliga a tener dos sistemas en paralelo para siempre, y con más de 12 mesas ya me salta al plan de $46.200, que es mucha plata por algo que mi POS más o menos ya hace.",
-  "would_change_my_mind": "Que facture electrónicamente con ARCA y reemplace mi POS actual, así pago un solo sistema en vez de dos.",
-  "price_too_cheap": 5000,
-  "price_cheap": 12000,
-  "price_expensive": 25000,
-  "price_too_expensive": 40000
+  "reason": "Ya tengo un sistema que factura y que mis chicos saben usar; con 8 a 15 mesas casi no pierdo comandas, así que no voy a cambiar todo y reentrenar al equipo por esto. Capaz pruebo los 30 días gratis si me sobra tiempo, pero pagar dos sistemas no.",
+  "objection": "Cambiar de sistema con el local andando: el equipo ya sabe usar el que tengo, y si la facturación de ARCA falla un sábado a la noche me quedo sin poder cerrar mesas. Y si paso de 12 mesas ya me vas al plan de $46.200, que para un café chico es mucho.",
+  "would_change_my_mind": "Que el plan Básico me cubra hasta 15 mesas a un precio que reemplace lo que hoy pago por mi sistema actual, y ver funcionar la factura de ARCA en mi local durante la prueba sin un solo error.",
+  "price_too_cheap": 7000,
+  "price_cheap": 14000,
+  "price_expensive": 28000,
+  "price_too_expensive": 45000
 }

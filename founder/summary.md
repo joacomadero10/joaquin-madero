@@ -19,7 +19,7 @@
 
 **Dónde no coincidieron:** el directorio votó 2 FUND IF y 1 PASS. El voto en contra (lente de Monopolio) dice que no hay nada que impida que te copien. El panel muestra que, con la oferta correcta, el restaurante mediano prueba. Competidores confirma que el mercado está lleno y que el hueco es el **servicio en persona**, no las funciones.
 
-**El riesgo más grande:** que Comandy sea un **segundo sistema** al lado del que factura con ARCA. Fue la razón número uno de los "no" en el último panel. Plan: decirlo de entrada, apuntar a quien no tiene sistema o tiene uno que no le sirve, y evaluar la facturación en enero, que es mes flojo.
+**El riesgo más grande: la confianza en una empresa nueva.** La app ya factura con ARCA (y eso sacó la objeción de "pagar dos sistemas"), pero en el panel quedó la misma cantidad de compradores: la duda pasó a ser *"no le doy mis datos fiscales a una empresa que recién empieza"* y *"si falla la factura un sábado no puedo cerrar mesas"*. Plan: poner ARCA en la web (hoy no aparece), publicar cómo se guardan los datos fiscales y qué pasa si el cliente se va, hacer una factura de prueba en cada alta y conseguir las primeras referencias reales.
 
 **Para arrancar:**
 - ARS 599.236 de caja según el CFO, o menos si recortás la publicidad.

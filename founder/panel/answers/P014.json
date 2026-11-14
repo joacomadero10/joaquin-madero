@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tengo mi sistema de comandas, lo pagué y los chicos lo saben usar. En un café de 10 mesas no se me pierden tantas comandas como para meter otro sistema y otro gasto de $23.100 por mes encima del que ya tengo.",
-  "objection": "Cambiar es un lío: reaprender todo con el equipo, usar dos sistemas en paralelo durante la prueba y encima seguir facturando con lo otro. Termino pagando dos cosas por algo que más o menos ya resuelvo.",
-  "would_change_my_mind": "Que reemplace del todo a lo que uso hoy, incluida la facturación con ARCA, así doy de baja el otro sistema y no pago doble.",
+  "reason": "Ya tengo un sistema que pagué y que el equipo sabe usar; en un café de 12 mesas no se me pierden tantas comandas como para meter otro sistema y otra cuota de $23.100 por mes. Lo de los 30 días gratis está bien, pero aunque me lo carguen igual tengo que reentrenar a todos y no tengo cabeza para eso ahora.",
+  "objection": "Cambiar es un lío: ya pagué por otro sistema, la gente lo maneja de memoria, y no quiero terminar pagando dos sistemas o tener al equipo confundido un sábado a la noche.",
+  "would_change_my_mind": "Que mi sistema actual me falle de verdad o me suba mucho el precio, o que Comandy reemplace del todo lo que pago hoy (incluida la facturación) por menos plata de la que pago ahora.",
   "price_too_cheap": 7000,
-  "price_cheap": 12000,
+  "price_cheap": 14000,
   "price_expensive": 25000,
-  "price_too_expensive": 40000
+  "price_too_expensive": 38000
 }

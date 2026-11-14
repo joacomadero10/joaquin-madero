@@ -6,7 +6,7 @@
 
 **El cliente.** Dueños de restaurantes y bares independientes de 15 a 40 mesas en CABA y GBA, con mozos y caos de fin de semana.
 
-**La oferta.** "Viernes sin comandas perdidas". El mozo toma y aprueba los pedidos en el celular, la cocina los ve al instante y el dueño ve todo en vivo. No necesita hardware y no cobra comisión por pedido. El Programa Primeros 10 incluye:
+**La oferta.** "Viernes sin comandas perdidas". El mozo toma y aprueba los pedidos en el celular, la cocina los ve al instante, el dueño ve todo en vivo y **la factura de ARCA sale al cerrar la mesa**. No necesita hardware y no cobra comisión por pedido. El Programa Primeros 10 incluye:
 - 30 días gratis.
 - Carga de la carta y capacitación en el local.
 - El fundador presente el primer viernes o sábado.
@@ -32,8 +32,8 @@
 | Panel de compradores | 6 compran · 14 pasan |
 
 **La evidencia.**
-- **Panel simulado:** con la oferta nueva compra el 30% (6 de 20), contra 20% con la web actual. En restaurantes medianos compra el 62%.
-- **Competencia:** el mercado está lleno (mediana ARS 40.000/mes) y varios competidores facturan con ARCA. El hueco es el servicio en persona: el líder tiene 2,4/5 en atención según una muestra chica de reseñas.
+- **Panel simulado:** con la oferta nueva compra el 30% (6 de 20), contra 20% con la web actual. En restaurantes medianos compra el 62%. Sumar ARCA no cambió el número: la duda pasó a ser la confianza en una empresa nueva.
+- **Competencia:** el mercado está lleno (mediana ARS 40.000/mes); Comandy factura con ARCA como Mesanube y YoFacturo. El hueco es el servicio en persona: el líder tiene 2,4/5 en atención según una muestra chica de reseñas.
 - **Prueba real:** todavía ninguna. La primera es 40 visitas, 3 pruebas y 2 que pagan en enero de 2027.
 
 **Para qué es la plata.**

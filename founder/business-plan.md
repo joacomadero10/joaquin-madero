@@ -24,7 +24,7 @@
 - Who it is for: dueños y encargados de restaurantes, bares y cafeterías independientes en Argentina (ciudades grandes), de 8 a 40 mesas.
 - What it sells, at what price: suscripción mensual en pesos. Básico ARS 23.100/mes (hasta 10 mesas, 2 mozos); Profesional ARS 46.200/mes (hasta 20 mesas, 5 mozos, inventario, proveedores, pedidos de apps de delivery, soporte prioritario); Premium ARS 92.400/mes (mesas y mozos ilimitados, hasta 3 pantallas, soporte 24/7). Sin comisión por pedido. 30 días gratis sin tarjeta. Oferta de lanzamiento para los primeros 10: setup y carga del menú incluidos, capacitación de 1 hora, 20% off pagando anual hasta el 31/12/2026.
 - Where and how: online (comandy.tech), venta por demo de 15 minutos por WhatsApp y formulario web; funcionando en menos de 24 horas.
-- Budget and constraints: fundador solo, sin sueldo; el producto ya está construido y publicado; 0 clientes pagos hoy; menos de ARS 500.000 para arrancar (publicidad, movilidad para setup y capacitación, legales, imprevistos); infraestructura menor a ARS 50.000/mes. No hay pago desde el celular del cliente, ni facturación electrónica ARCA, ni modo sin internet mencionados en la oferta.
+- Budget and constraints: fundador solo, sin sueldo; el producto ya está construido y publicado; 0 clientes pagos hoy; menos de ARS 500.000 para arrancar (publicidad, movilidad para setup y capacitación, legales, imprevistos); infraestructura menor a ARS 50.000/mes. Factura electrónica de ARCA desde la app (dato del fundador: se da de alta con los datos fiscales del local; la web todavía no lo menciona). No hay pago desde el celular del cliente ni modo sin internet.
 
 ## Summary
 
@@ -47,7 +47,7 @@
 
 **Dónde no coincidieron:** el directorio votó 2 FUND IF y 1 PASS. El voto en contra (lente de Monopolio) dice que no hay nada que impida que te copien. El panel muestra que, con la oferta correcta, el restaurante mediano prueba. Competidores confirma que el mercado está lleno y que el hueco es el **servicio en persona**, no las funciones.
 
-**El riesgo más grande:** que Comandy sea un **segundo sistema** al lado del que factura con ARCA. Fue la razón número uno de los "no" en el último panel. Plan: decirlo de entrada, apuntar a quien no tiene sistema o tiene uno que no le sirve, y evaluar la facturación en enero, que es mes flojo.
+**El riesgo más grande: la confianza en una empresa nueva.** La app ya factura con ARCA (y eso sacó la objeción de "pagar dos sistemas"), pero en el panel quedó la misma cantidad de compradores: la duda pasó a ser *"no le doy mis datos fiscales a una empresa que recién empieza"* y *"si falla la factura un sábado no puedo cerrar mesas"*. Plan: poner ARCA en la web (hoy no aparece), publicar cómo se guardan los datos fiscales y qué pasa si el cliente se va, hacer una factura de prueba en cada alta y conseguir las primeras referencias reales.
 
 **Para arrancar:**
 - ARS 599.236 de caja según el CFO, o menos si recortás la publicidad.
@@ -77,7 +77,7 @@ Los tres miembros aplican marcos publicados (la lente de Ofertas, de Monopolio y
 
 - [ ] **3 restaurantes reales de 15 a 40 mesas** usándolo en servicio de fin de semana, con el fundador presente, lista escrita de fallas y testimonio con nombre, antes de gastar en publicidad. *(Ofertas, Producto, Monopolio pide 10 pagos)* → `/founder-launch`
 - [ ] **Plan B para caídas de internet** (cola local, impresión de respaldo o protocolo escrito) y respuesta pública a esa pregunta. *(Producto, Ofertas)* → `/founder-ops`, `/founder-offer`
-- [ ] **Respuesta para ARCA y cobro**: integración o flujo documentado que no sume trabajo al cierre. *(los tres)* → `/founder-ops`
+- [x] **Respuesta para ARCA** *(los tres)*: la app factura con ARCA según el fundador. **Falta:** mostrarlo en la web y responder la nueva duda (seguridad de los datos fiscales, qué pasa si Comandy cierra). El cobro desde el celular del cliente sigue sin existir. → `/founder-ops`
 - [ ] **Mapa de competidores con un hueco real.** *(Monopolio)* → `/founder-competitors`
 - [ ] **Una cabeza de playa definida**: tipo de local, zona y cuántos locales hay. *(Monopolio, Ofertas)* → `/founder-competitors`, `/founder-marketing`
 - [ ] **Propuesta de una frase** centrada en el caos del fin de semana; esconder lo que no la sirva. *(Producto)* → `/founder-marketing`, `/founder-brand`
@@ -151,7 +151,7 @@ Para reforzar esto hace falta leer reseñas de Google Maps y grupos de dueños g
 
 ### 5. El hueco
 
-**No hay un hueco grande.** El mercado está lleno de sistemas en la nube a precio parecido, varios con ARCA (Mesanube, YoFacturo) y uno con modo sin internet (Maxirest). "Sin comisión" y "sin hardware" ya los dicen otros (Comandar, HivePOS). Es el resultado más útil de esta skill: Comandy no gana por funciones ni por precio.
+**No hay un hueco grande.** El mercado está lleno de sistemas en la nube a precio parecido, varios con ARCA (Mesanube, YoFacturo; Comandy también factura con ARCA según el fundador, aunque su web no lo dice) y uno con modo sin internet (Maxirest). "Sin comisión" y "sin hardware" ya los dicen otros (Comandar, HivePOS). Es el resultado más útil de esta skill: Comandy no gana por funciones ni por precio.
 
 Lo que sí parece poco cubierto, según la evidencia:
 
@@ -161,11 +161,11 @@ Lo que sí parece poco cubierto, según la evidencia:
 
 ### 6. La amenaza
 
-- **Mesanube y YoFacturo** ya tienen ARCA y precio similar: si un dueño compara, Comandy pierde por esa función.
+- **Mesanube y YoFacturo** tienen ARCA y precio similar. Comandy también factura, pero si la web no lo dice, el dueño que compara cree que no.
 - **Fudo** puede copiar la aprobación del mozo o las propinas por mozo en un trimestre y tiene distribución que Comandy no tiene.
 - **ComandaYa (ARS 16.000)** le gana en precio al Básico.
 
-Respuesta posible: no competir en lista de funciones sino en **servicio local** (instalación en persona, soporte un sábado a la noche) en una zona concreta, y resolver ARCA (integración o convivencia documentada) lo antes posible.
+Respuesta posible: no competir en lista de funciones sino en **servicio local** (instalación en persona, soporte un sábado a la noche) en una zona concreta, y poner la facturación con ARCA en la web, porque hoy no aparece.
 
 ## The buyer panel
 
@@ -204,31 +204,30 @@ These are simulated buyers, not customers. Use this to find objections and weak 
 
 | reason | buyers | in their words |
 | --- | ---: | --- |
-| habit | 10 | "Ya tenemos un sistema de comandas en los locales y el equipo lo maneja de memoria; meter otro que encima no factura con ARCA es tener dos sistemas para lo mismo. Que no cobre comisión está bien, pero mi problema no es ese." (P001) · "Ya tengo un sistema de comandas que mi gente sabe usar y que me factura. Meter otro que no factura con ARCA es cargar todo dos veces un viernes a la noche, y eso es justo lo que no quiero." (P004) |
-| trust | 2 | "Me gusta que el mozo apruebe el QR y que no haya comisión, pero sos de los primeros 10: no hay ningún local conocido que lo use y yo no meto un sistema nuevo en 3 locales sin hablar con alguien que ya lo bancó un sábado lleno. Ya pagué otro sistema y cambiar es un lío para el equipo." (P003) · "La propuesta suena bien y que vengan a capacitar está bueno, pero son los 'primeros 10': no hay ningún local conocido que lo use. Yo no meto un sistema nuevo en un viernes lleno sin que otro dueño me diga que le funciona." (P019) |
-| price | 2 | "Me gusta que no cobren comisión por pedido, eso sí, pero en un café de 10-12 mesas con dos mozos las comandas las manejamos a los gritos y en papel, y $23.100 por mes todos los meses es plata que hoy no me sobra. Si paso de 12 mesas ya me mandan al de $46.200 y ahí ni loca." (P012) · "Con mis 30 mesas me toca el plan Salón, casi 65 lucas por mes todos los meses, y hoy con la comanda de papel me arreglo. La prueba gratis capaz la hago, pero pagar eso fijo cuando cuido cada peso, no lo veo por ahora." (P017) |
+| habit | 10 | "Ya tenemos un sistema de comandas en todos los locales y el equipo lo sabe usar; cambiar en 3 o 4 locales a la vez es un quilombo de capacitación y errores en pleno servicio. Que no cobre comisión está bien, pero no me alcanza para mover todo a algo de un fundador que recién arranca." (P001) · "Ya tengo mi sistema de comandas y los chicos lo saben usar; cambiar todo a mis 56 años por un sistema nuevo de una empresa que recién arranca me da más miedo que perder alguna comanda un viernes. Que facture con ARCA está bien, pero mi sistema actual ya me resuelve lo básico." (P004) |
+| trust | 3 | "Lo de probarlo gratis en paralelo y que el fundador venga un viernes está bien, pero es para los primeros 10: nadie que yo conozca lo usa todavía. Con varios locales y un sistema ya pago, no meto a mis equipos a cambiar por algo que ningún colega me recomendó." (P003) · "Capaz que la prueba gratis la acepto, pero pagar 46 o 65 lucas por mes a una empresa que recién arranca, y encima darles mis datos fiscales para que me facturen en ARCA, no. Mis mozos ya me miran torcido con cualquier cosa que les controle el turno, y que yo vea sus propinas en vivo no los va a tranquilizar." (P017) |
+| need | 1 | "Con las mesas que tengo, el mozo canta la comanda y la cocina está a tres metros; no se me pierden tantos pedidos como para pagar otra cuota fija todos los meses. Me gusta que no cobren comisión, pero $23.100 por mes es plata que hoy no me sobra." (P012) |
 
 ### Why they buy
 
 | reason | buyers | in their words |
 | --- | ---: | --- |
-| need | 5 | "Los viernes pierdo comandas y tengo mesas esperando la cuenta, eso me cuesta plata y clientes. Con 30 días gratis sin tarjeta, sin comisión y en paralelo con lo que uso, lo pruebo; si después pago, va a ser el Profesional y negociando." (P005) · "Los errores de comanda me cuestan platos tirados y clientes calientes todos los fines de semana, y si es gratis 30 días, sin tarjeta, con el plan B por si se corta internet y el fundador acá el primer viernes, lo pruebo en paralelo sin arriesgar nada. Si los mozos lo usan y se lo aprenden rápido, el Básico a 23 mil por mes lo pago." (P010) |
-| convenience | 1 | "Si me cargan el menú, me capacitan a los mozos en el local y el fundador se queda un viernes conmigo, lo pruebo gratis en paralelo sin arriesgar nada. Las comandas perdidas me cuestan plata y mozos quemados, y que cada mozo vea sus propinas me ayuda a que no lo rechacen." (P002) |
+| need | 6 | "Los errores de comanda los viernes me cuestan plata y mozos quemados; si ellos cargan el menú, capacitan al equipo en el local y el fundador se queda el primer viernes, la excusa de que no tengo tiempo de capacitar se cae. Lo pruebo gratis en paralelo y si los mozos no lo rechazan, pago el plan Salón." (P002) · "Los viernes pierdo comandas y las mesas esperan la cuenta, y acá me cargan el menú, me capacitan al equipo y el fundador se queda el primer viernes, así que el problema de no tener tiempo para capacitar lo resuelven ellos. Con 30 días gratis sin tarjeta y en paralelo con lo que ya uso, lo pruebo; si después sirve, pago el Profesional y negocio quedarme en ese." (P005) |
 
 ### What would flip a no
 
-- Que se integre con nuestro POS o facture con ARCA, así no duplicamos carga, y poder probarlo primero en un solo local un mes sin tocar los demás.
-- Ver funcionando en persona un local conocido de mi zona que lo use hace un par de meses y poder hablar con su encargado; ahí sí lo pruebo gratis en un solo local en paralelo.
-- Que facture electrónico con ARCA directo desde la mesa, o que se conecte con mi sistema actual para no cargar nada dos veces.
-- Ver funcionando en un bodegón como el mío, con mozos de mi edad, un viernes lleno, y que me lo recomiende un colega que conozco.
-- Ver funcionando en un bodegón chico como el mío, de alguien que conozco, y que me demuestre que no pierdo más comandas ni tiempo; ahí capaz pruebo los 30 días gratis si el fundador viene el viernes.
-- Que el piloto en un local muestre en un mes menos errores de comanda y que los mozos nuevos lo aprendan solos en un turno, con un precio por varios locales que me deje dar de baja el sistema actual.
-- Que reemplace del todo lo que uso hoy, facturación incluida, o que en la prueba vea con números que se pierden menos comandas un viernes lleno.
-- Que un colega de otro bodegón chico como el mío me muestre que lo usa hace meses sin problemas y que de verdad no pierde comandas.
-- Que el Básico me cubra hasta 15 mesas a un precio cerca de $12.000-15.000 por mes, y ver en la prueba gratis que realmente me ahorra errores o un sueldo de horas.
-- Que reemplace del todo a lo que uso hoy, incluida la facturación con ARCA, así doy de baja el otro sistema y no pago doble.
-- Que facture electrónicamente con ARCA y reemplace mi POS actual, así pago un solo sistema en vez de dos.
-- Ver un sábado entero en mi local con mis mozos usándolo sin quejarse y que me baje el precio a unos 40 mil para mi tamaño.
+- Un precio y un panel para el grupo entero (todos los locales en una sola vista) y que se integre con Mercado Pago, probado primero en un solo local en paralelo sin tocar el sistema actual.
+- Ver funcionando un viernes a la noche en un local conocido de la zona, con el dueño contándome cómo le fue, y una demo en persona para mis encargados.
+- Ver funcionando en otro bodegón como el mío un viernes a la noche, con la factura de ARCA saliendo bien, y que mis mozos me digan que es más fácil que lo que usamos hoy.
+- Ver funcionando un viernes a la noche en un bodegón como el mío, de alguien que conozco, que trabajaba en papel igual que yo y que me diga que los mozos lo aprendieron en una noche.
+- Ver funcionando en otro bodegón chico como el mío, de alguien que conozco, que lo use hace meses y me diga que le ahorró laburo sin complicarle el servicio.
+- Que la prueba en un local muestre menos errores de comanda y que los mozos la quieran usar por las propinas, más un panel único para todos los locales con precio por grupo.
+- Que mi sistema actual me falle un viernes o que la prueba en paralelo me demuestre que salen menos comandas perdidas y los mozos mismos me pidan quedarse con Comandy.
+- Ver funcionando un bodegón como el mío, del barrio, que lo use hace meses y que el dueño me diga que no le complicó la vida.
+- Que la factura de ARCA desde la app me reemplace de verdad lo que hoy pago para facturar, así la cuota sale casi gratis; ahí probaría los 30 días.
+- Que mi sistema actual me falle de verdad o me suba mucho el precio, o que Comandy reemplace del todo lo que pago hoy (incluida la facturación) por menos plata de la que pago ahora.
+- Que el plan Básico me cubra hasta 15 mesas a un precio que reemplace lo que hoy pago por mi sistema actual, y ver funcionar la factura de ARCA en mi local durante la prueba sin un solo error.
+- Que otro dueño de bar de la zona que conozca me diga que lo usa hace meses, que sus mozos no se quejaron y que la facturación anduvo sin problemas, y que me dejen el plan de 25 mesas a unos 30 mil.
 
 Buyers say they would buy **1.0 times** in the first month on average.
 
@@ -324,7 +323,7 @@ Método: la lente de Ofertas (resumen propio de un marco publicado; no son palab
 | 5, 6 | **Escalera nueva**: Básico hasta 12 mesas, Profesional hasta 25, **Salón** 64.900 hasta 40 | 4 | 1 | sí |
 | 18 | **Soporte viernes y sábado hasta el cierre** en el plan Salón | 4 | 2 | sí |
 | 19, 20 | **Garantía**: si tu primer mes pago no te sirvió, te devolvemos ese mes | 4 | 2 | sí |
-| 3 | Integración con ARCA | 5 | 5 | **no por ahora**: se dice con honestidad ("seguís facturando con lo que usás hoy") |
+| 3 | **Factura electrónica de ARCA desde la app** (ya existe según el fundador; se da de alta en el setup con los datos fiscales del local) | 5 | 1 | **sí** |
 | 9 | Exportar tus datos si te vas | 3 | 2 | más adelante |
 | 14 | Recomendación de cargador en el salón | 1 | 0 | en la capacitación |
 
@@ -369,6 +368,18 @@ El mayor salto es la **probabilidad percibida**, que era el riesgo número uno d
 - **Objeciones que bajaron:** desconfianza (4 → 2), capacitación, propinas de los mozos.
 - **Objeción que creció: ARCA.** Al decirlo con honestidad, pasó a ser la razón principal de los que ya tienen otro sistema (P001, P004, P009, P014, P016). **El problema ahí no es la oferta, es el producto**: sin facturación, Comandy es un segundo sistema y no un reemplazo.
 - **Sin cambios:** los grupos de locales y los bodegones en papel no se mueven. No son el cliente de ahora.
+
+#### Re-test con ARCA (`panel`, la versión anterior quedó en `panel-v3`)
+
+Al saber que la app factura con ARCA, se cambió una sola línea de la oferta y se volvió a correr el mismo panel:
+
+| | sin ARCA (`panel-v3`) | con ARCA (`panel`) |
+| --- | ---: | ---: |
+| **Compran** | 6 de 20 (30%) | **6 de 20 (30%), los mismos** |
+
+- **Bajó:** "voy a pagar dos sistemas". Ya casi nadie lo dice.
+- **Apareció en su lugar:** *"no le doy los datos fiscales de mi local a una empresa que recién empieza"* y *"si falla la factura un sábado no puedo cerrar mesas"*. Se repite en la mayoría de los "no" y también en las dudas de los que compran.
+- **Lectura:** para el que ya tiene sistema, ARCA era la excusa visible; debajo está **la confianza en una empresa nueva** y el costo de cambiar. ARCA es necesario para competir (Mesanube y YoFacturo lo tienen) pero no alcanza solo. Lo que lo destraba son las respuestas de confianza: quién guarda los datos y cómo, qué pasa con tus facturas si Comandy cierra, y referencias reales.
 
 Recordá: compradores simulados; el 30% es un techo y casi todos los "sí" son "pruebo el mes gratis".
 
@@ -483,7 +494,10 @@ Primer público: **restaurantes y bares de 15 a 40 mesas con caos los viernes y 
 9. **Video:** "Carta cargada, mozos capacitados, funcionando en 24 horas." *(no tengo tiempo)*
 10. **Folleto:** "Si tu primer mes pago no te sirvió, te lo devolvemos." *(si sale mal, lo dejo)*
 
-**Lo que no podemos decir:** que factura con ARCA, que funciona sin internet, ni testimonios hasta tenerlos reales con permiso.
+**Gancho 11 (nuevo):** "Tomás el pedido, cocina lo ve y la factura de ARCA sale al cerrar la mesa. Un solo sistema." *(dos sistemas)*
+**Gancho 12 (nuevo):** "Tus datos fiscales: quién los guarda, cómo, y qué pasa con tus facturas si te vas." *(confianza en una empresa nueva; solo con una política escrita que lo respalde)*
+
+**Lo que no podemos decir:** que funciona sin internet, que el cliente paga desde el celular, ni testimonios hasta tenerlos reales con permiso.
 
 ### 4. Campaña de 30 días
 
@@ -492,7 +506,7 @@ Lanzamiento: **martes 1/12/2026**. La oferta Primeros 10 termina al completar 10
 | fecha | canal | qué sale |
 | --- | --- | --- |
 | mar 17/11 | — | Elegir la zona y armar la lista de 40 restaurantes de 15–40 mesas (Google Maps) |
-| mié 18/11 | web | Publicar en comandy.tech: escalera nueva, plan B, "sin comisión por pedido", programa Primeros 10 |
+| mié 18/11 | web | Publicar en comandy.tech: **factura con ARCA**, escalera nueva, plan B, "sin comisión por pedido", programa Primeros 10, página de seguridad de datos fiscales |
 | jue 19/11 | Instagram | Post fijo: qué es Comandy en 15 s (gancho 9) |
 | vie 20/11 | Instagram | Detrás de escena: un viernes en una cocina de prueba, temporizadores en pantalla |
 | sáb 21/11 | — | Imprimir 100 folletos (ganchos 4, 7, 10) y talonarios del plan B |
@@ -584,7 +598,7 @@ Solo pude hacer búsquedas públicas. Esto no es asesoramiento legal, la confirm
 | adjetivo | sí | no |
 | --- | --- | --- |
 | **De cocina** | hablar como se habla en el pase: "comanda", "marchando", "mesa 7 pidió la cuenta" | "optimizá la experiencia omnicanal de tu negocio gastronómico" |
-| **Directo** | decir lo que no hace: "no factura con ARCA, seguís con lo tuyo" | esconder límites en letra chica |
+| **Directo** | decir lo que hace y lo que no: "factura con ARCA; no funciona sin internet, por eso hay plan B" | esconder límites en letra chica |
 | **Presente** | "el viernes estoy en tu cocina" | "contamos con un equipo de soporte de primer nivel" |
 
 **Antes y después** (de `founder/pitch.md`):
@@ -613,7 +627,7 @@ Solo pude hacer búsquedas públicas. Esto no es asesoramiento legal, la confirm
 - No tengo una herramienta de imágenes en esta sesión; si querés conceptos, se pueden generar aparte y se marcan como **conceptos**, no como logo final.
 
 **Los primeros cinco puntos de contacto:**
-1. **Inicio de comandy.tech:** arriba, "Viernes sin comandas perdidas" + "el primer viernes estoy en tu cocina" + botón a WhatsApp. Abajo, plan B y "sin comisión por pedido".
+1. **Inicio de comandy.tech:** arriba, "Viernes sin comandas perdidas" + "el primer viernes estoy en tu cocina" + botón a WhatsApp. Abajo, **factura con ARCA al cerrar la mesa**, plan B y "sin comisión por pedido".
 2. **El "empaque":** el kit que se deja en el local: sticker para la tablet de cocina, talonario del plan B con el logo y una hoja con "qué hacer si se corta internet" pegada al lado de la tablet.
 3. **La confirmación:** el WhatsApp de alta: "Listo, [restaurante]. Mañana cargamos tu carta. El viernes [fecha] estoy con ustedes desde las 20."
 4. **El primer posteo:** video de 15 s de la pantalla de cocina en un servicio real (con permiso del local), con el gancho 1 de marketing.
@@ -672,7 +686,8 @@ Son unas 55–60 horas por semana. **El cuello de botella eres vos los viernes y
 ### 4. Rutinas (cada una entra en una página)
 
 **A. Alta de un restaurante (día 0)**
-1. Pedir la carta (foto o PDF), cantidad de mesas, nombres de mozos y cocina.
+1. Pedir la carta (foto o PDF), cantidad de mesas, nombres de mozos y cocina, y **los datos fiscales del local para dar de alta la facturación con ARCA**.
+   - Hacer una factura de prueba antes del primer servicio.
 2. Cargar categorías, platos y precios; generar los QR por mesa.
 3. Crear usuarios: admin, cada mozo, cocina.
 4. Mandar por WhatsApp la confirmación con fecha de capacitación y del primer servicio.
@@ -727,6 +742,7 @@ Las reglas cambian y dependen del lugar: **confirmá cada punto con el organismo
 - [ ] **Inscripción en ARCA** (monotributo u otro régimen) para poder facturar: arca.gob.ar.
 - [ ] **Ingresos brutos** en tu jurisdicción (AGIP en CABA o ARBA en provincia de Buenos Aires), o el régimen simplificado que corresponda.
 - [ ] **Marca** en el INPI (clases 9, 42 y 35) antes de invertir en publicidad: ver `founder/brand.md`.
+- [ ] **Datos fiscales de tus clientes:** al dar de alta la facturación con ARCA guardás información fiscal y credenciales; guardala cifrada, con el mínimo acceso necesario, y explicalo por escrito.
 - [ ] **Datos personales:** guardás datos de clientes de tus clientes (pedidos, nombres de mozos). Revisar la Ley 25.326 y la inscripción de bases de datos ante la Agencia de Acceso a la Información Pública.
 - [ ] **Términos y condiciones y política de privacidad** en comandy.tech (hoy no aparecen en la web).
 - [ ] **Defensa del consumidor para servicios por internet:** revisar si te aplican el "botón de baja" y el "botón de arrepentimiento" y mostrarlos si corresponde.
@@ -742,7 +758,8 @@ Las reglas cambian y dependen del lugar: **confirmá cada punto con el organismo
 | Corte de internet en un local | alta | alto para ese local | rutina C, plan B ya en la oferta |
 | Vos te enfermás un fin de semana | media | alto | avisar a los locales con anticipación, rutina D escrita, más adelante soporte part-time |
 | Los mozos lo rechazan | media | alto | capacitación de 30 min, primer servicio acompañado, propinas visibles por mozo |
-| Te piden ARCA y no lo tenés | **alta** | medio: pierde a quien ya tiene sistema | decirlo de entrada; evaluar integración con un servicio de facturación |
+| **Falla la facturación con ARCA** en servicio (ARCA caído o error de datos) | media | alto: el local no puede cerrar mesas con factura | factura de prueba en el alta; protocolo para facturar después desde la web de ARCA; revisar los datos fiscales con el dueño |
+| **Desconfianza con los datos fiscales** | alta | medio: frena a quien ya tiene sistema | política escrita de seguridad y de qué pasa con las facturas y los datos si el cliente se va o Comandy cierra; acceso solo con lo mínimo necesario |
 | Un competidor copia lo del mozo | media | medio | el diferencial es el servicio en persona, no la función |
 | Morosidad / inflación sobre el precio congelado | media | medio | débito automático, precio congelado solo 6 meses y solo para 10 |
 | Reclamo público o mala reseña | media | medio | rutina E; responder rápido y en público |
@@ -778,6 +795,7 @@ Tipo de negocio: suscripción con servicio en persona. **Prueba: 3 restaurantes 
 | | Elegir zona y armar lista de 40 restaurantes | Joaquín | mar 17/11 |
 | | Actualizar comandy.tech: escalera de planes, plan B, "sin comisión por pedido", Primeros 10, términos y privacidad, tagline | Joaquín | mié 18/11 |
 | **23–29/11** | ⚑ Escribir y probar el plan B en un servicio simulado (datos del celular + talonario) | Joaquín | mar 24/11 |
+| | Política de seguridad de datos fiscales y "qué pasa si te vas", publicada en la web | Joaquín (+ abogado) | mié 25/11 |
 | | Imprimir folletos, talonarios numerados y hoja "qué hacer si se corta internet" | Joaquín | lun 23/11 |
 | | Condiciones escritas de la garantía y del precio congelado | Joaquín (+ abogado si hay dudas) | mié 25/11 |
 | | Visitas: 20 restaurantes | Joaquín | jue 26/11 |
@@ -821,6 +839,6 @@ Equipo: no hay contrataciones; la "capacitación" es tuya sobre las rutinas de `
 
 - **Día 7 (lun 7/12):** ¿cuántas visitas, demos y pruebas? ¿Qué objeción escuchaste más que no estaba en el panel? ¿Cómo salieron los primeros servicios acompañados?
 - **Día 14 (mar 15/12):** ¿se cumple la línea de éxito (≥ 8 demos)? ¿Alguien pidió la garantía o abandonó la prueba? ¿Cuánto costó cada alta en plata y horas (para el CFO)?
-- **Día 30 (jue 31/12):** ¿cuántos de los 10 cupos se llenaron? ¿Cuántos van a pagar en enero? ¿ARCA apareció como motivo de "no" en la vida real como en el panel? Decidir: seguir igual, cambiar la oferta, o priorizar desarrollar facturación en enero (mes flojo en gastronomía).
+- **Día 30 (jue 31/12):** ¿cuántos de los 10 cupos se llenaron? ¿Cuántos van a pagar en enero? ¿La desconfianza con los datos fiscales apareció en la vida real como en el panel? ¿Funcionó la facturación con ARCA en todos los locales piloto? Decidir: seguir igual o cambiar la oferta. Enero (mes flojo en gastronomía) sirve para trabajar la confianza: referencias y casos reales.
 
 _The panel is simulated buyers and the numbers are projections from your inputs. Confirm demand with real customers and costs with real quotes before you spend. Not financial, legal or tax advice._

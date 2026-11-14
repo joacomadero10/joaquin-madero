@@ -36,7 +36,10 @@ Primer público: **restaurantes y bares de 15 a 40 mesas con caos los viernes y 
 9. **Video:** "Carta cargada, mozos capacitados, funcionando en 24 horas." *(no tengo tiempo)*
 10. **Folleto:** "Si tu primer mes pago no te sirvió, te lo devolvemos." *(si sale mal, lo dejo)*
 
-**Lo que no podemos decir:** que factura con ARCA, que funciona sin internet, ni testimonios hasta tenerlos reales con permiso.
+**Gancho 11 (nuevo):** "Tomás el pedido, cocina lo ve y la factura de ARCA sale al cerrar la mesa. Un solo sistema." *(dos sistemas)*
+**Gancho 12 (nuevo):** "Tus datos fiscales: quién los guarda, cómo, y qué pasa con tus facturas si te vas." *(confianza en una empresa nueva; solo con una política escrita que lo respalde)*
+
+**Lo que no podemos decir:** que funciona sin internet, que el cliente paga desde el celular, ni testimonios hasta tenerlos reales con permiso.
 
 ## 4. Campaña de 30 días
 
@@ -45,7 +48,7 @@ Lanzamiento: **martes 1/12/2026**. La oferta Primeros 10 termina al completar 10
 | fecha | canal | qué sale |
 | --- | --- | --- |
 | mar 17/11 | — | Elegir la zona y armar la lista de 40 restaurantes de 15–40 mesas (Google Maps) |
-| mié 18/11 | web | Publicar en comandy.tech: escalera nueva, plan B, "sin comisión por pedido", programa Primeros 10 |
+| mié 18/11 | web | Publicar en comandy.tech: **factura con ARCA**, escalera nueva, plan B, "sin comisión por pedido", programa Primeros 10, página de seguridad de datos fiscales |
 | jue 19/11 | Instagram | Post fijo: qué es Comandy en 15 s (gancho 9) |
 | vie 20/11 | Instagram | Detrás de escena: un viernes en una cocina de prueba, temporizadores en pantalla |
 | sáb 21/11 | — | Imprimir 100 folletos (ganchos 4, 7, 10) y talonarios del plan B |

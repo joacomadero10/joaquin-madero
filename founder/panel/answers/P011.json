@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Tengo 10 mesas, dos mozos y la comanda en papel me anda hace treinta años. No voy a poner a mis clientes a pedir por el celular ni a pagar 23 mil por mes para algo que hoy hago con un talonario.",
-  "objection": "Mis clientes quieren que los atienda un mozo, y yo no confío en la tecnología: si un viernes se cuelga, me arruina el servicio y no sé ni a quién llamar.",
-  "would_change_my_mind": "Que un colega de otro bodegón chico como el mío me muestre que lo usa hace meses sin problemas y que de verdad no pierde comandas.",
-  "price_too_cheap": 3000,
-  "price_cheap": 8000,
-  "price_expensive": 15000,
-  "price_too_expensive": 23000
+  "reason": "Con 10 mesas y el cuaderno me arreglo hace años, la comanda en papel no se me pierde porque la cocina está a tres metros. No voy a poner a mis mozos con el celular ni a meter la facturación de ARCA en una app que no conozco.",
+  "objection": "Que el día que se cuelga o se corta internet en pleno almuerzo me quede sin pedidos y sin poder facturar, y yo no sé arreglar nada de esto. Además darle los datos fiscales del local a una empresa nueva no me cierra.",
+  "would_change_my_mind": "Ver funcionando un bodegón como el mío, del barrio, que lo use hace meses y que el dueño me diga que no le complicó la vida.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 18000,
+  "price_too_expensive": 25000
 }

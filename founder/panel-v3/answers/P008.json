@@ -1,0 +1,13 @@
+{
+  "id": "P008",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo un sistema pago andando en los locales y cambiar implica recapacitar a mozos que rotan todo el tiempo; capaz pruebo el mes gratis en un solo local, pero no me veo pagando por un segundo sistema arriba del que ya tengo.",
+  "objection": "Ya pagué por otro sistema y cambiar es un lío: con la rotación que tengo, enseñarle algo nuevo a cada mozo que entra y que encima lo rechacen o se mezclen las comandas en pleno sábado es justo lo que no puedo arriesgar, y no veo que me junte varios locales en una sola vista.",
+  "would_change_my_mind": "Que el piloto en un local muestre en un mes menos errores de comanda y que los mozos nuevos lo aprendan solos en un turno, con un precio por varios locales que me deje dar de baja el sistema actual.",
+  "price_too_cheap": 15000,
+  "price_cheap": 35000,
+  "price_expensive": 65000,
+  "price_too_expensive": 110000
+}

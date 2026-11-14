@@ -1,0 +1,13 @@
+{
+  "id": "P002",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "convenience",
+  "reason": "Si me cargan el menú, me capacitan a los mozos en el local y el fundador se queda un viernes conmigo, lo pruebo gratis en paralelo sin arriesgar nada. Las comandas perdidas me cuestan plata y mozos quemados, y que cada mozo vea sus propinas me ayuda a que no lo rechacen.",
+  "objection": "No tengo tiempo de capacitar al equipo y con la rotación que tengo, cada mozo nuevo va a tener que aprenderlo de cero; si los chicos lo odian el primer sábado, lo tiro.",
+  "would_change_my_mind": "Que el primer viernes con el fundador salga mal: pedidos trabados, internet caído o los mozos quejándose, y en ese caso no paso a pagar.",
+  "price_too_cheap": 15000,
+  "price_cheap": 35000,
+  "price_expensive": 65000,
+  "price_too_expensive": 95000
+}
