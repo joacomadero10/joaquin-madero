@@ -1,0 +1,13 @@
+{
+  "id": "P008",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tenemos un sistema pago andando en los locales y migrar 2-5 locales en plena temporada, con mozos que rotan cada dos meses, es un quilombo que no me puedo comer esta semana. Capaz pruebo los 30 días gratis en un solo local, pero de ahí a pagar hay un trecho.",
+  "objection": "Que los mozos lo rechacen o se traben tomando pedidos en su propio celular un sábado a la noche, y que se armen más errores de comanda en vez de menos. Además no sé cómo cobran si tengo varios locales.",
+  "would_change_my_mind": "Que me lo instalen gratis en un local, lo usemos un fin de semana completo con lleno y se vea que bajan los errores de comanda sin que los mozos se quejen, con un precio claro por varios locales.",
+  "price_too_cheap": 10000,
+  "price_cheap": 20000,
+  "price_expensive": 50000,
+  "price_too_expensive": 90000
+}

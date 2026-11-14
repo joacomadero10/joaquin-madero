@@ -1,13 +1,13 @@
 {
   "id": "P010",
-  "buys": false,
-  "purchases_first_month": 0,
-  "reason_code": "trust",
-  "reason": "Capaz que pruebo los 30 días gratis porque no me piden tarjeta, pero pagar todavía no. Hoy con la comanda en papel y la carta en PDF me arreglo, y no voy a apostar el servicio de un sábado a algo que depende del wifi y del celular de cada mozo.",
-  "objection": "¿Qué pasa si se cae internet o el sistema en pleno servicio con el salón lleno? Y mis mozos rotan todo el tiempo: si al nuevo le cuesta o siente que le controlan las propinas, lo rechazan y vuelvo al papel.",
-  "would_change_my_mind": "Ver que funciona sin internet un rato y sincroniza después, o ver un bodegón como el mío usándolo un fin de semana sin problemas y con los mozos contentos.",
-  "price_too_cheap": 7000,
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "need",
+  "reason": "Los errores de comanda me cuestan platos tirados y clientes calientes todos los fines de semana, y si es gratis 30 días, sin tarjeta, con el plan B por si se corta internet y el fundador acá el primer viernes, lo pruebo en paralelo sin arriesgar nada. Si los mozos lo usan y se lo aprenden rápido, el Básico a 23 mil por mes lo pago.",
+  "objection": "Que los mozos lo rechacen o que con la rotación que tengo cada nuevo tarde semanas en aprenderlo, y que en pleno viernes se trabe el celular de alguno y volvamos al papel igual pero con más lío.",
+  "would_change_my_mind": "Si en la prueba los mozos se quejan o un viernes se cae y el plan B no funciona como dicen, lo dejo.",
+  "price_too_cheap": 8000,
   "price_cheap": 15000,
-  "price_expensive": 28000,
-  "price_too_expensive": 42000
+  "price_expensive": 30000,
+  "price_too_expensive": 45000
 }

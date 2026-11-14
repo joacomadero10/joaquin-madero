@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "trust",
-  "reason": "Ya tenemos un sistema pago en los locales y migrar todo el equipo es un lío. No conozco ningún local que use Comandy y no veo demo en persona, así que no lo pongo en mi operación aunque la prueba sea gratis.",
-  "objection": "Nadie que yo conozca lo usa todavía. Si se cae un viernes a la noche con el salón lleno, ¿quién me responde? Y cambiar de sistema en 3 locales es capacitar a todos de nuevo.",
-  "would_change_my_mind": "Ver que lo use un grupo gastronómico conocido de mi zona y que vengan al local a hacerme una demo en persona, con ayuda para migrar desde mi sistema actual.",
-  "price_too_cheap": 15000,
-  "price_cheap": 35000,
-  "price_expensive": 80000,
-  "price_too_expensive": 130000
+  "reason": "Me gusta que el mozo apruebe el QR y que no haya comisión, pero sos de los primeros 10: no hay ningún local conocido que lo use y yo no meto un sistema nuevo en 3 locales sin hablar con alguien que ya lo bancó un sábado lleno. Ya pagué otro sistema y cambiar es un lío para el equipo.",
+  "objection": "No tienen referencias: nadie que yo conozca lo usa, y si se cae en pleno viernes con cuatro locales el problema es mío, no del fundador.",
+  "would_change_my_mind": "Ver funcionando en persona un local conocido de mi zona que lo use hace un par de meses y poder hablar con su encargado; ahí sí lo pruebo gratis en un solo local en paralelo.",
+  "price_too_cheap": 12000,
+  "price_cheap": 25000,
+  "price_expensive": 55000,
+  "price_too_expensive": 85000
 }

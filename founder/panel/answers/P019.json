@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "trust",
-  "reason": "Suena bien y la prueba gratis sin tarjeta ayuda, pero no conozco a ningún local que lo use y nadie vino a mostrármelo en persona. No le cambio el sistema a mis mozos y a la cocina en plena semana por una marca que vi pasar.",
-  "objection": "¿Quién me atiende un sábado a las 22 hs si se cae el sistema con el salón lleno? El soporte 24/7 está solo en el plan más caro, y con más de 20 mesas me obligan a ese plan.",
-  "would_change_my_mind": "Ver Comandy funcionando un sábado a la noche en un restaurante conocido de mi zona, con el dueño contándome cómo le responden el soporte, y una demo en persona en mi local.",
+  "reason": "La propuesta suena bien y que vengan a capacitar está bueno, pero son los 'primeros 10': no hay ningún local conocido que lo use. Yo no meto un sistema nuevo en un viernes lleno sin que otro dueño me diga que le funciona.",
+  "objection": "¿Quién me da soporte un sábado a las 22 hs? El soporte hasta el cierre es solo en el plan Salón, y una empresa nueva que no conozco me puede dejar tirada con la cocina parada y el salón lleno.",
+  "would_change_my_mind": "Ver funcionando en un local que conozco, en pleno servicio, y que el dueño me cuente cómo le fue con el soporte un fin de semana.",
   "price_too_cheap": 15000,
   "price_cheap": 35000,
-  "price_expensive": 70000,
-  "price_too_expensive": 110000
+  "price_expensive": 65000,
+  "price_too_expensive": 95000
 }

@@ -1,0 +1,13 @@
+{
+  "id": "P001",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo un sistema andando en los locales y el equipo lo sabe usar; cambiar todo el grupo por algo que hace más o menos lo mismo me cuesta más en capacitación y errores en el servicio que lo que me ahorro. Lo de que no necesita hardware está bueno, pero el hardware ya lo tengo pago.",
+  "objection": "Que en un sábado a la noche con el salón lleno se caiga el wifi o falle el navegador y me quede sin comandas en varios locales a la vez, y no veo nada que diga cómo maneja varios locales desde una sola cuenta.",
+  "would_change_my_mind": "Que me muestren que gestiona varios locales en un solo panel y que no me cobra comisión sobre lo que cobro con Mercado Pago, y que la migración la hagan ellos local por local sin parar el servicio.",
+  "price_too_cheap": 15000,
+  "price_cheap": 30000,
+  "price_expensive": 70000,
+  "price_too_expensive": 120000
+}

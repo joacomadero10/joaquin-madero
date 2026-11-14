@@ -1,0 +1,13 @@
+{
+  "id": "P009",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Ya tengo un sistema de comandas que el equipo sabe usar y que anda; cambiar en plena temporada para usar los celulares de los mozos me genera más quilombo que lo que me ahorra. Capaz pruebo los 30 días gratis por curiosidad, pero no veo motivo para pagar y migrar.",
+  "objection": "Los mozos van a sentir que con el QR y las propinas por mozo los estamos controlando o sacándoles trabajo, y encima tienen que usar su propio celular. Si el equipo no lo adopta, el sistema no sirve.",
+  "would_change_my_mind": "Que me demuestren con otro restaurante de mi tamaño que los mozos lo usan sin quejarse y que se conecta con Mercado Pago para cobrar en la mesa, con la migración hecha por ellos sin cortar el servicio.",
+  "price_too_cheap": 10000,
+  "price_cheap": 25000,
+  "price_expensive": 50000,
+  "price_too_expensive": 90000
+}

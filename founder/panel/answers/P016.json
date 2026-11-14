@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Ya tengo mi sistema de comandas andando y el equipo lo sabe usar; cambiar en plena temporada con el local abierto hasta la medianoche es un quilombo que no me puedo bancar. Y no veo por ningún lado que facture electrónico con ARCA, que es lo primero que necesito.",
-  "objection": "No dice nada de facturación electrónica con AFIP/ARCA. Si tengo que seguir facturando aparte con otro sistema, estoy pagando dos cosas y cargando todo dos veces.",
-  "would_change_my_mind": "Que emita factura electrónica de ARCA integrada desde el cierre de la mesa y que me migren el menú y capaciten al equipo gratis, así el cambio no me cuesta nada.",
-  "price_too_cheap": 8000,
-  "price_cheap": 15000,
-  "price_expensive": 30000,
-  "price_too_expensive": 45000
+  "reason": "Ya tengo un POS que mi equipo sabe usar y que me factura con ARCA; sumar Comandy es pagar otro sistema y cargar todo dos veces. En un café de 12-15 mesas no pierdo tantas comandas como para justificarlo.",
+  "objection": "No factura con ARCA: me obliga a tener dos sistemas en paralelo para siempre, y con más de 12 mesas ya me salta al plan de $46.200, que es mucha plata por algo que mi POS más o menos ya hace.",
+  "would_change_my_mind": "Que facture electrónicamente con ARCA y reemplace mi POS actual, así pago un solo sistema en vez de dos.",
+  "price_too_cheap": 5000,
+  "price_cheap": 12000,
+  "price_expensive": 25000,
+  "price_too_expensive": 40000
 }

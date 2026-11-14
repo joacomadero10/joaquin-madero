@@ -1,0 +1,13 @@
+{
+  "id": "P012",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Tengo 12 mesas, así que el Básico no me alcanza y me mandan al de $46.200 por mes, que es plata fija todos los meses para un café chico donde yo misma tomo pedidos. Capaz pruebo los 30 días gratis, pero pagar después, hoy no.",
+  "objection": "Que el precio en pesos lo suban cada mes con la inflación y que después aparezcan comisiones o cobros por el QR o por cobrar. No dice nada de eso y ya me pasó con otras apps.",
+  "would_change_my_mind": "Un plan de hasta 15 mesas a precio del Básico, con el precio congelado por escrito unos meses y sin ninguna comisión por venta.",
+  "price_too_cheap": 5000,
+  "price_cheap": 12000,
+  "price_expensive": 25000,
+  "price_too_expensive": 40000
+}

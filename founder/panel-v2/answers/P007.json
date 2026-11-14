@@ -1,0 +1,13 @@
+{
+  "id": "P007",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Yo manejo todo con comanda en papel y el cuaderno, y funciona. Ya pagué por el QR de la carta y no tengo ganas de meter otro sistema y pelearme con los mozos y la cocina para que aprendan a usar el celular.",
+  "objection": "Que el día que se cae internet o se traba el celular en pleno servicio me quedo sin comandas, y encima es otra cuota mensual más que se suma a todo lo que ya pago.",
+  "would_change_my_mind": "Ver funcionando en un bodegón como el mío, del barrio, que me cuente el dueño que no se le cayó nunca en un servicio lleno y que le ahorró plata o errores de verdad.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 20000,
+  "price_too_expensive": 30000
+}

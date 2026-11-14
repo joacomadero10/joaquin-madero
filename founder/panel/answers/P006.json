@@ -3,11 +3,11 @@
   "buys": false,
   "purchases_first_month": 0,
   "reason_code": "habit",
-  "reason": "Con el cuaderno y las comandas a mano me arreglo hace años, y en un local de pocas mesas no veo que me cambie la vida. Meter celulares, QR y pantallas en la cocina es sumarme un problema más, no sacarme uno.",
-  "objection": "No tengo tiempo de capacitar al equipo, y si un sábado a la noche se cae internet o se traba el celular de un mozo, me quedo sin comandas en pleno servicio.",
-  "would_change_my_mind": "Que otro dueño de bodegón como el mío me muestre que lo usa hace meses sin problemas y que siga funcionando si se corta internet.",
+  "reason": "Con el cuaderno y las comandas en papel me arreglo hace años y en un local de 10 mesas no se me pierden tantas. Meter celulares y una tablet en el medio del servicio me parece más lío que solución, aunque la prueba sea gratis.",
+  "objection": "No tengo tiempo de capacitar al equipo ni de pelearme con la tecnología; si un viernes a la noche se traba algo, me quedo con la cocina parada y nadie a quien llamar en el plan básico.",
+  "would_change_my_mind": "Ver funcionando en un bodegón como el mío, con mozos de mi edad, un viernes lleno, y que me lo recomiende un colega que conozco.",
   "price_too_cheap": 5000,
-  "price_cheap": 10000,
-  "price_expensive": 18000,
-  "price_too_expensive": 25000
+  "price_cheap": 12000,
+  "price_expensive": 20000,
+  "price_too_expensive": 30000
 }

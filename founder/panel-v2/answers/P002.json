@@ -1,0 +1,13 @@
+{
+  "id": "P002",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Capaz que pruebo los 30 días gratis porque me cargan el menú y capacitan a los chicos, pero pagar no pago hasta ver que los mozos lo usan en un sábado lleno sin que se arme lío. Con la rotación que tengo, si cada mozo nuevo hay que enseñarle de cero, no me sirve.",
+  "objection": "Que los mozos lo rechacen, que el celular personal se les quede sin batería o se trabe en pleno servicio, y que piensen que con lo de propinas por mozo los estoy controlando o les voy a tocar la plata.",
+  "would_change_my_mind": "Ver otro restaurante de mi tamaño funcionando un fin de semana a full, y que un mozo nuevo aprenda a usarlo en 10 minutos sin que yo tenga que estar encima.",
+  "price_too_cheap": 15000,
+  "price_cheap": 30000,
+  "price_expensive": 60000,
+  "price_too_expensive": 100000
+}

@@ -3,11 +3,11 @@
   "buys": true,
   "purchases_first_month": 1,
   "reason_code": "need",
-  "reason": "Ya uso carta QR y lo que me falta es que la comanda llegue bien a cocina sin papelitos ni gritos; si es gratis 30 días y me lo configuran ellos, lo pruebo en el Profesional sin perder nada. Si en un fin de semana lleno no me falla, me quedo.",
-  "objection": "¿Qué pasa si se cae internet o el sistema un sábado a las 22 con el salón lleno? Si los mozos no pueden cargar pedidos y la cocina se queda a ciegas, pierdo la noche entera. No dice nada de modo sin conexión.",
-  "would_change_my_mind": "",
-  "price_too_cheap": 10000,
-  "price_cheap": 30000,
-  "price_expensive": 60000,
-  "price_too_expensive": 100000
+  "reason": "Los viernes se nos pierden comandas y la cocina se satura, y esto no me pide hardware ni comisión. Con 30 días gratis, alguien que me carga el menú y el fundador en el local el primer viernes, lo pruebo en paralelo, y si los mozos lo adoptan pago el Salón.",
+  "objection": "Que se caiga internet o el sistema un sábado a las 22 con el salón lleno. El plan B con datos y talonario suena bien en el papel, pero quiero verlo funcionar en un servicio real antes de dejar mi sistema actual. Tampoco me encanta tener que seguir facturando aparte.",
+  "would_change_my_mind": "Si en la prueba se cae una noche y el plan B no funciona como prometen, o si los mozos se resisten a usarlo desde su celular, no pago.",
+  "price_too_cheap": 15000,
+  "price_cheap": 35000,
+  "price_expensive": 70000,
+  "price_too_expensive": 110000
 }

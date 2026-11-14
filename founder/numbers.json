@@ -1,0 +1,72 @@
+{
+  "business": "Comandy (suscripción mensual por restaurante). Con days_per_month = 1, cada 'día' del reporte es un MES y cada unidad es un restaurante pagando ese mes.",
+  "unit": "restaurante-mes",
+  "price": 46200,
+  "variable": [
+    {
+      "label": "Comisión de cobro de la suscripción (estimado 6% del precio; verificar tarifa de Mercado Pago)",
+      "cost": 2772
+    },
+    {
+      "label": "Viaje y tiempo de setup/capacitación prorrateado (estimado ARS 15.000 por alta / 12 meses de vida)",
+      "cost": 1250
+    },
+    {
+      "label": "Primer servicio acompañado por el fundador (estimado ARS 10.000 de movilidad por alta / 12 meses)",
+      "cost": 833
+    },
+    {
+      "label": "Garantía de devolución del primer mes pago (estimado: 25% la pide; 0,25 x 46.200 / 12)",
+      "cost": 963
+    },
+    {
+      "label": "Soporte por WhatsApp en horario nocturno y fines de semana (fundador sin sueldo)",
+      "cost": 0
+    }
+  ],
+  "fixed_monthly": [
+    {
+      "label": "Infraestructura: servidores, base de datos, dominio, herramientas (tope informado por el fundador)",
+      "cost": 50000
+    },
+    {
+      "label": "Monotributo e impuestos fijos (estimado; confirmar categoría con un contador)",
+      "cost": 40000
+    }
+  ],
+  "startup": [
+    {
+      "label": "Publicidad de lanzamiento (asignación del presupuesto < ARS 500.000)",
+      "cost": 250000
+    },
+    {
+      "label": "Movilidad para demos, setup y primer fin de semana en los locales",
+      "cost": 100000
+    },
+    {
+      "label": "Legales: registro de marca y términos (estimado)",
+      "cost": 100000
+    },
+    {
+      "label": "Imprevistos",
+      "cost": 50000
+    }
+  ],
+  "days_per_month": 1,
+  "capacity_per_day": 40,
+  "plan_per_day": 25,
+  "ramp_per_day": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+  ]
+}

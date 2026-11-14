@@ -1,0 +1,13 @@
+# Comandy (comandy.tech)
+
+- What it is: un sistema de gestión para restaurantes y bares que digitaliza el salón: los mozos toman pedidos desde el celular, la cocina los ve en pantalla en tiempo real con temporizador, el cliente puede pedir por QR (el mozo aprueba cada pedido antes de cocina) y el dueño ve mesas, comensales, facturación del día y propinas por mozo en vivo. Se usa desde el navegador, sin hardware ni instalación.
+- Who it is for: dueños y encargados de restaurantes, bares y cafeterías independientes en Argentina (ciudades grandes), de 8 a 40 mesas.
+- What it sells, at what price: suscripción mensual en pesos. Básico ARS 23.100/mes (hasta 10 mesas, 2 mozos); Profesional ARS 46.200/mes (hasta 20 mesas, 5 mozos, inventario, proveedores, pedidos de apps de delivery, soporte prioritario); Premium ARS 92.400/mes (mesas y mozos ilimitados, hasta 3 pantallas, soporte 24/7). Sin comisión por pedido. 30 días gratis sin tarjeta. Oferta de lanzamiento para los primeros 10: setup y carga del menú incluidos, capacitación de 1 hora, 20% off pagando anual hasta el 31/12/2026.
+- Where and how: online (comandy.tech), venta por demo de 15 minutos por WhatsApp y formulario web; funcionando en menos de 24 horas.
+- Budget and constraints: fundador solo, sin sueldo; el producto ya está construido y publicado; 0 clientes pagos hoy; menos de ARS 500.000 para arrancar (publicidad, movilidad para setup y capacitación, legales, imprevistos); infraestructura menor a ARS 50.000/mes. No hay pago desde el celular del cliente, ni facturación electrónica ARCA, ni modo sin internet mencionados en la oferta.
+
+## Additional context for the board
+
+- Already-run simulated consumer panel (20 simulated restaurant owners, founder/panel/results.md): 4 of 20 would start (20%), all mid-size restaurants (15-40 tables) with weekend chaos (lost tickets, tables waiting for the bill). 0% among small cafés/bodegones, multi-location groups, owners already using another POS, and paper-only owners. Main reasons to pass: habit / switching cost from an existing system (11), trust (no references, fear of internet outage mid-service) (4), price (1). Repeated asks: offline fallback, ARCA electronic invoicing, references from a known local, in-person training, frozen peso price against inflation, a plan tier between 20 tables and unlimited. These are simulated buyers, not customers.
+- Simulated price range from the panel (Van Westendorp): acceptable ARS 14.800 to 50.200 per month.
+- The market already has established restaurant POS/order-management products in Argentina; no competitor map has been made yet.
